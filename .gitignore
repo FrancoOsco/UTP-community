@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+target/
+
+# Environment variables
+.env
+.env.*
+
+# Docker database data
+database/postgres/
+database/pgadmin/
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log

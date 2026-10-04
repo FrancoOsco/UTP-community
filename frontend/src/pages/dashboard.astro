@@ -1,0 +1,46 @@
+---
+import '../styles/auth.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Dashboard</h1>
+
+      <p id="mensaje">Comprobando sesión...</p>
+
+      <button id="logout"> Cerrar sesión </button>
+    </main>
+
+    <script>
+      import { refresh, logout, esAdmin } from '../lib/auth';
+
+      const mensaje = document.getElementById('mensaje') as HTMLParagraphElement;
+
+      const logoutButton = document.getElementById('logout');
+
+      const token = await refresh();
+
+      if (!token) {
+        window.location.href = '/';
+      } else if (await esAdmin()) {
+        window.location.href = '/admin';
+      } else {
+        mensaje.textContent = 'Sesión de usuario activa.';
+      }
+
+      logoutButton?.addEventListener('click', async () => {
+        await logout();
+
+        window.location.href = '/';
+      });
+    </script>
+  </body>
+</html>

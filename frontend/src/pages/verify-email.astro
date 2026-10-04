@@ -1,0 +1,55 @@
+---
+import '../styles/auth.css';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Verificar correo</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Auth Template</h1>
+      <h2>Verificación de correo</h2>
+
+      <p id="mensaje">Verificando correo...</p>
+
+      <nav>
+        <a href="/"> Ir al login </a>
+      </nav>
+    </main>
+
+    <script>
+      import { apiFetch } from '../lib/api';
+
+      const mensaje = document.getElementById('mensaje') as HTMLParagraphElement;
+
+      const params = new URLSearchParams(window.location.search);
+
+      const token = params.get('token');
+
+      if (!token) {
+        mensaje.textContent = 'Token de verificación no encontrado.';
+      } else {
+        const response = await apiFetch('/api/auth/verify-email', {
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json',
+          },
+
+          body: JSON.stringify({
+            token,
+          }),
+        });
+
+        const data = await response.json();
+
+        mensaje.textContent = data.mensaje ?? data.message ?? 'Proceso finalizado.';
+      }
+    </script>
+  </body>
+</html>
