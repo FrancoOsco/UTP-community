@@ -1,71 +1,9 @@
 ---
-import '../styles/auth.css';
+import Layout from '../layouts/Layout.astro';import Icon from '../components/Icon.astro';
 ---
-
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auth Template - Login</title>
-  </head>
-
-  <body>
-    <main>
-      <h1>Auth Template</h1>
-      <h2>Iniciar sesión</h2>
-
-      <form id="loginForm">
-        <div>
-          <label for="email">Correo</label>
-          <input id="email" type="email" required />
-        </div>
-
-        <div>
-          <label for="password"> Contraseña </label>
-
-          <input id="password" type="password" required />
-        </div>
-
-        <button type="submit"> Iniciar sesión </button>
-      </form>
-
-      <p id="mensaje"></p>
-
-      <nav>
-        <a href="/register"> Crear cuenta </a>
-
-        <a href="/forgot-password"> Olvidé mi contraseña </a>
-      </nav>
-    </main>
-
-    <script>
-      import { login, esAdmin } from '../lib/auth';
-
-      const form = document.getElementById('loginForm');
-
-      const email = document.getElementById('email') as HTMLInputElement;
-
-      const password = document.getElementById('password') as HTMLInputElement;
-
-      const mensaje = document.getElementById('mensaje') as HTMLParagraphElement;
-
-      form?.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        try {
-          await login(email.value, password.value);
-
-          if (await esAdmin()) {
-            window.location.href = '/admin';
-            return;
-          }
-
-          window.location.href = '/dashboard';
-        } catch (error) {
-          mensaje.textContent =
-            error instanceof Error ? error.message : 'No se pudo iniciar sesión.';
-        }
-      });
-    </script>
-  </body>
-</html>
+<Layout title="Conecta, comparte y aprende">
+  <div class="landing"><header class="landing-nav"><a class="brand" href="/"><span class="brand-mark">UTP</span><span><strong>UTP Community</strong><small>Hecho por estudiantes, para estudiantes.</small></span></a><nav><a href="#beneficios">Beneficios</a><a href="#como-funciona">Cómo funciona</a><a href="/login" class="nav-signin">Iniciar sesión <Icon name="arrow" size={16}/></a></nav></header>
+  <main><section class="hero"><div class="hero-content"><div class="hero-tag"><span class="live-ping"></span> UNA COMUNIDAD HECHA PARA TI</div><h1>Tu vida universitaria,<br/><em>más conectada.</em></h1><p>Un solo lugar para hacer preguntas, compartir recomendaciones sobre cursos y profesores, y encontrar personas que viven los mismos retos que tú.</p><div class="hero-actions"><a href="/register" class="btn btn-white">Únete con tu correo UTP <Icon name="arrow" size={19}/></a><a href="/login" class="hero-link">Ya tengo una cuenta <Icon name="chevron" size={15}/></a></div><div class="hero-trust"><div class="trust-avatars"><span>VM</span><span>DR</span><span>AC</span><span>UT</span></div><span>Exclusivo para estudiantes<br/><b>@utp.edu.pe</b></span></div></div><div class="hero-visual"><div class="preview-window"><div class="preview-top"><div class="preview-dots"><i></i><i></i><i></i></div><span>community.utp · Vista previa</span><span class="preview-lock">● Seguro</span></div><div class="preview-body"><div class="preview-sidebar"><div class="preview-logo">U</div><div class="preview-nav chosen">⌂</div><div class="preview-nav">♧</div><div class="preview-nav">≡</div><div class="preview-nav">♙</div></div><div class="preview-feed"><div class="preview-welcome"><small>¡HOLA, COMUNIDAD! 👋</small><h3>Compartir nos hace crecer.</h3><span>Descubre algo nuevo hoy.</span></div><div class="preview-question"><div class="preview-q-top"><div class="sample-avatar">VM</div><span><b>Valeria Mendoza</b><small>Foro de preguntas · Ahora</small></span></div><h4>¿Qué recursos recomiendan para aprender Java y Spring Boot?</h4><p>Estoy organizando un grupo de estudio para nuestro proyecto final.</p><div class="preview-metrics">♥ 24 apoyos <span>◉ 8 respuestas</span></div></div><div class="preview-mini"><div class="mini-circle">✦</div><div><b>Conocimiento que conecta</b><small>Encuentra respuestas de estudiantes como tú.</small></div></div></div></div></div><div class="floating-verified"><span><Icon name="shield" size={23}/></span><div><b>Comunidad verificada</b><small>Acceso solo con correo institucional</small></div></div></div></section>
+  <section class="features-section" id="beneficios"><div class="section-top"><div><p class="eyebrow">UN ESPACIO PARA CRECER</p><h2>Todo empieza con una buena conexión.</h2><p>Menos tiempo buscando información. Más tiempo aprendiendo juntos.</p></div></div><div class="feature-grid"><article class="feature-card"><span class="feature-icon red"><Icon name="lock" size={25}/></span><h3>Exclusividad UTP</h3><p>Accede con tu correo institucional y comparte en una comunidad estudiantil con cuentas verificadas.</p><span class="feature-index">01 / IDENTIDAD</span></article><article class="feature-card"><span class="feature-icon purple"><Icon name="forum" size={26}/></span><h3>Foros que sí ayudan</h3><p>Pregunta, responde dudas de otros alumnos y apoya las mejores respuestas con votos.</p><span class="feature-index">02 / COLABORACIÓN</span></article><article class="feature-card"><span class="feature-icon peach"><Icon name="graduation" size={27}/></span><h3>Recomendaciones reales</h3><p>Comparte experiencias y consejos sobre profesores, asignaturas y recursos académicos.</p><span class="feature-index">03 / APRENDIZAJE</span></article></div></section>
+  <section class="how-section" id="como-funciona"><div class="how-copy"><p class="eyebrow">SIMPLE, ÚTIL Y CONTIGO</p><h2>Más cerca de las respuestas que necesitas.</h2><p>UTP Community nace para reunir en un solo espacio esas conversaciones académicas que antes quedaban perdidas entre múltiples grupos y aplicaciones.</p><a href="/register" class="btn btn-primary">Comenzar ahora <Icon name="arrow" size={18}/></a></div><div class="steps"><div><strong>01</strong><span><b>Valida tu identidad</b><small>Regístrate con @utp.edu.pe y confirma tu correo.</small></span></div><div><strong>02</strong><span><b>Explora tus intereses</b><small>Descubre foros sobre cursos, profesores y preguntas.</small></span></div><div><strong>03</strong><span><b>Haz crecer la comunidad</b><small>Publica, responde y vota por contenido útil.</small></span></div></div></section></main><footer class="landing-footer"><span class="brand-mark">UTP</span><span>UTP Community · Proyecto académico independiente · 2026</span><span>Hecho para conectar.</span></footer></div>
+</Layout>

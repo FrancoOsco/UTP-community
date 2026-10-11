@@ -32,4 +32,12 @@ public class Usuario {
 
     @Column(nullable = false)
     private boolean emailVerificado = false;
+
+    @Column(length = 500)
+    private String biografia;
+
+    @Column(length = 100)
+    private String carrera;
+
+    private Integer ciclo;
 }

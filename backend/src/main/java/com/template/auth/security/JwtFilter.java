@@ -2,6 +2,7 @@ package com.template.auth.security;
 
 import com.template.auth.entity.Usuario;
 import com.template.auth.repository.UsuarioRepository;
+import com.template.auth.validation.CorreoInstitucional;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -48,7 +49,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String email = jwtService.obtenerEmail(token);
         Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
 
-        if (usuario == null) {
+        if (usuario == null || !usuario.isEmailVerificado() || !CorreoInstitucional.valido(usuario.getEmail())) {
             filterChain.doFilter(request, response);
             return;
         }

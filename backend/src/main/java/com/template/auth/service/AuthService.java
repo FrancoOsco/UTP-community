@@ -9,6 +9,9 @@ import com.template.auth.exception.EmailNoVerificadoException;
 import com.template.auth.exception.EmailYaRegistradoException;
 import com.template.auth.repository.UsuarioRepository;
 import com.template.auth.security.JwtService;
+import com.template.auth.validation.CorreoInstitucional;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,14 +29,18 @@ public class AuthService {
 
     @Transactional
     public void register(UsuarioRequest request) {
-        if (usuarioRepository.findByEmail(request.getEmail()).isPresent()) {
+        String correo = CorreoInstitucional.normalizar(request.getEmail());
+        if (!CorreoInstitucional.valido(correo)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Solo se aceptan correos @utp.edu.pe.");
+        }
+        if (usuarioRepository.findByEmail(correo).isPresent()) {
             throw new EmailYaRegistradoException();
         }
 
         Usuario usuario = new Usuario();
         usuario.setNombre(request.getNombre());
         usuario.setApellido(request.getApellido());
-        usuario.setEmail(request.getEmail());
+        usuario.setEmail(correo);
         usuario.setPassword(passwordEncoder.encode(request.getPassword()));
         usuario.setRol("USUARIO");
         usuario.setEmailVerificado(false);
@@ -43,8 +50,10 @@ public class AuthService {
     }
 
     public AuthTokens login(LoginRequest request) {
+        String correo = CorreoInstitucional.normalizar(request.getEmail());
+        if (!CorreoInstitucional.valido(correo)) throw new CredencialesInvalidasException();
         Usuario usuario = usuarioRepository
-                .findByEmail(request.getEmail())
+                .findByEmail(correo)
                 .orElseThrow(CredencialesInvalidasException::new);
 
         if (!passwordEncoder.matches(request.getPassword(), usuario.getPassword())) {
@@ -63,6 +72,9 @@ public class AuthService {
 
     public AuthTokens refresh(String refreshToken) {
         Usuario usuario = refreshTokenService.consumirRefreshToken(refreshToken);
+        if (!CorreoInstitucional.valido(usuario.getEmail()) || !usuario.isEmailVerificado()) {
+            throw new com.template.auth.exception.RefreshTokenInvalidoException();
+        }
         String nuevoAccessToken = jwtService.generarToken(usuario.getEmail());
         String nuevoRefreshToken = refreshTokenService.crearRefreshToken(usuario);
 

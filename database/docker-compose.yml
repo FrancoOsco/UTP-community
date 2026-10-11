@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:15.3
-    container_name: auth-template-postgres
+    container_name: utp-community-postgres
     restart: always
     ports:
       - '5432:5432'
@@ -10,11 +10,11 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: auth-template-pgadmin
+    container_name: utp-community-pgadmin
     restart: always
     depends_on:
       - postgres
@@ -24,4 +24,8 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     volumes:
-      - ./pgadmin:/var/lib/pgadmin
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:

@@ -1,6 +1,8 @@
 package com.template.auth.exception;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -109,6 +111,14 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST,
                 exception.getMessage()
         );
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String,Object>> manejarEstado(ResponseStatusException ex) {
+        return ResponseEntity.status(ex.getStatusCode()).body(Map.of(
+            "status", ex.getStatusCode().value(),
+            "message", ex.getReason()==null?"Solicitud no válida":ex.getReason()
+        ));
     }
 
     private ResponseEntity<Map<String, Object>> crearRespuesta(

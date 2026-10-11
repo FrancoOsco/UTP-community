@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from './Icon.astro';
+interface Props { active?: string; heading: string; subheading?:string; }
+const {active='inicio',heading,subheading='Comparte lo que sabes. Aprende con tu comunidad.'}=Astro.props;
+const menu=[{id:'inicio',href:'/dashboard',name:'Inicio',icon:'home'}, {id:'comunidad',href:'/comunidad',name:'Comunidad',icon:'users'}, {id:'foros',href:'/foros',name:'Foros académicos',icon:'forum'}, {id:'perfil',href:'/perfil',name:'Mi perfil',icon:'user'}];
+---
+<Layout title={heading}>
+<div class="workspace">
+  <aside class="sidebar">
+    <a href="/dashboard" class="brand"><span class="brand-mark">UTP</span><span><strong>UTP Community</strong><small>Tu comunidad universitaria</small></span></a>
+    <div class="side-label">ESPACIO ACADÉMICO</div>
+    <nav class="side-nav" aria-label="Navegación principal">{menu.map(item=><a class:list={['side-link',active===item.id&&'active']} href={item.href}><Icon name={item.icon} size={19}/><span>{item.name}</span>{item.id==='foros'&&<span class="nav-new">Nuevo</span>}</a>)}</nav>
+    <div class="side-label side-gap">RECURSOS</div>
+    <a href="/foros?categoria=PREGUNTAS" class="side-link"><Icon name="book" size={19}/> Preguntas y respuestas</a>
+    <a href="/foros?categoria=PROFESORES" class="side-link"><Icon name="graduation" size={19}/> Recomendaciones</a>
+    <div class="side-bottom"><div class="campus-card"><span class="campus-dot"></span><div><b>Comunidad UTP</b><small>Espacio de estudiantes</small></div><Icon name="check" size={15}/></div><button class="exit-link" id="logout-button"><Icon name="log" size={18}/> Cerrar sesión</button></div>
+  </aside>
+  <div class="workspace-content">
+    <header class="topbar"><a class="mobile-logo" href="/dashboard"><span class="brand-mark">UTP</span><b>Community</b></a><div class="global-search"><Icon name="search" size={18}/><input id="global-search" type="search" placeholder="Buscar preguntas, cursos y recomendaciones..." aria-label="Buscar en foros"/><span>↵</span></div><div class="top-actions"><span class="desktop-chip"><span class="online-dot"></span> Campus conectado</span><button type="button" class="icon-button" aria-label="Notificaciones" title="Notificaciones próximamente"><Icon name="bell" size={19}/><i></i></button><a href="/perfil" class="top-user"><span class="mini-avatar" data-initials>U</span><span id="nav-nombre">Estudiante UTP</span><Icon name="chevron" size={14}/></a></div></header>
+    <div class="work-body"><main class="main-column"><div class="page-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> UNIVERSIDAD TECNOLÓGICA DEL PERÚ</p><h1>{heading}</h1><p class="muted">{subheading}</p></div><div class="verified-pill"><Icon name="shield" size={15}/> Solo estudiantes UTP</div></div><slot/></main><aside class="right-column"><slot name="aside"/><section class="aside-card sidebar-promo"><span class="promo-icon"><Icon name="spark" size={23}/></span><h3>Las buenas ideas se comparten.</h3><p>Pregunta, recomienda y ayuda a otros estudiantes a lograr más.</p><a href="/foros/nuevo" class="btn btn-primary btn-full"><Icon name="plus" size={17}/> Nueva publicación</a></section><footer class="aside-footer">UTP Community · Prototipo académico<br/>Proyecto desarrollado por estudiantes UTP</footer></aside></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+import {authFetch,logout} from '../lib/auth';
+import {showToast} from '../lib/ui';
+async function iniciar(){
+  const result=await authFetch('/api/me');
+  if(!result?.ok){location.replace('/login');return;}
+  const me=await result.json();
+  const nombre=document.getElementById('nav-nombre');if(nombre)nombre.textContent=me.nombre+' '+me.apellido;
+  document.querySelectorAll('[data-initials]').forEach(el=>el.textContent=((me.nombre?.[0]??'U')+(me.apellido?.[0]??'')).toUpperCase());
+  document.dispatchEvent(new CustomEvent('utp:user',{detail:me}));
+}
+iniciar().catch(()=>showToast('No fue posible conectar con el servidor. Comprueba que Spring Boot esté encendido.',true));
+document.getElementById('logout-button')?.addEventListener('click',async()=>{await logout();location.href='/login';});
+const global=document.getElementById('global-search') as HTMLInputElement;
+global?.addEventListener('keydown',(e)=>{if(e.key==='Enter'&&global.value.trim()) location.href='/foros?buscar='+encodeURIComponent(global.value.trim());});
+</script>
+</Layout>

@@ -45,16 +45,16 @@ class AuthServiceTest {
     @Test
     void debeIniciarSesionCorrectamente() {
         LoginRequest request = new LoginRequest();
-        request.setEmail("usuario@test.com");
+        request.setEmail("u12345678@utp.edu.pe");
         request.setPassword("Password123!");
 
         Usuario usuario = crearUsuarioVerificado();
 
-        when(usuarioRepository.findByEmail("usuario@test.com"))
+        when(usuarioRepository.findByEmail("u12345678@utp.edu.pe"))
                 .thenReturn(Optional.of(usuario));
         when(passwordEncoder.matches("Password123!", "password-encriptado"))
                 .thenReturn(true);
-        when(jwtService.generarToken("usuario@test.com"))
+        when(jwtService.generarToken("u12345678@utp.edu.pe"))
                 .thenReturn("access-token");
         when(refreshTokenService.crearRefreshToken(usuario))
                 .thenReturn("refresh-token");
@@ -65,19 +65,19 @@ class AuthServiceTest {
         assertEquals("access-token", resultado.getAccessToken());
         assertEquals("refresh-token", resultado.getRefreshToken());
 
-        verify(jwtService).generarToken("usuario@test.com");
+        verify(jwtService).generarToken("u12345678@utp.edu.pe");
         verify(refreshTokenService).crearRefreshToken(usuario);
     }
 
     @Test
     void debeRechazarPasswordIncorrecto() {
         LoginRequest request = new LoginRequest();
-        request.setEmail("usuario@test.com");
+        request.setEmail("u12345678@utp.edu.pe");
         request.setPassword("incorrecta");
 
         Usuario usuario = crearUsuarioVerificado();
 
-        when(usuarioRepository.findByEmail("usuario@test.com"))
+        when(usuarioRepository.findByEmail("u12345678@utp.edu.pe"))
                 .thenReturn(Optional.of(usuario));
         when(passwordEncoder.matches("incorrecta", "password-encriptado"))
                 .thenReturn(false);
@@ -93,13 +93,13 @@ class AuthServiceTest {
     @Test
     void debeRechazarEmailNoVerificado() {
         LoginRequest request = new LoginRequest();
-        request.setEmail("usuario@test.com");
+        request.setEmail("u12345678@utp.edu.pe");
         request.setPassword("Password123!");
 
         Usuario usuario = crearUsuarioVerificado();
         usuario.setEmailVerificado(false);
 
-        when(usuarioRepository.findByEmail("usuario@test.com"))
+        when(usuarioRepository.findByEmail("u12345678@utp.edu.pe"))
                 .thenReturn(Optional.of(usuario));
         when(passwordEncoder.matches("Password123!", "password-encriptado"))
                 .thenReturn(true);
@@ -117,10 +117,10 @@ class AuthServiceTest {
         UsuarioRequest request = new UsuarioRequest();
         request.setNombre("Franco");
         request.setApellido("Osco");
-        request.setEmail("usuario@test.com");
+        request.setEmail("u12345678@utp.edu.pe");
         request.setPassword("Password123!");
 
-        when(usuarioRepository.findByEmail("usuario@test.com"))
+        when(usuarioRepository.findByEmail("u12345678@utp.edu.pe"))
                 .thenReturn(Optional.of(crearUsuarioVerificado()));
 
         assertThrows(
@@ -132,12 +132,36 @@ class AuthServiceTest {
         verify(emailVerificationService, never()).crearVerificacion(any());
     }
 
+
+    @Test
+    void debeRechazarRegistroNoInstitucional() {
+        UsuarioRequest request = new UsuarioRequest();
+        request.setEmail("alumno@gmail.com");
+        request.setNombre("Ana");
+        request.setApellido("Ruiz");
+        request.setPassword("Password123!");
+
+        assertThrows(org.springframework.web.server.ResponseStatusException.class,
+                () -> authService.register(request));
+        verify(usuarioRepository, never()).save(any());
+    }
+
+    @Test
+    void debeRechazarLoginNoInstitucional() {
+        LoginRequest request = new LoginRequest();
+        request.setEmail("alumno@otrauniversidad.edu.pe");
+        request.setPassword("Password123!");
+        assertThrows(CredencialesInvalidasException.class,
+                () -> authService.login(request));
+        verifyNoInteractions(usuarioRepository);
+    }
+
     private Usuario crearUsuarioVerificado() {
         Usuario usuario = new Usuario();
         usuario.setId(1L);
         usuario.setNombre("Usuario");
         usuario.setApellido("Prueba");
-        usuario.setEmail("usuario@test.com");
+        usuario.setEmail("u12345678@utp.edu.pe");
         usuario.setPassword("password-encriptado");
         usuario.setRol("USUARIO");
         usuario.setEmailVerificado(true);

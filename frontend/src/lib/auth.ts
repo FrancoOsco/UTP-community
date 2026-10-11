@@ -29,21 +29,26 @@ export async function login(email: string, password: string) {
   return accessToken;
 }
 
-export async function refresh() {
-  const response = await apiFetch('/api/auth/refresh', {
-    method: 'POST',
-  });
+let pendingRefresh: Promise<string | null> | null = null;
 
-  if (!response.ok) {
-    accessToken = null;
-    return null;
-  }
-
-  const data = await response.json();
-
-  accessToken = data.token;
-
-  return accessToken;
+export async function refresh(): Promise<string | null> {
+  // Varios componentes pueden iniciar al mismo tiempo: un único refresh
+  // evita consumir dos veces el token rotativo del servidor.
+  if (pendingRefresh) return pendingRefresh;
+  pendingRefresh = (async () => {
+    try {
+      const response = await apiFetch('/api/auth/refresh', { method: 'POST' });
+      if (!response.ok) { accessToken = null; return null; }
+      const data = await response.json();
+      accessToken = data.token;
+      return accessToken;
+    } catch {
+      accessToken = null;
+      return null;
+    }
+  })();
+  try { return await pendingRefresh; }
+  finally { pendingRefresh = null; }
 }
 
 export async function logout() {

@@ -22,6 +22,7 @@ public class UsuarioRequest {
 
     @NotBlank
     @Email
+    @Pattern(regexp = "(?i)^[a-z0-9._%+\\-]+@utp\\.edu\\.pe$", message = "Utiliza tu correo institucional @utp.edu.pe.")
     private String email;
 
     @NotBlank
