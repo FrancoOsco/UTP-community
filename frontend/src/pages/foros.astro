@@ -1,25 +1,152 @@
 ---
-import AppShell from '../components/AppShell.astro';import Icon from '../components/Icon.astro';
+import AppShell from '../components/AppShell.astro';
+import Icon from '../components/Icon.astro';
 ---
-<AppShell active="foros" heading="Foros académicos" subheading="Haz preguntas, comparte experiencias y encuentra buenas respuestas.">
-<section class="forum-heading"><div><span class="eyebrow">COMPARTIR ES APRENDER</span><h2>Conocimiento que va de estudiante a estudiante.</h2><p>Tus dudas y experiencias pueden ayudar a más personas de las que imaginas.</p></div><a href="/foros/nuevo" class="btn btn-primary"><Icon name="plus" size={18}/> Nueva publicación</a></section>
-<div class="forum-tabs" role="tablist" aria-label="Categorías"><button data-category="" class="forum-tab selected" role="tab">Todas las conversaciones</button><button data-category="PREGUNTAS" class="forum-tab" role="tab">Preguntas y respuestas</button><button data-category="PROFESORES" class="forum-tab" role="tab">Profesores</button><button data-category="CURSOS" class="forum-tab" role="tab">Cursos</button></div>
-<div class="forum-toolbar"><div class="search-box"><Icon name="search" size={18}/><input id="forum-search" type="search" placeholder="Buscar dudas, cursos o temas..." aria-label="Buscar en foros"/></div><div class="forum-count" id="forum-count">Cargando...</div></div>
-<div id="forum-list" class="post-list"><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
-<div class="pagination"><button class="btn btn-outline" id="prev-page" disabled>← Anterior</button><span id="page-label">Página 1</span><button class="btn btn-outline" id="next-page" disabled>Siguiente →</button></div>
-<Fragment slot="aside"><section class="aside-card"><div class="aside-title"><Icon name="spark" size={18}/> Guía de participación</div><div class="guideline"><span>01</span><p><b>Escribe un título claro.</b><br/>Ayuda a que otros encuentren tu publicación.</p></div><div class="guideline"><span>02</span><p><b>Comparte con respeto.</b><br/>Las críticas deben centrarse en la experiencia académica.</p></div><div class="guideline"><span>03</span><p><b>Vota lo que te ayudó.</b><br/>Destaca las respuestas útiles para la comunidad.</p></div></section></Fragment>
+
+<AppShell
+  active="foros"
+  heading="Foros académicos"
+  subheading="Haz preguntas, comparte experiencias y encuentra buenas respuestas."
+>
+  <section class="forum-heading">
+    <div>
+      <span class="eyebrow">COMPARTIR ES APRENDER</span><h2>
+        Conocimiento que va de estudiante a estudiante.
+      </h2><p>Tus dudas y experiencias pueden ayudar a más personas de las que imaginas.</p>
+    </div><a href="/foros/nuevo" class="btn btn-primary"
+      ><Icon name="plus" size={18} /> Nueva publicación</a>
+  </section>
+  <div class="forum-tabs" role="tablist" aria-label="Categorías">
+    <button data-category="" class="forum-tab selected" role="tab">Todas las conversaciones</button
+    ><button data-category="PREGUNTAS" class="forum-tab" role="tab">Preguntas y respuestas</button
+    ><button data-category="PROFESORES" class="forum-tab" role="tab">Profesores</button><button
+      data-category="CURSOS"
+      class="forum-tab"
+      role="tab">Cursos</button>
+  </div>
+  <div class="forum-toolbar">
+    <div class="search-box">
+      <Icon name="search" size={18} /><input
+        id="forum-search"
+        type="search"
+        placeholder="Buscar dudas, cursos o temas..."
+        aria-label="Buscar en foros"
+      />
+    </div><div class="forum-count" id="forum-count">Cargando...</div>
+  </div>
+  <div id="forum-list" class="post-list">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+  </div>
+  <div class="pagination">
+    <button class="btn btn-outline" id="prev-page" disabled>← Anterior</button><span id="page-label"
+      >Página 1</span
+    ><button class="btn btn-outline" id="next-page" disabled>Siguiente →</button>
+  </div>
+  <Fragment slot="aside"
+    ><section class="aside-card">
+      <div class="aside-title"><Icon name="spark" size={18} /> Guía de participación</div><div
+        class="guideline"
+      >
+        <span>01</span><p>
+          <b>Escribe un título claro.</b><br />Ayuda a que otros encuentren tu publicación.
+        </p>
+      </div><div class="guideline">
+        <span>02</span><p>
+          <b>Comparte con respeto.</b><br />Las críticas deben centrarse en la experiencia
+          académica.
+        </p>
+      </div><div class="guideline">
+        <span>03</span><p>
+          <b>Vota lo que te ayudó.</b><br />Destaca las respuestas útiles para la comunidad.
+        </p>
+      </div>
+    </section></Fragment
+  >
 </AppShell>
 <script>
-import {authFetch} from '../lib/auth';import {escapeHtml as h,fecha,categories,responseError,showToast} from '../lib/ui';
-const params=new URLSearchParams(location.search);let cat=params.get('categoria')??'';let query=params.get('buscar')??'';let page=0;let more=false;
-const search=document.getElementById('forum-search') as HTMLInputElement;search.value=query;
-function tab(){document.querySelectorAll<HTMLButtonElement>('.forum-tab').forEach(b=>{b.classList.toggle('selected',b.dataset.category===cat);b.setAttribute('aria-selected',String(b.dataset.category===cat));});}
-let timer:ReturnType<typeof setTimeout>;
-search.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(()=>{query=search.value.trim();page=0;load();},350);});
-document.querySelectorAll<HTMLButtonElement>('.forum-tab').forEach(b=>b.addEventListener('click',()=>{cat=b.dataset.category??'';page=0;tab();load();}));
-document.getElementById('prev-page')?.addEventListener('click',()=>{if(page>0){page--;load();}});
-document.getElementById('next-page')?.addEventListener('click',()=>{if(more){page++;load();}});
-function card(p:any){return `<article class="discussion-card"><div class="discussion-top"><span class="small-avatar">${h((p.autor||'U')[0])}</span><div><b>${h(p.autor)}</b><small>${h(fecha(p.creadoEn))} · Comunidad UTP</small></div><span class="category-chip">${h(categories[p.categoria])}</span></div><a href="/foro?id=${p.id}" class="post-title-link"><h3>${h(p.titulo)}</h3></a><p>${h(p.contenido.slice(0,250))}${p.contenido.length>250?'…':''}</p><div class="discussion-foot"><span>↑ ${p.puntos} votos</span><span>◌ ${p.respuestas} respuestas</span><a class="read-more" href="/foro?id=${p.id}">Ver conversación →</a></div></article>`;}
-async function load(){tab();const list=document.getElementById('forum-list')!;list.innerHTML='<div class="skeleton-card"></div><div class="skeleton-card"></div>';const url='/api/foros?pagina='+page+(cat?'&categoria='+encodeURIComponent(cat):'')+(query?'&buscar='+encodeURIComponent(query):'');try{const r=await authFetch(url);if(!r?.ok)throw new Error(r?await responseError(r):'Necesitas iniciar sesión');const data=await r.json();more=!data.last;document.getElementById('forum-count')!.textContent=data.totalElements+' publicaciones';document.getElementById('page-label')!.textContent='Página '+(page+1);(document.getElementById('prev-page') as HTMLButtonElement).disabled=page===0;(document.getElementById('next-page') as HTMLButtonElement).disabled=!more;list.innerHTML=data.content.length?data.content.map(card).join(''):'<div class="empty-state"><div class="empty-graphic">?</div><h3>No hay conversaciones todavía</h3><p>Sé la primera persona en publicar en esta categoría.</p><a href="/foros/nuevo" class="btn btn-primary">Crear una publicación →</a></div>';const stateParams=new URLSearchParams();if(cat)stateParams.set('categoria',cat);if(query)stateParams.set('buscar',query);history.replaceState(null,'','/foros'+(stateParams.size?'?'+stateParams.toString():''));}catch(err){list.innerHTML='<div class="empty-state"><h3>No pudimos cargar los foros</h3><p>'+h((err as Error).message)+'</p></div>';showToast('No se pudo conectar con el backend.',true);}}
-setTimeout(load,250);
+  import { authFetch } from '../lib/auth';
+  import { escapeHtml as h, fecha, categories, responseError, showToast } from '../lib/ui';
+  const params = new URLSearchParams(location.search);
+  let cat = params.get('categoria') ?? '';
+  let query = params.get('buscar') ?? '';
+  let page = 0;
+  let more = false;
+  const search = document.getElementById('forum-search') as HTMLInputElement;
+  search.value = query;
+  function tab() {
+    document.querySelectorAll<HTMLButtonElement>('.forum-tab').forEach((b) => {
+      b.classList.toggle('selected', b.dataset.category === cat);
+      b.setAttribute('aria-selected', String(b.dataset.category === cat));
+    });
+  }
+  let timer: ReturnType<typeof setTimeout>;
+  search.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      query = search.value.trim();
+      page = 0;
+      load();
+    }, 350);
+  });
+  document.querySelectorAll<HTMLButtonElement>('.forum-tab').forEach((b) =>
+    b.addEventListener('click', () => {
+      cat = b.dataset.category ?? '';
+      page = 0;
+      tab();
+      load();
+    }),
+  );
+  document.getElementById('prev-page')?.addEventListener('click', () => {
+    if (page > 0) {
+      page--;
+      load();
+    }
+  });
+  document.getElementById('next-page')?.addEventListener('click', () => {
+    if (more) {
+      page++;
+      load();
+    }
+  });
+  function card(p: any) {
+    return `<article class="discussion-card"><div class="discussion-top"><span class="small-avatar">${h((p.autor || 'U')[0])}</span><div><b>${h(p.autor)}</b><small>${h(fecha(p.creadoEn))} · Comunidad UTP</small></div><span class="category-chip">${h(categories[p.categoria])}</span></div><a href="/foro?id=${p.id}" class="post-title-link"><h3>${h(p.titulo)}</h3></a><p>${h(p.contenido.slice(0, 250))}${p.contenido.length > 250 ? '…' : ''}</p><div class="discussion-foot"><span>↑ ${p.puntos} votos</span><span>◌ ${p.respuestas} respuestas</span><a class="read-more" href="/foro?id=${p.id}">Ver conversación →</a></div></article>`;
+  }
+  async function load() {
+    tab();
+    const list = document.getElementById('forum-list')!;
+    list.innerHTML = '<div class="skeleton-card"></div><div class="skeleton-card"></div>';
+    const url =
+      '/api/foros?pagina=' +
+      page +
+      (cat ? '&categoria=' + encodeURIComponent(cat) : '') +
+      (query ? '&buscar=' + encodeURIComponent(query) : '');
+    try {
+      const r = await authFetch(url);
+      if (!r?.ok) throw new Error(r ? await responseError(r) : 'Necesitas iniciar sesión');
+      const data = await r.json();
+      more = !data.last;
+      document.getElementById('forum-count')!.textContent = data.totalElements + ' publicaciones';
+      document.getElementById('page-label')!.textContent = 'Página ' + (page + 1);
+      (document.getElementById('prev-page') as HTMLButtonElement).disabled = page === 0;
+      (document.getElementById('next-page') as HTMLButtonElement).disabled = !more;
+      list.innerHTML = data.content.length
+        ? data.content.map(card).join('')
+        : '<div class="empty-state"><div class="empty-graphic">?</div><h3>No hay conversaciones todavía</h3><p>Sé la primera persona en publicar en esta categoría.</p><a href="/foros/nuevo" class="btn btn-primary">Crear una publicación →</a></div>';
+      const stateParams = new URLSearchParams();
+      if (cat) stateParams.set('categoria', cat);
+      if (query) stateParams.set('buscar', query);
+      history.replaceState(
+        null,
+        '',
+        '/foros' + (stateParams.size ? '?' + stateParams.toString() : ''),
+      );
+    } catch (err) {
+      list.innerHTML =
+        '<div class="empty-state"><h3>No pudimos cargar los foros</h3><p>' +
+        h((err as Error).message) +
+        '</p></div>';
+      showToast('No se pudo conectar con el backend.', true);
+    }
+  }
+  setTimeout(load, 250);
 </script>

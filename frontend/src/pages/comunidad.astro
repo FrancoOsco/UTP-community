@@ -1,10 +1,65 @@
 ---
-import AppShell from '../components/AppShell.astro';import Icon from '../components/Icon.astro';
+import AppShell from '../components/AppShell.astro';
+import Icon from '../components/Icon.astro';
 ---
-<AppShell active="comunidad" heading="Comunidad" subheading="Un lugar para encontrarnos, compartir ideas y crecer juntos.">
-<section class="community-feature"><div><span class="accent-eyebrow">TU COMUNIDAD, TU UNIVERSIDAD</span><h2>Conecta a través del conocimiento.</h2><p>Descubre conversaciones relevantes y encuentra personas que puedan ayudarte a sacar adelante tu próximo reto académico.</p><a href="/foros" class="btn btn-white">Explorar conversaciones <Icon name="arrow" size={18}/></a></div><div class="community-deco">✳</div></section>
-<div class="section-header"><div><h2>Comunidades para ti</h2><p>Encuentra contenido que te interesa</p></div><span class="small-neutral">Espacios temáticos de foros</span></div>
-<div class="community-card-grid"><a class="community-topic" href="/foros?categoria=PREGUNTAS"><div class="topic-icon topic-red"><Icon name="forum" size={26}/></div><span class="topic-type">COLABORACIÓN</span><h3>Preguntas y respuestas</h3><p>¿Te atascaste en un problema? Aquí todos podemos ayudar.</p><span>Ir al foro <Icon name="arrow" size={17}/></span></a><a class="community-topic" href="/foros?categoria=PROFESORES"><div class="topic-icon topic-purple"><Icon name="graduation" size={27}/></div><span class="topic-type">EXPERIENCIAS</span><h3>Profesores y recomendaciones</h3><p>Comparte tu experiencia y conoce nuevas perspectivas académicas.</p><span>Ver recomendaciones <Icon name="arrow" size={17}/></span></a><a class="community-topic" href="/foros?categoria=CURSOS"><div class="topic-icon topic-orange"><Icon name="book" size={27}/></div><span class="topic-type">APRENDIZAJE</span><h3>Cursos y asignaturas</h3><p>Consejos para organizarte mejor en tus asignaturas y proyectos.</p><span>Explorar cursos <Icon name="arrow" size={17}/></span></a></div>
-<section class="info-strip"><Icon name="spark" size={21}/><div><b>Construimos esta comunidad entre todos.</b><p>Los grupos de estudio, recursos y reuniones integradas están contemplados para futuras iteraciones.</p></div></section>
-<Fragment slot="aside"><section class="aside-card"><div class="aside-title"><Icon name="users" size={18}/> Crea conexiones</div><p class="aside-desc">Comienza respondiendo una duda, recomendando un recurso o compartiendo tu experiencia en una asignatura.</p><a class="btn btn-outline btn-full" href="/foros/nuevo">Compartir publicación <Icon name="arrow" size={16}/></a></section></Fragment>
+
+<AppShell
+  active="comunidad"
+  heading="Comunidad"
+  subheading="Un lugar para encontrarnos, compartir ideas y crecer juntos."
+>
+  <section class="community-feature">
+    <div>
+      <span class="accent-eyebrow">TU COMUNIDAD, TU UNIVERSIDAD</span><h2>
+        Conecta a través del conocimiento.
+      </h2><p>
+        Descubre conversaciones relevantes y encuentra personas que puedan ayudarte a sacar adelante
+        tu próximo reto académico.
+      </p><a href="/foros" class="btn btn-white"
+        >Explorar conversaciones <Icon name="arrow" size={18} /></a>
+    </div><div class="community-deco">✳</div>
+  </section>
+  <div class="section-header">
+    <div><h2>Comunidades para ti</h2><p>Encuentra contenido que te interesa</p></div><span
+      class="small-neutral">Espacios temáticos de foros</span>
+  </div>
+  <div class="community-card-grid">
+    <a class="community-topic" href="/foros?categoria=PREGUNTAS"
+      ><div class="topic-icon topic-red"><Icon name="forum" size={26} /></div><span
+        class="topic-type">COLABORACIÓN</span
+      ><h3>Preguntas y respuestas</h3><p>
+        ¿Te atascaste en un problema? Aquí todos podemos ayudar.
+      </p><span>Ir al foro <Icon name="arrow" size={17} /></span></a
+    ><a class="community-topic" href="/foros?categoria=PROFESORES"
+      ><div class="topic-icon topic-purple"><Icon name="graduation" size={27} /></div><span
+        class="topic-type">EXPERIENCIAS</span
+      ><h3>Profesores y recomendaciones</h3><p>
+        Comparte tu experiencia y conoce nuevas perspectivas académicas.
+      </p><span>Ver recomendaciones <Icon name="arrow" size={17} /></span></a
+    ><a class="community-topic" href="/foros?categoria=CURSOS"
+      ><div class="topic-icon topic-orange"><Icon name="book" size={27} /></div><span
+        class="topic-type">APRENDIZAJE</span
+      ><h3>Cursos y asignaturas</h3><p>
+        Consejos para organizarte mejor en tus asignaturas y proyectos.
+      </p><span>Explorar cursos <Icon name="arrow" size={17} /></span></a>
+  </div>
+  <section class="info-strip">
+    <Icon name="spark" size={21} /><div>
+      <b>Construimos esta comunidad entre todos.</b><p>
+        Los grupos de estudio, recursos y reuniones integradas están contemplados para futuras
+        iteraciones.
+      </p>
+    </div>
+  </section>
+  <Fragment slot="aside"
+    ><section class="aside-card">
+      <div class="aside-title"><Icon name="users" size={18} /> Crea conexiones</div><p
+        class="aside-desc"
+      >
+        Comienza respondiendo una duda, recomendando un recurso o compartiendo tu experiencia en una
+        asignatura.
+      </p><a class="btn btn-outline btn-full" href="/foros/nuevo"
+        >Compartir publicación <Icon name="arrow" size={16} /></a>
+    </section></Fragment
+  >
 </AppShell>

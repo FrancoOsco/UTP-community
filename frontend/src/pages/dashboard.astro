@@ -1,17 +1,106 @@
 ---
-import AppShell from '../components/AppShell.astro';import Icon from '../components/Icon.astro';
+import AppShell from '../components/AppShell.astro';
+import Icon from '../components/Icon.astro';
 ---
-<AppShell active="inicio" heading="Tu comunidad empieza aquí" subheading="Inspírate, conecta y crece con quienes comparten tus metas.">
-<section class="welcome-banner"><div class="welcome-banner-content"><div class="banner-chip"><span class="live-ping"></span> BIENVENIDO A UTP COMMUNITY</div><h2>¡Hola, <span id="saludo-nombre">estudiante</span>! <span class="wave-emoji">✦</span></h2><p>Detrás de cada pregunta hay una oportunidad para aprender algo nuevo. ¿Qué descubriremos hoy?</p><a class="btn btn-white" href="/foros/nuevo">Compartir una idea <Icon name="arrow" size={17}/></a></div><div class="banner-art"><div class="banner-ring ring-one"></div><div class="banner-ring ring-two"></div><span class="banner-bubble bubble-one">?</span><span class="banner-bubble bubble-two">✦</span><span class="banner-bubble bubble-three">♥</span></div></section>
-<div class="section-header"><div><h2>Explora tu comunidad</h2><p>Elige un lugar por donde empezar</p></div></div>
-<div class="shortcut-grid"><a href="/foros?categoria=PREGUNTAS" class="shortcut-card"><span class="shortcut-icon s-red"><Icon name="forum" size={23}/></span><b>Preguntas y respuestas</b><p>Encuentra ayuda y comparte lo que sabes.</p><span class="shortcut-action">Explorar <Icon name="arrow" size={15}/></span></a><a href="/foros?categoria=PROFESORES" class="shortcut-card"><span class="shortcut-icon s-purple"><Icon name="graduation" size={25}/></span><b>Recomienda profesores</b><p>Opiniones académicas de otros estudiantes.</p><span class="shortcut-action">Explorar <Icon name="arrow" size={15}/></span></a><a href="/foros?categoria=CURSOS" class="shortcut-card"><span class="shortcut-icon s-yellow"><Icon name="book" size={24}/></span><b>Descubre cursos</b><p>Consejos prácticos para tus próximas clases.</p><span class="shortcut-action">Explorar <Icon name="arrow" size={15}/></span></a></div>
-<div class="section-header" style="margin-top:34px"><div><h2>Conversaciones recientes</h2><p>Lo último que está pasando en nuestros foros</p></div><a href="/foros" class="text-action">Ver todos <Icon name="arrow" size={17}/></a></div>
-<div id="dashboard-posts" class="post-list"><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
-<Fragment slot="aside"><section class="aside-card"><div class="aside-title"><Icon name="calendar" size={18}/> Tu espacio, a tu ritmo</div><div class="daily-card"><div class="daily-day">UTP</div><div><b>Una comunidad que crece contigo</b><p>Comparte una duda o una experiencia que pueda ayudar.</p></div></div><a href="/foros" class="subtle-link">Ir a los foros <Icon name="arrow" size={15}/></a></section><section class="aside-card"><div class="aside-title"><Icon name="shield" size={18}/> Identidad verificada</div><p class="aside-desc">En este espacio solo pueden participar cuentas con correo institucional UTP confirmado.</p><div class="secure-tag"><span class="online-dot"></span> @utp.edu.pe</div></section></Fragment>
+
+<AppShell
+  active="inicio"
+  heading="Tu comunidad empieza aquí"
+  subheading="Inspírate, conecta y crece con quienes comparten tus metas."
+>
+  <section class="welcome-banner">
+    <div class="welcome-banner-content">
+      <div class="banner-chip"><span class="live-ping"></span> BIENVENIDO A UTP COMMUNITY</div><h2>
+        ¡Hola, <span id="saludo-nombre">estudiante</span>! <span class="wave-emoji">✦</span>
+      </h2><p>
+        Detrás de cada pregunta hay una oportunidad para aprender algo nuevo. ¿Qué descubriremos
+        hoy?
+      </p><a class="btn btn-white" href="/foros/nuevo"
+        >Compartir una idea <Icon name="arrow" size={17} /></a>
+    </div><div class="banner-art">
+      <div class="banner-ring ring-one"></div><div class="banner-ring ring-two"></div><span
+        class="banner-bubble bubble-one">?</span
+      ><span class="banner-bubble bubble-two">✦</span><span class="banner-bubble bubble-three"
+        >♥</span>
+    </div>
+  </section>
+  <div class="section-header">
+    <div><h2>Explora tu comunidad</h2><p>Elige un lugar por donde empezar</p></div>
+  </div>
+  <div class="shortcut-grid">
+    <a href="/foros?categoria=PREGUNTAS" class="shortcut-card"
+      ><span class="shortcut-icon s-red"><Icon name="forum" size={23} /></span><b
+        >Preguntas y respuestas</b
+      ><p>Encuentra ayuda y comparte lo que sabes.</p><span class="shortcut-action"
+        >Explorar <Icon name="arrow" size={15} /></span
+      ></a
+    ><a href="/foros?categoria=PROFESORES" class="shortcut-card"
+      ><span class="shortcut-icon s-purple"><Icon name="graduation" size={25} /></span><b
+        >Recomienda profesores</b
+      ><p>Opiniones académicas de otros estudiantes.</p><span class="shortcut-action"
+        >Explorar <Icon name="arrow" size={15} /></span
+      ></a
+    ><a href="/foros?categoria=CURSOS" class="shortcut-card"
+      ><span class="shortcut-icon s-yellow"><Icon name="book" size={24} /></span><b
+        >Descubre cursos</b
+      ><p>Consejos prácticos para tus próximas clases.</p><span class="shortcut-action"
+        >Explorar <Icon name="arrow" size={15} /></span
+      ></a>
+  </div>
+  <div class="section-header" style="margin-top:34px">
+    <div>
+      <h2>Conversaciones recientes</h2><p>Lo último que está pasando en nuestros foros</p>
+    </div><a href="/foros" class="text-action">Ver todos <Icon name="arrow" size={17} /></a>
+  </div>
+  <div id="dashboard-posts" class="post-list">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+  </div>
+  <Fragment slot="aside"
+    ><section class="aside-card">
+      <div class="aside-title"><Icon name="calendar" size={18} /> Tu espacio, a tu ritmo</div><div
+        class="daily-card"
+      >
+        <div class="daily-day">UTP</div><div>
+          <b>Una comunidad que crece contigo</b><p>
+            Comparte una duda o una experiencia que pueda ayudar.
+          </p>
+        </div>
+      </div><a href="/foros" class="subtle-link">Ir a los foros <Icon name="arrow" size={15} /></a>
+    </section><section class="aside-card">
+      <div class="aside-title"><Icon name="shield" size={18} /> Identidad verificada</div><p
+        class="aside-desc"
+      >
+        En este espacio solo pueden participar cuentas con correo institucional UTP confirmado.
+      </p><div class="secure-tag"><span class="online-dot"></span> @utp.edu.pe</div>
+    </section></Fragment
+  >
 </AppShell>
 <script>
-import {authFetch} from '../lib/auth';import {escapeHtml as h,fecha,categories} from '../lib/ui';
-document.addEventListener('utp:user',(e:Event)=>{const me=(e as CustomEvent).detail;const el=document.getElementById('saludo-nombre');if(el)el.textContent=me.nombre;});
-async function load(){const list=document.getElementById('dashboard-posts')!;const r=await authFetch('/api/foros');if(!r?.ok){list.innerHTML='<div class="empty-state"><b>No pudimos cargar las conversaciones.</b><p>Comprueba la conexión al backend.</p></div>';return;}const data=await r.json();const posts=(data.content??[]).slice(0,4);list.innerHTML=posts.length?posts.map((p:any)=>`<a href="/foro?id=${p.id}" class="discussion-card"><div class="discussion-top"><span class="small-avatar">${h((p.autor||'U')[0])}</span><div><b>${h(p.autor)}</b><small>${h(fecha(p.creadoEn))} · ${h(categories[p.categoria])}</small></div><span class="category-chip">${h(categories[p.categoria])}</span></div><h3>${h(p.titulo)}</h3><p>${h(p.contenido.slice(0,180))}</p><div class="discussion-foot"><span>♡ ${p.puntos} votos</span><span>◌ ${p.respuestas} respuestas</span><span class="read-more">Ver conversación →</span></div></a>`).join(''):'<div class="empty-state"><div class="empty-graphic">✦</div><h3>¡Aquí empieza la conversación!</h3><p>Aún no hay publicaciones. Sé la primera persona en compartir una pregunta o recomendación.</p><a class="btn btn-primary" href="/foros/nuevo">Crear primera publicación →</a></div>';}
-setTimeout(load,250);
+  import { authFetch } from '../lib/auth';
+  import { escapeHtml as h, fecha, categories } from '../lib/ui';
+  document.addEventListener('utp:user', (e: Event) => {
+    const me = (e as CustomEvent).detail;
+    const el = document.getElementById('saludo-nombre');
+    if (el) el.textContent = me.nombre;
+  });
+  async function load() {
+    const list = document.getElementById('dashboard-posts')!;
+    const r = await authFetch('/api/foros');
+    if (!r?.ok) {
+      list.innerHTML =
+        '<div class="empty-state"><b>No pudimos cargar las conversaciones.</b><p>Comprueba la conexión al backend.</p></div>';
+      return;
+    }
+    const data = await r.json();
+    const posts = (data.content ?? []).slice(0, 4);
+    list.innerHTML = posts.length
+      ? posts
+          .map(
+            (p: any) =>
+              `<a href="/foro?id=${p.id}" class="discussion-card"><div class="discussion-top"><span class="small-avatar">${h((p.autor || 'U')[0])}</span><div><b>${h(p.autor)}</b><small>${h(fecha(p.creadoEn))} · ${h(categories[p.categoria])}</small></div><span class="category-chip">${h(categories[p.categoria])}</span></div><h3>${h(p.titulo)}</h3><p>${h(p.contenido.slice(0, 180))}</p><div class="discussion-foot"><span>♡ ${p.puntos} votos</span><span>◌ ${p.respuestas} respuestas</span><span class="read-more">Ver conversación →</span></div></a>`,
+          )
+          .join('')
+      : '<div class="empty-state"><div class="empty-graphic">✦</div><h3>¡Aquí empieza la conversación!</h3><p>Aún no hay publicaciones. Sé la primera persona en compartir una pregunta o recomendación.</p><a class="btn btn-primary" href="/foros/nuevo">Crear primera publicación →</a></div>';
+  }
+  setTimeout(load, 250);
 </script>
