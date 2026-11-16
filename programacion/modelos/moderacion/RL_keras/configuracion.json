@@ -1,0 +1,11 @@
+{
+    "nombre": "Modelo de moderacion UTP Community",
+    "version": "1.0",
+    "umbral": 0.40,
+    "vectorizador": "TF-IDF",
+    "clasificador": "Regresion Logistica con Keras",
+    "etiquetas": {
+        "0": "permitido",
+        "1": "requiere_intervencion"
+    }
+}

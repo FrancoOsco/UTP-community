@@ -22,3 +22,6 @@ database/pgadmin/
 
 # Logs
 *.log
+
+# entorno virtual de py
+programacion/venv/
