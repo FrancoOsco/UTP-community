@@ -1,0 +1,501 @@
+﻿titulo;descripcion;etiqueta
+Consulta sobre programación;Estoy empezando a aprender Python. ¿Alguien podría recomendarme ejercicios para practicar funciones y estructuras de datos?;0
+Crítica a la metodología;Considero que la metodología del curso no está funcionando. Hay demasiada teoría y pocos ejercicios prácticos para reforzar lo aprendido.;0
+Compartir apuntes;Tengo mis apuntes de la última clase organizados por temas. ¿A alguien le serviría que los comparta para estudiar?;0
+Consulta sobre referencias;¿Qué formato debemos utilizar para citar artículos científicos en el trabajo de investigación?;0
+Denuncia de posible plagio;He encontrado partes de un trabajo que parecen coincidir con una publicación anterior. ¿Cuál es el canal adecuado para comunicar esta situación?;0
+Advertencia sobre cuentas;Recuerden activar las medidas de seguridad de sus cuentas institucionales y no compartir códigos de acceso.;0
+Venta de material propio;Estoy ofreciendo una guía de ejercicios que elaboré por mi cuenta para el curso de matemática. Incluye explicaciones y problemas resueltos.;0
+Consulta sobre evaluación;¿El docente puede publicar una rúbrica para conocer los criterios con los que calificará el proyecto final?;0
+Crítica a la organización;Me parece que la universidad debería mejorar la comunicación sobre los cambios de horario. En varias ocasiones nos hemos enterado demasiado tarde.;0
+Prevención de fraude académico;No utilicen trabajos completos de otros estudiantes como si fueran propios. Es mejor consultar las fuentes y elaborar una investigación original.;0
+Material de ciclos anteriores;¿Alguien conserva las diapositivas y ejercicios de ciclos anteriores? Me gustaría utilizarlos como material complementario de estudio.;0
+Consulta sobre certificados;¿Existe algún procedimiento oficial para solicitar una constancia de matrícula desde la plataforma institucional?;0
+Advertencia sobre ofertas sospechosas;He visto publicaciones que ofrecen trámites universitarios a cambio de dinero. Verifiquen siempre la información con los canales oficiales antes de realizar pagos.;0
+Reporte de comportamiento intimidatorio;Un compañero está recibiendo mensajes intimidatorios en un grupo académico. ¿Cómo podemos ayudarlo a reportar lo sucedido?;0
+Debate sobre calificaciones;No estoy de acuerdo con la nota que recibí en el último trabajo. Considero que algunos criterios de evaluación no fueron aplicados de manera uniforme.;0
+Asesoría de investigación;Puedo orientar a quienes tengan dificultades para organizar sus objetivos de investigación. Cada integrante debe desarrollar y redactar su propio trabajo.;0
+Verificación de comunicado;Está circulando una publicación sobre un supuesto cambio en las fechas de matrícula. ¿Alguien puede confirmar si existe un comunicado oficial?;0
+Consulta sobre seguridad digital;¿Qué debo hacer si recibo un correo que solicita mi contraseña institucional y afirma que mi cuenta será bloqueada?;0
+Crítica a un compañero de equipo;La distribución de tareas en nuestro grupo ha sido poco equitativa. Creo que deberíamos reorganizar las responsabilidades para el siguiente avance.;0
+Denuncia de mensajes no deseados;Quiero informar que una persona continúa enviándome mensajes personales después de que le pedí que dejara de hacerlo. ¿Dónde puedo solicitar orientación?;0
+Intercambio de ejercicios;¿Podemos crear un grupo para resolver ejercicios de estadística y comparar nuestros procedimientos antes del examen?;0
+Consulta sobre autoría;Si varios estudiantes colaboramos en una investigación, ¿cómo debemos reconocer correctamente la contribución de cada integrante?;0
+Advertencia sobre documentos;No confíen en publicaciones que prometen certificados académicos sin realizar los procedimientos correspondientes. Consulten directamente con la universidad.;0
+Queja sobre un servicio;El sistema de matrícula presentó errores durante la mañana y no pude completar el procedimiento. Espero que se solucione pronto.;0
+Reporte de amenaza;Escuché que un estudiante amenazó con agredir a otro. Considero importante informar a las autoridades universitarias para prevenir cualquier incidente.;0
+Insulto a un integrante;No sirves para este proyecto. Eres demasiado incompetente para entender algo tan sencillo.;1
+Humillación por rendimiento;Deberían sacar a ese estudiante del grupo. Es un inútil y solo está aquí para perjudicarnos.;1
+Ataque personal en el foro;Antes de opinar sobre programación, aprende algo. Tus comentarios demuestran que no tienes capacidad para este curso.;1
+Descalificación de compañeros;Nadie debería trabajar con esas personas. Son unos mediocres que no aportan absolutamente nada.;1
+Menosprecio por desempeño;Si no puedes resolver un ejercicio básico, no deberías estar estudiando esta carrera.;1
+Ataque contra un estudiante;Ese compañero es un desastre. Siempre arruina los trabajos y no merece estar en nuestro equipo.;1
+Oferta de desarrollo de trabajos;Realizo informes completos para que puedan entregarlos con su nombre y obtener la calificación sin hacer el trabajo.;1
+Intercambio de respuestas de examen;Tengo las respuestas de la evaluación de mañana. Se las puedo pasar para que todos las utilicen durante el examen.;1
+Solicitud de copia de investigación;Necesito que alguien me comparta su tesis completa. Solo cambiaré el nombre y algunos datos para presentarla como mía.;1
+Suplantación en actividad evaluada;Busco a alguien que pueda conectarse a mi evaluación virtual y responder las preguntas por mí.;1
+Comercialización de respuestas;Vendo un paquete con las soluciones de las prácticas calificadas para que puedan copiarlas y entregarlas como trabajo propio.;1
+Promoción de copia grupal;Para ahorrar tiempo, podemos entregar todos el mismo informe y poner nombres diferentes. El docente no se dará cuenta.;1
+Oferta de acceso institucional;Tengo varias cuentas institucionales disponibles para vender. Con ellas podrán ingresar a los servicios de la universidad.;1
+Solicitud de credenciales;Envíenme por mensaje privado sus usuarios y contraseñas institucionales. Necesito acceder a sus cuentas para realizar unos trámites.;1
+Oferta de certificados irregulares;Puedo conseguir constancias de cursos aprobados aunque no hayan cumplido con los requisitos académicos.;1
+Promoción de trámite fraudulento;Si necesitan acreditar un curso que no llevaron, puedo conseguirles un documento que indique que sí lo aprobaron.;1
+Venta de accesos de terceros;Estoy ofreciendo accesos a plataformas educativas utilizando cuentas de otros estudiantes. Escríbanme para conocer los precios.;1
+Oferta de alteración documental;Puedo modificar documentos académicos para que parezca que cumplen con los requisitos de una solicitud.;1
+Difusión de información institucional falsa;Publico este supuesto comunicado como si fuera oficial: la universidad ha aprobado automáticamente a todos los estudiantes que desaprobaron el curso.;1
+Amenaza a un compañero;Si vuelves a hablar de mí en el foro, te voy a esperar a la salida y te voy a golpear.;1
+Intimidación directa;Ya sé en qué horario sales de clases. Si sigues molestándome, vas a tener problemas cuando te encuentre.;1
+Incitación a una agresión;Todos deberíamos ir a buscar a ese estudiante después de clases y darle una lección para que aprenda a respetarnos.;1
+Hostigamiento sexual reiterado;Aunque ya me rechazaste, voy a seguir enviándote mensajes con insinuaciones sexuales hasta que aceptes salir conmigo.;1
+Amenaza contra un grupo;Los integrantes de ese equipo se van a arrepentir de haberme excluido. Pienso hacerles daño cuando los encuentre.;1
+Acoso por mensajes personales;Sé que me pediste que no te contacte, pero voy a seguir buscándote y escribiéndote desde otras cuentas hasta que me respondas.;1
+Consulta sobre bases de datos;Estoy desarrollando un proyecto con PostgreSQL. ¿Qué recursos recomiendan para aprender a diseñar correctamente las relaciones entre tablas?;0
+Opinión sobre el trabajo grupal;Considero que los proyectos grupales deberían tener una evaluación individual adicional, porque no todos los integrantes participan de la misma manera.;0
+Intercambio de resúmenes;Tengo resúmenes de los capítulos del curso de redes. ¿Alguien desea intercambiar material de estudio de otras asignaturas?;0
+Consulta sobre uso de inteligencia artificial;¿Está permitido utilizar herramientas de inteligencia artificial para corregir la ortografía de nuestros informes si nosotros desarrollamos el contenido?;0
+Reporte de posible suplantación;He observado que una persona podría estar utilizando la cuenta de otro estudiante. ¿A qué área debemos comunicar esta situación para que sea revisada?;0
+Advertencia sobre enlaces sospechosos;Si reciben enlaces que solicitan iniciar sesión con su cuenta institucional, comprueben primero que pertenezcan a un sitio oficial.;0
+Crítica al contenido del curso;Pienso que algunos temas del sílabo están desactualizados y deberían incluir tecnologías que actualmente se utilizan en las empresas.;0
+Preparación para una evaluación;¿Podemos organizar una sesión de repaso para resolver ejercicios similares a los desarrollados en clase antes del examen?;0
+Consulta sobre derechos de autor;Si utilizo una imagen encontrada en internet para mi presentación académica, ¿cómo debo reconocer correctamente a su autor?;0
+Denuncia de discriminación;Quisiera informar sobre comentarios discriminatorios que se realizaron durante una actividad universitaria. ¿Existe un canal institucional para presentar una denuncia?;0
+Venta de apuntes personales;Estoy vendiendo mis apuntes digitales de arquitectura de software. Los elaboré durante el ciclo y contienen esquemas y explicaciones propias.;0
+Consulta sobre notas;Mi calificación no coincide con los puntos que aparecen en la rúbrica. ¿Cómo puedo solicitar una revisión formal de la evaluación?;0
+Prevención de suplantación;No permitan que otras personas realicen evaluaciones utilizando sus cuentas. Además de comprometer su seguridad, puede generar problemas académicos.;0
+Consulta sobre investigación;¿Alguien podría explicarme la diferencia entre una hipótesis de investigación y una pregunta de investigación?;0
+Crítica a la plataforma;La plataforma virtual debería mejorar su estabilidad. Durante las clases de esta semana se desconectó varias veces y dificultó el seguimiento de las sesiones.;0
+Reporte de posible acoso;Una compañera me comentó que recibe mensajes insistentes de otro estudiante. Quisiera saber cómo orientarla para que pueda reportarlo de manera segura.;0
+Consulta sobre trabajos colaborativos;¿Podemos utilizar un repositorio compartido para desarrollar el código de nuestro proyecto, siempre que cada integrante registre sus contribuciones?;0
+Advertencia sobre documentos falsos;Tengan cuidado con quienes ofrecen documentos académicos por redes sociales. Verifiquen cualquier trámite mediante los canales oficiales.;0
+Debate sobre inteligencia artificial;Creo que la universidad debería establecer reglas claras sobre el uso de IA en las tareas, en lugar de prohibir todas estas herramientas.;0
+Consulta sobre asesoría académica;¿Dónde puedo encontrar información sobre las asesorías gratuitas disponibles para estudiantes que necesitan reforzar matemática?;0
+Reporte de mensajes ofensivos;En un foro se han publicado comentarios dirigidos a ridiculizar a un estudiante. Considero que los moderadores deberían revisar esas publicaciones.;0
+Consulta sobre certificados oficiales;¿Los certificados de participación en actividades universitarias se solicitan directamente a la facultad o existe una plataforma para descargarlos?;0
+Compartir experiencia académica;El semestre pasado desaprobé programación, pero logré mejorar practicando todos los días. Si alguien está pasando por lo mismo, puedo compartir algunos consejos.;0
+Consulta sobre material de evaluación;¿Es válido estudiar con exámenes publicados por los docentes en ciclos anteriores, aunque las preguntas puedan cambiar?;0
+Denuncia de intimidación;Un estudiante está recibiendo amenazas relacionadas con un desacuerdo dentro de su grupo de trabajo. Creo que la situación debe comunicarse a las autoridades correspondientes.;0
+Descalificación por falta de conocimientos;Deja de participar si no sabes de lo que hablas. Tus respuestas son absurdas y demuestran que no entiendes absolutamente nada.;1
+Humillación en el foro;Qué vergüenza tener compañeros tan incapaces. Ni siquiera pueden resolver un ejercicio que cualquier estudiante debería entender.;1
+Insulto por una calificación;Eres un completo ignorante. No tienes la capacidad necesaria para aprobar esta asignatura.;1
+Ataque a un integrante del equipo;No queremos trabajar contigo porque eres un inútil. Siempre necesitas que los demás hagan todo por ti.;1
+Menosprecio a otros estudiantes;Algunos estudiantes no deberían estar en la universidad. Son demasiado torpes para seguir una carrera profesional.;1
+Oferta de tesis por encargo;Elaboro tesis completas para estudiantes que necesitan graduarse. Solo tienen que enviarme el tema y después podrán presentarlas como propias.;1
+Intercambio de evaluaciones resueltas;Tengo acceso a las respuestas de una práctica calificada que todavía no se ha realizado. Puedo compartirlas para que las entreguen durante la evaluación.;1
+Solicitud de suplantación académica;Necesito que alguien asista a una exposición virtual en mi lugar y responda las preguntas del docente como si fuera yo.;1
+Venta de proyectos completos;Vendo proyectos finales terminados para que los estudiantes los presenten con sus propios nombres y eviten desarrollarlos.;1
+Promoción de plagio;Si encuentran un informe parecido al tema de su investigación, pueden copiarlo y cambiar los nombres para que parezca un trabajo diferente.;1
+Elaboración de tareas ajenas;Puedo resolver las actividades calificadas de otros estudiantes y prepararlas para que las envíen directamente como si las hubieran realizado ellos.;1
+Compartir examen filtrado;Tengo el archivo de la evaluación que se tomará esta semana. Se los puedo enviar para que memoricen las respuestas antes del examen.;1
+Venta de certificados de aprobación;Puedo conseguir certificados que acrediten que aprobaron asignaturas, aunque nunca hayan llevado esos cursos.;1
+Solicitud de acceso a cuentas ajenas;Necesito que me proporcionen sus credenciales institucionales para ingresar a sus perfiles y gestionar algunos beneficios académicos.;1
+Oferta de modificación de notas;Conozco a alguien que puede alterar los registros de calificaciones. Si necesitan mejorar sus notas, pueden contactarme.;1
+Comercialización de cuentas universitarias;Estoy vendiendo cuentas de acceso a los servicios digitales de la universidad que pertenecen a otros estudiantes.;1
+Oferta de constancias irregulares;Si necesitan una constancia de matrícula para un trámite, puedo conseguirla sin que tengan que estar matriculados en el ciclo actual.;1
+Publicación de comunicado inventado;La universidad acaba de anunciar que todos los cursos desaprobados serán eliminados del historial académico. Compartan esta información como si fuera oficial.;1
+Comercialización de documentos alterados;Puedo preparar documentos académicos modificados para que cumplan con los requisitos de las convocatorias universitarias.;1
+Amenaza por desacuerdo académico;Si vuelves a contradecirme durante las clases, voy a golpearte cuando salgas de la universidad.;1
+Hostigamiento sexual en el foro;Voy a seguir publicando comentarios sobre tu cuerpo y enviándote insinuaciones sexuales, aunque hayas dicho que te incomodan.;1
+Incitación a intimidar a un estudiante;Organicémonos para perseguir a ese compañero por el campus y hacer que tenga miedo de volver a participar en el grupo.;1
+Amenaza por conflicto grupal;Sé dónde vives y dónde estudias. Si vuelves a perjudicarme en un trabajo, voy a buscarte para arreglarlo por la fuerza.;1
+Acoso reiterado a una estudiante;Aunque me bloquees, voy a continuar buscándote en la universidad y enviándote mensajes hasta que aceptes hablar conmigo.;1
+Incitación a represalias violentas;Ese estudiante merece que alguien le dé una golpiza. Deberíamos hacerlo entre varios para que no vuelva a molestarnos.;1
+Consulta sobre estructuras de datos;Estoy teniendo dificultades para comprender cómo funcionan los árboles AVL. ¿Alguien podría recomendarme ejercicios para practicar sus operaciones de rotación?;0
+Opinión sobre las exposiciones;Considero que las exposiciones grupales deberían tener un tiempo de preguntas más amplio para que todos podamos demostrar nuestros conocimientos.;0
+Compartir recursos de programación;Encontré una página con ejercicios gratuitos de Java y Python. ¿Puedo compartir el enlace para que otros estudiantes practiquen?;0
+Consulta sobre colaboración en proyectos;¿Podemos utilizar código de bibliotecas de código abierto en nuestro proyecto si reconocemos correctamente sus licencias y autores?;0
+Denuncia de discriminación en clase;Durante una actividad, un estudiante realizó comentarios discriminatorios hacia otro compañero. Quisiera conocer el procedimiento para informar lo sucedido.;0
+Advertencia sobre privacidad;Eviten publicar capturas de sus aulas virtuales si contienen nombres completos, códigos universitarios u otros datos personales de sus compañeros.;0
+Crítica al proceso de matrícula;El proceso de matrícula debería ofrecer información más clara sobre los cursos disponibles y sus horarios antes de confirmar la inscripción.;0
+Consulta sobre referencias bibliográficas;¿Es obligatorio incluir el DOI de un artículo científico en las referencias cuando se encuentra disponible?;0
+Denuncia de posible uso indebido de información;Encontré una publicación que muestra datos personales de varios estudiantes sin su autorización. ¿Dónde puedo solicitar que se revise y retire ese contenido?;0
+Material de preparación profesional;Estoy compartiendo una recopilación de preguntas generales para practicar entrevistas laborales de ingeniería de software. El material es de elaboración propia.;0
+Consulta sobre accesibilidad;¿La universidad cuenta con algún procedimiento para solicitar adaptaciones académicas cuando un estudiante necesita condiciones especiales para desarrollar una evaluación?;0
+Crítica a la atención administrativa;He esperado varios días por una respuesta sobre un trámite académico. Creo que deberían mejorar los tiempos de atención a los estudiantes.;0
+Prevención de suplantación de identidad;Si reciben solicitudes de amistad de perfiles que se hacen pasar por docentes, comprueben su identidad antes de compartir información académica o personal.;0
+Consulta sobre evaluación entre compañeros;¿Es recomendable que los integrantes de un equipo evalúen individualmente la participación de sus compañeros al finalizar un proyecto?;0
+Denuncia de hostigamiento en actividades;Durante una actividad universitaria, una estudiante recibió comentarios insistentes sobre su apariencia. Quisiera saber cómo puede comunicarlo formalmente.;0
+Consulta sobre herramientas de investigación;¿Qué programas gratuitos recomiendan para organizar referencias bibliográficas y administrar las fuentes de un proyecto de investigación?;0
+Opinión sobre las clases virtuales;Considero que las clases virtuales deberían incluir más actividades participativas. Escuchar exposiciones durante varias horas resulta poco dinámico.;0
+Advertencia sobre privacidad de documentos;Antes de compartir documentos académicos, revisen que no contengan firmas, datos personales o información privada de otras personas.;0
+Consulta sobre trabajos de investigación;¿Podemos utilizar resultados de investigaciones publicadas como antecedentes de nuestro proyecto si citamos correctamente las fuentes originales?;0
+Reporte de conducta intimidatoria;He observado que algunos estudiantes realizan comentarios para hacer que un compañero tenga miedo de participar en las actividades. Considero que debería revisarse esta situación.;0
+Debate sobre normas académicas;Pienso que las normas sobre el uso de inteligencia artificial deberían diferenciar entre generar un trabajo completo y utilizar herramientas de apoyo para aprender.;0
+Consulta sobre recuperación de cuenta;Perdí el acceso a mi correo institucional. ¿Cuál es el procedimiento oficial para recuperar mi cuenta sin recurrir a terceros?;0
+Compartir una experiencia de estudio;Para preparar mi examen de física, elaboré tarjetas de memoria con fórmulas y conceptos. Si alguien desea utilizarlas como material de repaso, puedo compartirlas.;0
+Crítica a la distribución de horarios;Los horarios de algunos cursos tienen espacios demasiado largos entre sesiones. Sería conveniente que se considerara la disponibilidad de los estudiantes.;0
+Consulta sobre denuncia formal;Si un estudiante presencia una situación de violencia dentro de la universidad, ¿puede comunicarla aunque no sea la persona directamente afectada?;0
+Desprecio hacia un compañero;Tu opinión no vale nada. Siempre haces comentarios estúpidos y solo consigues demostrar lo poco que sabes.;1
+Ridiculización por dificultades académicas;Es increíble que alguien tan lento como tú siga sin entender el tema después de tantas explicaciones.;1
+Descalificación de una estudiante;Nadie debería tomar en serio lo que dice esa estudiante. Sus aportes son una pérdida de tiempo para todos.;1
+Ataque personal en una discusión;No tienes cerebro para comprender una explicación tan sencilla. Mejor quédate callado en lugar de seguir haciendo el ridículo.;1
+Menosprecio a un integrante;Eres una vergüenza para el equipo. Tu falta de capacidad hace que los demás tengamos que resolver todos tus problemas.;1
+Manipulación de resultados de investigación;Si los resultados de nuestro experimento no coinciden con la hipótesis, podemos inventar algunos valores para que el informe parezca correcto.;1
+Oferta de participación fraudulenta;Puedo desarrollar la programación completa de sus proyectos individuales y ustedes solo tendrán que presentarlos durante la sustentación.;1
+Falsificación de participación grupal;Agreguemos el nombre de un estudiante que no participó en el proyecto. Así podrá obtener la misma calificación que nosotros.;1
+Venta de informes de laboratorio;Tengo informes de laboratorio terminados de varios ciclos. Pueden comprarlos y entregarlos como si hubieran realizado los experimentos.;1
+Uso de material ajeno sin atribución;Encontré una investigación publicada que responde exactamente a nuestro tema. Copiemos sus conclusiones sin mencionar la fuente para que parezcan nuestras.;1
+Oferta de asistencia durante examen;Durante la evaluación puedo resolver las preguntas de otros estudiantes y enviarles las respuestas para que las coloquen en sus propios exámenes.;1
+Manipulación de evidencias académicas;Podemos presentar capturas de pantalla de actividades que nunca realizamos para demostrar que completamos los requisitos del curso.;1
+Venta de beneficios institucionales;Estoy ofreciendo beneficios universitarios que requieren una condición académica específica. Puedo conseguirlos para estudiantes que no cumplen con ella a cambio de dinero.;1
+Solicitud de códigos de verificación;Envíenme los códigos que reciben en sus celulares. Necesito validarlos para habilitar algunos servicios de sus cuentas universitarias.;1
+Oferta de identidad académica falsa;Puedo crear perfiles que aparenten pertenecer a estudiantes matriculados para acceder a beneficios exclusivos de la universidad.;1
+Comercialización de trámites no autorizados;Cobro por gestionar solicitudes académicas utilizando contactos internos, incluso cuando el estudiante no cumple las condiciones establecidas.;1
+Difusión de información engañosa sobre becas;La universidad ha eliminado todos los requisitos para obtener becas. No necesitan presentar documentos ni demostrar su rendimiento académico.;1
+Oferta de alteración de constancias;Puedo modificar constancias de participación para que incluyan actividades universitarias en las que nunca estuvieron presentes.;1
+Venta de información privada;Tengo una lista con datos personales y académicos de estudiantes. Puedo venderla a quienes necesiten contactar con ellos.;1
+Amenaza por una disputa personal;Si vuelves a mencionar mi nombre en tus publicaciones, voy a esperarte después de clases y te haré pagar por ello.;1
+Hostigamiento sexual mediante publicaciones;Voy a continuar publicando comentarios sexuales sobre ti en este foro. No me importa que hayas solicitado que deje de hacerlo.;1
+Incitación a atacar a otro estudiante;Deberíamos reunirnos varios compañeros para golpear a quien denunció nuestro grupo. Así aprenderá a no meterse con nosotros.;1
+Persecución e intimidación;He estado siguiendo tus horarios y sé en qué lugares de la universidad sueles estar. No podrás evitar que te encuentre.;1
+Amenaza de violencia contra una compañera;Si vuelves a rechazarme delante de los demás, voy a hacer que te arrepientas. No sabes de lo que soy capaz.;1
+Acoso por contacto persistente;Aunque me hayas bloqueado en todas las redes, voy a utilizar otros medios para contactarte y aparecer en tus actividades hasta que aceptes verme.;1
+Consulta sobre desarrollo móvil;Estoy desarrollando una aplicación con React Native. ¿Qué recomendaciones tienen para organizar los componentes y mantener un código fácil de modificar?;0
+Debate sobre participación en clase;Considero que las clases deberían incluir actividades donde todos los estudiantes puedan expresar sus opiniones sin que se valore únicamente la participación oral.;0
+Compartir plantilla de planificación;Elaboré una plantilla para organizar las actividades y fechas de entrega de los proyectos universitarios. ¿A alguien le gustaría utilizarla?;0
+Consulta sobre prácticas profesionales;¿Qué documentos suelen solicitar las empresas para iniciar un proceso de prácticas preprofesionales?;0
+Advertencia sobre protección de datos;Antes de publicar fotografías de actividades universitarias, asegúrense de contar con la autorización de las personas que aparecen en ellas.;0
+Crítica a los recursos digitales;Algunos materiales de los cursos contienen enlaces que ya no funcionan. Sería conveniente que los docentes revisaran periódicamente los recursos publicados.;0
+Consulta sobre proyectos de investigación;¿Es posible desarrollar una investigación universitaria utilizando exclusivamente fuentes documentales, sin realizar encuestas o entrevistas?;0
+Reporte de posible discriminación;Durante una discusión académica, varios estudiantes realizaron comentarios despectivos relacionados con la procedencia de un compañero. ¿Cómo se puede reportar este comportamiento?;0
+Intercambio de conocimientos;Estoy buscando compañeros interesados en estudiar fundamentos de ciberseguridad y compartir recursos educativos gratuitos.;0
+Consulta sobre recuperación académica;¿Qué alternativas existen para los estudiantes que necesitan reforzar los conocimientos de un curso antes de volver a matricularse?;0
+Crítica a la distribución de tareas;En algunos proyectos grupales, la distribución de responsabilidades no es equilibrada. Deberíamos establecer acuerdos desde el inicio para evitar estos problemas.;0
+Advertencia sobre archivos compartidos;No descarguen archivos de procedencia desconocida publicados en grupos universitarios. Es importante verificar su seguridad antes de abrirlos.;0
+Consulta sobre herramientas de diagramación;¿Qué herramientas gratuitas recomiendan para elaborar diagramas UML y documentar los componentes de un sistema?;0
+Denuncia de posible hostigamiento;Una estudiante ha comentado que recibe burlas constantes sobre su apariencia física en actividades académicas. Quisiera saber cómo puede solicitar apoyo.;0
+Opinión sobre los criterios de evaluación;Considero que las rúbricas deberían publicarse antes de iniciar los proyectos para que todos conozcamos los criterios de calificación.;0
+Consulta sobre uso de fuentes;Si una investigación utiliza información de varias páginas institucionales, ¿es necesario citar cada una de ellas individualmente?;0
+Compartir recursos de accesibilidad;Encontré herramientas gratuitas que convierten documentos a formatos más accesibles. Puedo compartirlas con quienes tengan dificultades para leer determinados materiales.;0
+Reporte de publicación inapropiada;En un espacio académico se compartió una fotografía de una estudiante sin su consentimiento. Considero que los moderadores deberían evaluar si corresponde retirarla.;0
+Consulta sobre asistencia académica;¿Dónde puedo encontrar información sobre los programas de tutoría que ofrece la universidad para estudiantes de primeros ciclos?;0
+Debate sobre libertad de expresión;Los estudiantes deberían poder expresar desacuerdos con las decisiones universitarias siempre que mantengan un trato respetuoso hacia los demás.;0
+Advertencia sobre mensajes fraudulentos;Si reciben mensajes que prometen premios o beneficios universitarios a cambio de información personal, verifiquen su autenticidad antes de responder.;0
+Consulta sobre proyectos colaborativos;¿Qué buenas prácticas recomiendan para documentar los cambios que realiza cada integrante en un proyecto de software?;0
+Crítica a la atención docente;Algunos docentes tardan demasiado en responder las consultas sobre las actividades. Considero que debería existir un plazo de atención más claro.;0
+Orientación ante una amenaza;Si una persona recibe amenazas dentro de un grupo de estudio, ¿puede solicitar ayuda a la universidad aunque el incidente haya ocurrido en una plataforma externa?;0
+Consulta sobre publicación de investigaciones;¿Qué aspectos debemos revisar antes de enviar un artículo académico a una revista científica?;0
+Burla por falta de experiencia;Es evidente que nunca has trabajado en un proyecto serio. Tus aportes son tan malos que sería mejor que no participaras.;1
+Desprecio hacia una opinión;Qué comentario tan ridículo. Solo alguien que no piensa antes de hablar podría escribir semejante tontería.;1
+Ridiculización pública;Todos deberían leer lo que escribió este compañero para entender lo absurdo que puede llegar a ser alguien.;1
+Menosprecio por desempeño;No tienes ninguna habilidad útil para el equipo. Tu participación solo demuestra que no estás preparado para estudiar esta carrera.;1
+Ataque personal por desacuerdo;No voy a discutir contigo porque eres demasiado limitado para comprender argumentos básicos.;1
+Manipulación de asistencia;Podemos registrar como asistentes a compañeros que nunca participaron en la sesión para que todos cumplan con el requisito de asistencia.;1
+Oferta de desarrollo de evaluaciones;Me pueden enviar sus evaluaciones individuales y yo las resolveré por ustedes para que las entreguen como trabajos propios.;1
+Falsificación de resultados experimentales;Si no conseguimos los resultados esperados en el laboratorio, podemos reemplazarlos por valores inventados y presentarlos como mediciones reales.;1
+Suplantación en defensa de proyecto;Busco a una persona que pueda presentar y defender mi proyecto final ante el docente utilizando mi identidad.;1
+Comercialización de investigaciones ajenas;Tengo investigaciones de otros estudiantes que pueden utilizar para sus entregas. Solo deben cambiar algunos datos y presentarlas como propias.;1
+Falsificación de evidencias de prácticas;Puedo preparar registros de actividades prácticas que no realizaron para que puedan demostrar que completaron las horas requeridas.;1
+Copia de evaluaciones individuales;Si el docente solicita respuestas individuales, podemos utilizar exactamente las mismas respuestas entre todos y entregarlas por separado.;1
+Venta de perfiles académicos;Estoy ofreciendo perfiles de estudiantes que pueden utilizarse para acceder a servicios universitarios restringidos a miembros de la institución.;1
+Solicitud de códigos de recuperación;Envíenme los códigos de recuperación de sus cuentas institucionales. Necesito utilizarlos para gestionar el acceso a sus perfiles.;1
+Oferta de modificación de historial;Puedo conseguir que determinados cursos aparezcan como aprobados en los registros académicos, aunque no hayan sido superados.;1
+Comercialización de datos de estudiantes;Tengo información privada de estudiantes, incluyendo sus datos de contacto y situación académica. Puedo proporcionarla a cambio de dinero.;1
+Oferta de identidad institucional falsa;Puedo emitir documentos que aparenten haber sido expedidos por una dependencia universitaria para respaldar trámites que no fueron autorizados.;1
+Engaño sobre beneficios económicos;Estoy ofreciendo una supuesta inscripción oficial a un programa de becas universitarias y cobro por registrar a estudiantes, aunque el programa no existe.;1
+Comercialización de accesos restringidos;Puedo vender accesos a servicios universitarios reservados para personal autorizado, utilizando perfiles que no me pertenecen.;1
+Amenaza durante una discusión;Si vuelves a intervenir en mis asuntos, voy a encontrarte fuera del campus y te voy a hacer daño.;1
+Hostigamiento por orientación personal;Voy a seguir haciendo comentarios sexuales sobre ti y exponiendo situaciones personales para incomodarte, aunque hayas pedido que pare.;1
+Incitación a intimidación colectiva;Organicemos a varios estudiantes para rodear a esa persona y obligarla a retirar la denuncia que presentó contra nosotros.;1
+Amenaza por conflicto sentimental;Si empiezas una relación con otra persona, voy a buscarte y hacer que te arrepientas de haberme rechazado.;1
+Persecución en actividades universitarias;Voy a presentarme en todas las actividades a las que asistas para vigilarte y asegurarme de que no puedas evitarme.;1
+Incitación a represalias físicas;No basta con expulsarlo del grupo. Alguien debería golpearlo para que aprenda a no perjudicar a sus compañeros.;1
+Consulta sobre arquitectura de software;Estoy desarrollando un sistema web para un proyecto universitario. ¿Qué criterios recomiendan para decidir si utilizar una arquitectura monolítica o de microservicios?;0
+Opinión sobre participación en proyectos;Considero que los docentes deberían evaluar también la capacidad de coordinación de los equipos y no solamente el resultado final del proyecto.;0
+Compartir material de matemáticas;Preparé una colección de ejercicios de álgebra lineal con sus respectivos procedimientos. Si alguien necesita practicar, puedo compartir el documento.;0
+Consulta sobre uso de información pública;¿Podemos utilizar estadísticas publicadas por entidades gubernamentales en una investigación universitaria si indicamos la fuente y la fecha de consulta?;0
+Reporte de posible vulneración de privacidad;Encontré un documento compartido en un espacio académico que contiene información personal de estudiantes. ¿Cómo puedo solicitar que se retire sin difundirlo nuevamente?;0
+Crítica a los servicios de biblioteca;El horario de atención de la biblioteca resulta insuficiente para quienes estudian y trabajan. Sería conveniente ampliar la disponibilidad durante los fines de semana.;0
+Consulta sobre desarrollo de tesis;¿Es recomendable definir primero las variables de investigación o comenzar con la formulación del problema antes de establecerlas?;0
+Advertencia sobre perfiles falsos;He visto perfiles que utilizan fotografías de docentes para contactar estudiantes. Comprueben la identidad de las cuentas antes de compartir información personal.;0
+Intercambio de conocimientos de redes;Estoy buscando estudiantes interesados en practicar configuración de redes y resolver ejercicios sobre direccionamiento IP. Podemos organizar sesiones de estudio.;0
+Consulta sobre reclamos académicos;Si considero que una pregunta de un examen contiene un error en su planteamiento, ¿puedo solicitar formalmente que se revise la calificación?;0
+Crítica a la comunicación institucional;Los cambios importantes en los servicios universitarios deberían comunicarse mediante varios canales oficiales para evitar confusiones entre los estudiantes.;0
+Prevención de exposición de datos;Cuando compartan capturas de errores de sus plataformas académicas, oculten los datos de identificación que puedan aparecer en pantalla.;0
+Consulta sobre repositorios académicos;¿Qué repositorios digitales recomiendan para encontrar artículos científicos de acceso abierto relacionados con ingeniería informática?;0
+Denuncia de comentarios discriminatorios;Durante una actividad universitaria se realizaron comentarios ofensivos sobre la condición económica de algunos estudiantes. Considero que esta situación merece atención institucional.;0
+Compartir experiencia sobre trabajo en equipo;En mi último proyecto tuvimos problemas porque no definimos responsabilidades desde el principio. Recomiendo establecer acuerdos y fechas de entrega para evitar conflictos.;0
+Consulta sobre publicación de fotografías;¿Necesitamos autorización de nuestros compañeros para publicar fotografías de una actividad académica en un repositorio compartido?;0
+Advertencia sobre ofertas de empleo falsas;Desconfíen de las ofertas laborales que solicitan pagos anticipados para garantizar una contratación. Verifiquen siempre la información de la empresa.;0
+Opinión sobre evaluaciones prácticas;Creo que las asignaturas de programación deberían incluir más evaluaciones prácticas, porque memorizar conceptos no garantiza que podamos resolver problemas reales.;0
+Consulta sobre asesoramiento psicológico;¿La universidad cuenta con algún servicio de orientación psicológica al que podamos acudir cuando atravesamos situaciones difíciles durante el ciclo académico?;0
+Reporte de posible hostigamiento grupal;En un grupo académico se está excluyendo deliberadamente a un estudiante y se realizan comentarios para que abandone el equipo. ¿Cómo podemos informar esta situación?;0
+Consulta sobre licencias de software;Si utilizamos una herramienta de software libre para un proyecto universitario, ¿debemos mencionar su licencia en la documentación técnica?;0
+Crítica a la infraestructura universitaria;Algunas aulas no cuentan con suficientes equipos para desarrollar las actividades prácticas. La universidad debería revisar la distribución de sus recursos tecnológicos.;0
+Consulta sobre conflictos académicos;¿Qué procedimiento se recomienda cuando dos integrantes de un equipo no están de acuerdo sobre la distribución de responsabilidades de un proyecto?;0
+Advertencia sobre solicitudes de dinero;No realicen transferencias a personas que prometen acelerar trámites universitarios sin presentar información verificable sobre el procedimiento.;0
+Consulta sobre seguridad en laboratorios;¿Qué medidas de seguridad debemos seguir cuando trabajamos con equipos eléctricos durante las prácticas de laboratorio?;0
+Descalificación de una intervención;Cada vez que escribes algo consigues demostrar que no tienes criterio. Tus opiniones no aportan absolutamente nada.;1
+Humillación por falta de conocimientos;Es vergonzoso tener que explicar conceptos tan básicos a alguien que supuestamente está preparado para esta carrera.;1
+Ridiculización de un compañero;Deberían escuchar cómo expone este estudiante. Es incapaz de expresar una sola idea coherente sin hacer el ridículo.;1
+Desprecio por una equivocación;Solo alguien completamente incompetente cometería un error tan absurdo. No entiendo cómo puedes seguir participando en este proyecto.;1
+Ataque personal en una discusión;No tienes la inteligencia necesaria para entender lo que estamos discutiendo. Es inútil intentar razonar contigo.;1
+Manipulación de encuesta académica;Podemos completar varias veces la encuesta obligatoria utilizando respuestas diferentes para aparentar una mayor participación de estudiantes.;1
+Oferta de resolución de prácticas individuales;Envíenme sus prácticas individuales y las desarrollaré completamente. Después podrán subirlas con sus nombres para obtener la calificación.;1
+Falsificación de resultados de encuesta;Si no conseguimos suficientes respuestas para nuestra investigación, podemos inventar participantes y completar sus respuestas nosotros mismos.;1
+Compra de participación en investigación;Estoy buscando estudiantes que quieran vender su nombre para aparecer como integrantes de una investigación que nunca desarrollaron.;1
+Alteración de evidencias de aprendizaje;Podemos modificar los registros de nuestras actividades para aparentar que completamos todos los ejercicios obligatorios antes de la fecha límite.;1
+Suplantación en entrevista evaluada;Necesito que otra persona participe en mi entrevista académica virtual y responda las preguntas utilizando mis datos de identificación.;1
+Oferta de resultados de investigación inventados;Elaboro bases de datos con resultados inventados para que puedan completar sus investigaciones sin realizar encuestas ni experimentos.;1
+Oferta de representación institucional falsa;Puedo presentarme como representante autorizado de la universidad y gestionar solicitudes académicas a cambio de pagos particulares.;1
+Solicitud de información de autenticación;Envíenme las respuestas a sus preguntas de seguridad institucionales para que pueda recuperar y administrar sus cuentas.;1
+Comercialización de espacios académicos;Estoy cobrando por conseguir vacantes en cursos que aparecen sin disponibilidad, sin seguir el procedimiento oficial de matrícula.;1
+Oferta de acreditaciones inexistentes;Puedo entregar acreditaciones de participación en congresos universitarios que nunca se realizaron para que las incluyan en sus hojas de vida.;1
+Suplantación de proveedor universitario;Estoy ofreciendo servicios de impresión y material institucional utilizando el nombre de la universidad, aunque no tengo autorización para representarla.;1
+Venta de registros privados;Tengo acceso a información interna de solicitudes académicas y puedo vender los datos de los estudiantes que aparecen en esos registros.;1
+Engaño sobre pagos universitarios;Puedo proporcionar comprobantes que aparenten acreditar el pago de obligaciones universitarias que todavía se encuentran pendientes.;1
+Amenaza por desacuerdo en una exposición;Si vuelves a cuestionar mi presentación delante de todos, te voy a esperar afuera y vas a tener que responder por lo que dijiste.;1
+Hostigamiento sexual reiterado;Aunque me hayas pedido que deje de hacerlo, voy a seguir enviándote comentarios sexuales y fotografías con insinuaciones que no has solicitado.;1
+Coacción para retirar una denuncia;Si no retiras el reporte que presentaste contra mí, voy a asegurarme de que todos en la universidad se pongan en tu contra.;1
+Incitación a agredir a un integrante;Deberíamos esperar a ese compañero al terminar su exposición y darle una paliza para que deje de perjudicar al grupo.;1
+Amenaza por rechazo personal;No acepto que quieras alejarte de mí. Si sigues evitándome, voy a buscarte y no respondo por lo que pueda pasar.;1
+Intimidación mediante seguimiento;Sé qué actividades tienes programadas y voy a aparecer en todas ellas hasta que entiendas que no puedes ignorarme.;1
+Consulta sobre documentación de proyectos;Para documentar un proyecto de desarrollo de software, ¿es necesario incluir diagramas de arquitectura, decisiones técnicas y manuales de instalación, o depende del alcance establecido por el docente?;0
+Propuesta para mejorar la accesibilidad digital;Considero que las plataformas académicas deberían permitir navegar mediante teclado y lectores de pantalla. Esto facilitaría el acceso a estudiantes con diferentes necesidades de accesibilidad.;0
+Consulta sobre conservación de muestras;En los trabajos de laboratorio, ¿qué criterios debemos utilizar para determinar cuánto tiempo se pueden conservar las muestras antes de realizar el análisis?;0
+Compartir experiencia en prácticas profesionales;Durante mis prácticas aprendí que documentar las tareas realizadas diariamente facilita la elaboración del informe final y permite identificar mejor los avances del proyecto.;0
+Consulta sobre consentimiento en entrevistas;Si realizamos entrevistas para una investigación universitaria, ¿debemos explicar a los participantes cómo utilizaremos sus respuestas antes de comenzar?;0
+Crítica a la distribución de aulas;Algunas asignaturas con actividades prácticas se desarrollan en aulas que no tienen el equipamiento necesario. Sería conveniente considerar las necesidades de cada curso al asignar los espacios.;0
+Recomendación para organizar referencias;Para evitar perder las fuentes consultadas durante una investigación, recomiendo utilizar un gestor bibliográfico y registrar las referencias desde el inicio del proyecto.;0
+Consulta sobre mantenimiento de equipos;¿Existe algún procedimiento para reportar computadoras de laboratorio que presentan fallas recurrentes y solicitar una revisión técnica?;0
+Propuesta de calendario compartido;Sería útil contar con un calendario colaborativo para que los integrantes de los grupos puedan registrar reuniones, entregas y fechas importantes de sus proyectos.;0
+Consulta sobre datos personales en investigaciones;¿Qué medidas debemos tomar para proteger la identidad de los participantes cuando publicamos los resultados de una encuesta académica?;0
+Reporte de barreras de accesibilidad física;He observado que algunos espacios de estudio tienen accesos complicados para personas con movilidad reducida. Considero importante comunicarlo para que se evalúen posibles mejoras.;0
+Debate sobre evaluación de proyectos;¿Creen que una evaluación de proyectos debería considerar tanto la calidad del producto como la documentación y las decisiones técnicas que tomó el equipo?;0
+Consulta sobre publicación de investigaciones;¿Qué diferencias existen entre publicar un artículo en una revista científica y presentar un trabajo en un congreso académico?;0
+Advertencia sobre equipos compartidos;Antes de utilizar una computadora de laboratorio, revisen que no haya sesiones personales abiertas. Al terminar, cierren sus cuentas y eviten dejar información privada almacenada.;0
+Experiencia con aprendizaje colaborativo;Estudiar con compañeros que tienen diferentes fortalezas me ayudó a comprender temas que inicialmente me resultaban complicados. Recomiendo organizar sesiones con objetivos concretos.;0
+Consulta sobre declaración de uso de IA;Si utilizamos herramientas de inteligencia artificial para organizar ideas o corregir la redacción de un trabajo, ¿cómo debemos declarar ese uso según las indicaciones académicas?;0
+Crítica a los procesos de matrícula;Considero que el procedimiento de matrícula debería mostrar con mayor claridad los requisitos y las restricciones de cada asignatura antes de confirmar la inscripción.;0
+Consulta sobre préstamo de equipos;¿Qué requisitos debemos cumplir para solicitar el préstamo de cámaras, micrófonos u otros equipos audiovisuales destinados a un proyecto académico?;0
+Reporte de residuos en laboratorios;Después de algunas prácticas quedan materiales y residuos en las mesas de trabajo. Sería conveniente reforzar las indicaciones de limpieza y disposición de materiales.;0
+Compartir plantilla de planificación;Preparé una plantilla para organizar tareas, responsables, dependencias y fechas de entrega de proyectos universitarios. La comparto por si puede servirles.;0
+Consulta sobre conflictos de interés;Si un estudiante participa en una investigación relacionada con una empresa donde trabaja un familiar, ¿debe declarar esa relación para evitar posibles conflictos de interés?;0
+Opinión sobre retroalimentación docente;Sería beneficioso que las evaluaciones incluyeran observaciones específicas sobre los errores cometidos, en lugar de limitarse a mostrar una calificación numérica.;0
+Advertencia sobre almacenamiento en la nube;Eviten configurar carpetas de proyectos universitarios como públicas cuando contienen documentos internos o información personal de sus integrantes.;0
+Consulta sobre participación en voluntariados;¿Dónde podemos encontrar información sobre actividades de voluntariado universitario relacionadas con educación, tecnología o apoyo comunitario?;0
+Debate sobre investigación interdisciplinaria;Considero que los proyectos que combinan conocimientos de diferentes carreras pueden ofrecer soluciones más completas a problemas sociales y tecnológicos.;0
+Desprecio por la experiencia de un compañero;No importa cuántos cursos hayas llevado, sigues siendo un inútil. Tu experiencia no sirve para nada en este equipo.;1
+Burla por una presentación académica;Después de escuchar tu exposición, queda claro que no tienes capacidad para explicar ni siquiera el tema más sencillo.;1
+Ataque personal durante una discusión;Tu participación es una pérdida de tiempo. Deberías dejar de intervenir porque solo demuestras lo poco que sabes.;1
+Ridiculización por dificultades académicas;Es increíble que todavía necesites ayuda con esos temas. Cualquiera con un mínimo de capacidad ya los habría entendido.;1
+Menosprecio de un integrante del equipo;No tienes ninguna cualidad que aporte al proyecto. Eres el integrante más mediocre que nos pudo tocar.;1
+Manipulación de resultados estadísticos;Si los resultados de nuestro análisis no respaldan la hipótesis, podemos eliminar los datos que nos perjudican para conseguir conclusiones favorables.;1
+Oferta de autoría académica sin participación;Estoy ofreciendo incluir estudiantes como autores de un artículo científico a cambio de dinero, aunque no hayan participado en la investigación.;1
+Modificación de registros experimentales;Podemos cambiar las fechas y los valores del cuaderno de laboratorio para que parezca que todas las pruebas se realizaron según el cronograma.;1
+Elaboración de reseñas académicas ficticias;Puedo escribir reseñas de libros que nunca han leído y presentarlas como experiencias personales de lectura para sus cursos.;1
+Ocultamiento de colaboración no autorizada;Durante la evaluación individual, puedo resolver las preguntas de mis compañeros por mensajería y ellos entregarán las respuestas como si fueran propias.;1
+Presentación de prácticas ajenas;Tengo varias prácticas desarrolladas por estudiantes de ciclos anteriores. Pueden cambiar los nombres y entregarlas como trabajos propios.;1
+Fabricación de resultados de entrevistas;Para completar el informe, podemos inventar las respuestas de los entrevistados y afirmar que realizamos todas las entrevistas programadas.;1
+Oferta de pagos universitarios simulados;Puedo generar constancias que aparenten demostrar que una deuda universitaria fue cancelada, aunque el pago nunca se haya realizado.;1
+Comercialización de códigos de acceso;Estoy vendiendo códigos de activación y acceso que obtuve de cuentas de otros estudiantes sin su autorización.;1
+Solicitud de documentos para suplantación;Envíenme fotografías de sus documentos de identidad y sus datos personales. Los utilizaré para registrar cuentas académicas a nombre de ustedes sin que tengan que realizar el trámite.;1
+Difusión de comunicados institucionales inventados;Voy a publicar un comunicado inventado con el logotipo de la universidad para convencer a los estudiantes de que deben realizar un pago adicional.;1
+Venta de accesos a plataformas de terceros;Tengo usuarios y contraseñas de plataformas educativas obtenidos sin autorización. Puedo venderles el acceso para que utilicen esos servicios.;1
+Oferta de trámites con identidad ajena;Puedo realizar solicitudes académicas utilizando la identidad de otros estudiantes sin que ellos participen ni autoricen el procedimiento.;1
+Comercialización de supuestas constancias oficiales;Estoy cobrando por entregar constancias con apariencia oficial que yo mismo elaboro, aunque la universidad no las haya emitido ni validado.;1
+Amenaza por una calificación grupal;Si no cambias la evaluación que hiciste sobre mi trabajo, voy a esperarte después de clases y te voy a golpear.;1
+Acoso mediante contacto insistente;Me bloqueaste en varias plataformas, pero voy a seguir creando cuentas nuevas para escribirte hasta que aceptes hablar conmigo.;1
+Presión para abandonar una actividad universitaria;Si continúas participando en las reuniones del grupo, vamos a encargarnos de que tengas problemas cada vez que intentes ingresar.;1
+Amenaza contra un compañero por denunciar;Ya sé que informaste sobre lo que ocurrió. Si vuelves a involucrar a las autoridades, voy a hacer que te arrepientas.;1
+Intimidación por motivos personales;No tienes derecho a relacionarte con otras personas. Si vuelvo a verte conversando con ese compañero, habrá consecuencias.;1
+Incitación a perseguir a un estudiante;Organicémonos para seguir a ese estudiante cuando salga de la universidad y asustarlo hasta que deje de participar en el foro.;1
+Organización de actividades culturales;¿Hay estudiantes interesados en organizar un encuentro cultural donde podamos compartir música, gastronomía y expresiones artísticas de diferentes regiones del país?;0
+Consulta sobre reserva de instalaciones deportivas;¿Cuál es el procedimiento para reservar las canchas deportivas de la universidad y organizar partidos entre estudiantes de distintas carreras?;0
+Propuesta para mejorar la orientación universitaria;Sería conveniente instalar señalizaciones más claras en los edificios para que los estudiantes nuevos puedan encontrar fácilmente las aulas, oficinas y laboratorios.;0
+Consulta sobre derechos de autor en presentaciones;Si utilizamos fragmentos de videos o fotografías de terceros en una exposición académica, ¿qué información debemos incluir para reconocer correctamente a sus autores?;0
+Reporte de pérdida de objetos personales;Encontré una mochila olvidada en una sala de estudio. ¿Existe alguna oficina donde pueda entregarla para que su propietario tenga la posibilidad de recuperarla?;0
+Crítica a la programación de actividades;Algunas actividades extracurriculares se programan durante los horarios de clase. Sería mejor consultar la disponibilidad de los estudiantes antes de establecer las fechas.;0
+Consulta sobre participación en concursos;¿La universidad ofrece asesoramiento para estudiantes que desean participar en concursos de innovación, programación o emprendimiento tecnológico?;0
+Recomendación para proteger dispositivos;Cuando utilicen equipos compartidos, eviten conectar memorias USB desconocidas y mantengan actualizado el software de seguridad de sus dispositivos personales.;0
+Experiencia en una feria de proyectos;Participar en la feria tecnológica me permitió conocer proyectos de otras carreras y comprender cómo se pueden aplicar los conocimientos de ingeniería a diferentes problemas.;0
+Consulta sobre reconocimiento de créditos;Si realizo un curso externo relacionado con mi carrera, ¿existe algún procedimiento para solicitar que sus créditos sean reconocidos por la universidad?;0
+Propuesta de actividades para estudiantes nuevos;Podríamos organizar recorridos guiados por las instalaciones y sesiones de orientación para ayudar a los estudiantes de primer ciclo a adaptarse a la universidad.;0
+Reporte de barreras durante una actividad;En una actividad universitaria se utilizaron materiales que no eran accesibles para todos los participantes. ¿A qué área podemos comunicar esta situación para solicitar adaptaciones?;0
+Consulta sobre prácticas de investigación;¿Es posible participar como asistente voluntario en un proyecto de investigación de otra facultad para adquirir experiencia en metodología científica?;0
+Opinión sobre los espacios de descanso;Sería positivo contar con más espacios tranquilos donde los estudiantes puedan descansar entre clases sin tener que permanecer en los pasillos.;0
+Consulta sobre derechos de imagen;Si durante una actividad universitaria se graba un video donde aparecen varios estudiantes, ¿qué recomendaciones debemos seguir antes de publicarlo en redes sociales?;0
+Advertencia sobre dispositivos extraviados;Si pierden una computadora o un teléfono en las instalaciones, reporten el incidente y eviten publicar fotografías de documentos personales que puedan estar almacenados en ellos.;0
+Debate sobre sostenibilidad universitaria;¿Qué iniciativas podrían implementarse para reducir el consumo de papel y promover prácticas sostenibles en las actividades académicas?;0
+Consulta sobre participación en eventos externos;¿Los estudiantes pueden representar a la universidad en competencias tecnológicas organizadas por otras instituciones? ¿Dónde se consulta el procedimiento?;0
+Crítica a la gestión de actividades extracurriculares;Algunas actividades se anuncian con poca anticipación y eso dificulta la participación de quienes tienen otras responsabilidades. Sería conveniente mejorar la planificación.;0
+Consulta sobre mediación de conflictos;Cuando existe un desacuerdo entre integrantes de diferentes grupos académicos, ¿hay algún servicio universitario que pueda ayudar a mediar la situación?;0
+Recomendación para preparar exposiciones;Recomiendo ensayar las presentaciones con anticipación y comprobar que los archivos multimedia funcionen correctamente antes de comenzar la exposición.;0
+Reporte de condiciones inseguras;En una zona de tránsito estudiantil observé un cable suelto que podría provocar una caída. ¿Cómo puedo reportarlo para que sea revisado?;0
+Consulta sobre intercambio estudiantil;¿Qué requisitos suelen solicitarse para participar en programas de intercambio académico con universidades de otros países?;0
+Opinión sobre ferias de empleabilidad;Considero que las ferias laborales universitarias deberían incluir espacios para revisar currículums y practicar entrevistas con profesionales de diferentes sectores.;0
+Consulta sobre organización de clubes;¿Qué requisitos debemos cumplir para formar un club universitario dedicado a la robótica y organizar actividades abiertas para otros estudiantes?;0
+Desprecio por la participación de un estudiante;Tus intervenciones son completamente inútiles. Cada vez que participas haces que esta discusión sea más aburrida y ridícula.;1
+Ataque a la capacidad profesional;Con esa manera de trabajar nunca vas a ser un profesional competente. No tienes las capacidades necesarias para esta carrera.;1
+Ridiculización de una opinión;Qué comentario tan estúpido. Es evidente que no tienes la capacidad de comprender un tema antes de intentar opinar.;1
+Descalificación de un compañero;Eres una vergüenza para el equipo. Ni siquiera deberías tener la oportunidad de presentar un proyecto con nosotros.;1
+Menosprecio por el desempeño académico;No entiendo cómo alguien tan mediocre puede seguir avanzando en la universidad. Definitivamente no estás a la altura de los demás.;1
+Manipulación de asistencia a eventos académicos;Podemos registrar como asistentes a estudiantes que nunca participaron en el congreso para que todos reciban el certificado de participación.;1
+Venta de proyectos de investigación terminados;Tengo proyectos de investigación completos que pueden entregar como si fueran propios. También puedo modificar los nombres de los autores para que no se note.;1
+Alteración de resultados de evaluación;Si nuestras respuestas no alcanzan la calificación necesaria, podemos modificar las evidencias de la evaluación antes de enviarlas para que parezcan correctas.;1
+Fabricación de participación en proyectos;Necesito que aparezcas como integrante de nuestro proyecto aunque no hayas trabajado. A cambio, te incluiré en la lista de autores del informe final.;1
+Uso de respuestas filtradas en una evaluación;Tengo fotografías de las respuestas de una evaluación que todavía no se ha realizado. Puedo compartirlas para que las memoricen antes de rendirla.;1
+Elaboración de diarios de campo ficticios;Puedo completar diarios de campo con observaciones inventadas y fechas anteriores para que parezca que realizaron el trabajo de investigación.;1
+Presentación de certificación de idioma ajena;Voy a utilizar el certificado de idioma de otra persona para acreditar un requisito académico que todavía no he cumplido.;1
+Venta de supuestos beneficios universitarios;Estoy cobrando por entregar tarjetas que supuestamente permiten acceder a descuentos institucionales, aunque yo mismo las elaboré y no tienen reconocimiento oficial.;1
+Oferta de modificación de datos personales;Puedo ingresar a sistemas de gestión académica sin autorización y cambiar los datos personales registrados de cualquier estudiante a cambio de un pago.;1
+Cobro por acceso a eventos inexistentes;Estoy vendiendo entradas para un evento universitario que nunca fue organizado, utilizando una convocatoria inventada para recibir transferencias.;1
+Comercialización de identificaciones universitarias falsas;Elaboro carnés universitarios falsificados para personas que no pertenecen a la institución y los vendo para que aparenten ser estudiantes.;1
+Oferta de recuperación de cuentas mediante engaño;Puedo recuperar cualquier cuenta institucional si me envían su contraseña y el código de verificación que reciben en sus teléfonos.;1
+Suplantación de un servicio de soporte;Estoy utilizando el nombre y la imagen del equipo de soporte universitario para solicitar pagos por solucionar problemas técnicos que no tengo autorización para atender.;1
+Comercialización de turnos mediante acceso no autorizado;Conseguí ingresar sin autorización al sistema de reservas de laboratorios y estoy cobrando por asignar turnos a estudiantes que me contacten.;1
+Amenaza por participar en una denuncia;Si decides declarar sobre lo que pasó durante la actividad, voy a encontrarte después de clases y te voy a hacer pagar por involucrarte.;1
+Acoso persistente durante actividades universitarias;Aunque ya me dijiste que no quieres hablar conmigo, voy a seguir acercándome a tu salón y esperándote hasta que aceptes salir conmigo.;1
+Intimidación para controlar la participación;No vuelvas a inscribirte en las actividades de nuestro grupo. Si lo haces, nos encargaremos de que no puedas participar tranquilo.;1
+Amenaza de agresión durante una competencia;Si nuestro equipo pierde por tu culpa, te voy a golpear delante de todos cuando termine el campeonato.;1
+Persecución después de una ruptura personal;No importa cuántas veces me pidas que me aleje. Voy a seguir apareciendo en los lugares donde estudias hasta que vuelvas conmigo.;1
+Incitación a intimidar a una estudiante;Tenemos que organizarnos para rodearla cuando salga de la actividad y hacer que tenga miedo de volver a participar en el grupo.;1
+Consulta sobre reconocimiento de cursos virtuales;¿Los cursos virtuales realizados en plataformas educativas externas pueden considerarse como parte de la formación complementaria de nuestra carrera?;0
+Propuesta para organizar un club de lectura;Me gustaría formar un club de lectura donde podamos reunirnos semanalmente para comentar libros, compartir recomendaciones y desarrollar actividades de escritura.;0
+Consulta sobre requisitos para prácticas preprofesionales;¿Qué documentos suelen solicitar las empresas para iniciar prácticas preprofesionales y dónde podemos obtener orientación sobre el convenio correspondiente?;0
+Recomendación para presentar proyectos visuales;Cuando presenten un proyecto, procuren utilizar gráficos legibles, títulos descriptivos y fuentes de datos identificables para que otras personas puedan comprender los resultados.;0
+Reporte de problemas de ventilación en aulas;Algunas aulas tienen poca ventilación durante las sesiones con muchos estudiantes. Sería conveniente comunicarlo para que se evalúen las condiciones de esos espacios.;0
+Consulta sobre préstamo interbibliotecario;¿Existe la posibilidad de solicitar libros que se encuentran en otras bibliotecas universitarias cuando no están disponibles en nuestra sede?;0
+Debate sobre cursos electivos;Considero que las carreras deberían ofrecer más cursos electivos relacionados con nuevas tecnologías para que podamos orientar nuestra formación hacia diferentes áreas profesionales.;0
+Consulta sobre publicación de código fuente;Si compartimos el código de un proyecto universitario en un repositorio público, ¿qué precauciones debemos tomar para no exponer claves, tokens u otra información sensible?;0
+Organización de intercambio de idiomas;Estoy buscando estudiantes interesados en practicar inglés y español mediante conversaciones semanales. Podemos organizar grupos pequeños para que todos tengan oportunidad de participar.;0
+Advertencia sobre evacuación de instalaciones;Recuerden identificar las rutas de evacuación de sus edificios y mantener despejadas las salidas de emergencia. Es importante conocer los procedimientos antes de que ocurra una situación de riesgo.;0
+Consulta sobre alimentación en cafeterías;¿Dónde podemos consultar la información sobre ingredientes y posibles alérgenos de los alimentos que se venden en las cafeterías universitarias?;0
+Experiencia en una entrevista laboral;En mi primera entrevista de prácticas me preguntaron sobre proyectos que había desarrollado y cómo resolvía problemas en equipo. Recomiendo preparar ejemplos concretos antes de postular.;0
+Propuesta para mejorar la comunicación entre clubes;Sería útil que los clubes universitarios contaran con un espacio compartido para anunciar sus actividades y coordinar eventos conjuntos.;0
+Consulta sobre reproducibilidad de investigaciones;¿Qué información debemos documentar para que otros estudiantes puedan repetir un experimento y comparar sus resultados con los de nuestra investigación?;0
+Reporte de ruido durante evaluaciones;En algunas ocasiones se realizan actividades ruidosas cerca de las aulas donde se están desarrollando exámenes. ¿Podría coordinarse mejor el uso de esos espacios?;0
+Consulta sobre adaptación de materiales académicos;¿Los docentes pueden proporcionar documentos en formatos accesibles para estudiantes que utilizan lectores de pantalla u otras tecnologías de asistencia?;0
+Recomendación para organizar un portafolio profesional;Estoy construyendo mi portafolio y recomiendo incluir proyectos terminados, tecnologías utilizadas, responsabilidades asumidas y enlaces a demostraciones funcionales.;0
+Consulta sobre participación en el centro de estudiantes;¿Cuáles son los mecanismos para presentar propuestas o participar en las actividades del centro de estudiantes de nuestra facultad?;0
+Advertencia sobre información compartida en reuniones;Antes de grabar una reunión de trabajo académico, consulten a los participantes y expliquen para qué se utilizará la grabación.;0
+Propuesta de campaña de reciclaje;Podemos organizar una campaña para separar papel, plástico y residuos electrónicos dentro de los espacios universitarios. ¿Quiénes estarían interesados en participar?;0
+Consulta sobre requisitos de intercambio académico;¿Las asignaturas cursadas durante un intercambio internacional pueden convalidarse al regresar, o es necesario solicitar autorización antes de viajar?;0
+Reporte de dificultades con material audiovisual;Algunos videos utilizados en las clases no tienen subtítulos, lo que dificulta su comprensión para determinados estudiantes. Sería conveniente solicitar materiales alternativos.;0
+Consulta sobre tutorías entre estudiantes;¿Podemos organizar un programa voluntario donde estudiantes de ciclos superiores ayuden a quienes están llevando por primera vez cursos de programación?;0
+Opinión sobre horarios de atención administrativa;Sería conveniente ampliar los horarios de atención de algunas oficinas para que los estudiantes que trabajan también puedan realizar sus consultas presencialmente.;0
+Consulta sobre devolución de documentos extraviados;Encontré una tarjeta de identificación estudiantil en una sala de reuniones. ¿Cuál es el procedimiento adecuado para entregarla sin publicar los datos de su propietario?;0
+Burla por la forma de hablar;Escuchar cómo te expresas da vergüenza. Ni siquiera puedes hablar correctamente y todavía pretendes participar en una discusión académica.;1
+Desprecio por la apariencia de un compañero;Con esa apariencia no deberías atreverte a presentarte delante de los demás. Das vergüenza cada vez que apareces en una actividad.;1
+Menosprecio por la situación económica;No tienes dinero ni para tus materiales y aun así pretendes opinar sobre cómo debería organizarse el proyecto. Tu opinión no vale nada.;1
+Ridiculización de una intervención;Lo que acabas de escribir es una tontería. Es increíble que alguien pueda decir algo tan absurdo y esperar que los demás lo tomen en serio.;1
+Descalificación por falta de experiencia;No tienes experiencia ni conocimientos suficientes para aportar algo útil. Deja de fingir que sabes trabajar en un entorno profesional.;1
+Suplantación durante una evaluación domiciliaria;Mi compañero desarrollará la evaluación individual desde su cuenta y yo la presentaré como si hubiera resuelto personalmente todos los ejercicios.;1
+Manipulación de revisiones por pares;Nos pidieron evaluar los trabajos de otros equipos. Podemos intercambiar calificaciones favorables entre nosotros sin revisar realmente el contenido.;1
+Fabricación de referencias bibliográficas;Si el informe necesita más fuentes, podemos inventar títulos de artículos, autores y enlaces para que la bibliografía parezca más completa.;1
+Presentación de material protegido como propio;Encontré un manual elaborado por otro investigador. Voy a eliminar su nombre y presentarlo como una publicación que desarrollé para el curso.;1
+Manipulación de resultados de evaluación grupal;Podemos acordar que todos indiquemos que un integrante cumplió sus responsabilidades, aunque no haya realizado ninguna actividad, para evitar que desapruebe.;1
+Falsificación de autorización para investigación;Voy a elaborar autorizaciones ficticias y afirmar que los participantes aceptaron formar parte del estudio, aunque nunca fueron informados ni dieron su consentimiento.;1
+Reutilización engañosa de un trabajo evaluado;Entregaré exactamente el mismo trabajo que presenté en otra asignatura y afirmaré que fue elaborado exclusivamente para este curso, sin comunicar que ya fue evaluado anteriormente.;1
+Venta de permisos de estacionamiento falsificados;Estoy elaborando permisos de estacionamiento con apariencia institucional y los vendo a estudiantes que desean ingresar sus vehículos sin contar con una autorización válida.;1
+Cobro por una convocatoria inexistente;Estoy difundiendo una supuesta convocatoria de becas y cobrando una inscripción, aunque la convocatoria fue inventada para recibir dinero de los interesados.;1
+Comercialización de códigos QR de acceso manipulados;Estoy generando códigos QR que aparentan ser pases oficiales para ingresar a determinadas actividades universitarias y los vendo aunque no hayan sido autorizados.;1
+Oferta de acceso no autorizado a instalaciones;Puedo conseguir que ingresen a laboratorios restringidos sin autorización del responsable. Estoy cobrando por facilitar el acceso fuera del procedimiento establecido.;1
+Intermediación fraudulenta de becas;Me hago pasar por intermediario autorizado de un programa de becas y solicito pagos a los estudiantes para asegurarles una plaza que no puedo gestionar.;1
+Venta de entradas universitarias inexistentes;Estoy ofreciendo entradas para una ceremonia universitaria que no ha sido organizada. Utilizo imágenes de eventos anteriores para convencer a los estudiantes de que compren.;1
+Oferta laboral institucional inventada;Estoy enviando propuestas de prácticas con el nombre de una empresa y de la universidad, aunque ninguna de las dos entidades ha publicado ni autorizado esas vacantes.;1
+Amenaza por desacuerdo en una actividad deportiva;Si vuelves a cuestionar mis decisiones durante el partido, te voy a esperar en los vestuarios y te voy a golpear.;1
+Coacción mediante información personal;Si no haces lo que te estoy pidiendo, voy a publicar tus conversaciones privadas y los datos personales que tengo sobre ti.;1
+Acoso durante actividades extracurriculares;Aunque me hayas pedido que deje de buscarte, voy a inscribirme en todas las actividades donde participes para estar cerca de ti.;1
+Intimidación para impedir una exposición;Si presentas ese informe y mencionas lo que ocurrió, nos encargaremos de que no puedas volver a exponer tranquilamente frente a tus compañeros.;1
+Amenaza de represalia por rechazo personal;Si sigues rechazándome, voy a hacer que tengas problemas con las personas de tu grupo. No voy a permitir que simplemente me ignores.;1
+Incitación a destruir pertenencias;Deberíamos esperar a que ese estudiante deje sus materiales en el aula y destruirlos para que aprenda a no meterse con nuestro grupo.;1
+Consulta sobre elaboración de un currículum;¿Es recomendable incluir proyectos académicos que todavía están en desarrollo en nuestro currículum, o deberíamos mencionar únicamente aquellos que ya hemos terminado?;0
+Propuesta de mentoría para estudiantes de primeros ciclos;Podríamos crear un programa voluntario en el que estudiantes de ciclos superiores orienten a los ingresantes sobre organización académica, recursos universitarios y adaptación a la carrera.;0
+Consulta sobre almacenamiento de datos de investigación;Para una investigación universitaria, ¿durante cuánto tiempo deberíamos conservar los archivos originales de las encuestas y quién debería tener acceso a ellos?;0
+Opinión sobre actividades de integración;Sería positivo organizar actividades de integración entre estudiantes de distintas carreras para facilitar el intercambio de experiencias y la creación de proyectos interdisciplinarios.;0
+Advertencia sobre redes Wi-Fi públicas;Cuando utilicen redes inalámbricas abiertas, eviten acceder a servicios que contengan información sensible y comprueben que las conexiones sean legítimas.;0
+Consulta sobre certificaciones profesionales;¿Qué certificaciones relacionadas con análisis de datos, desarrollo de software o gestión de proyectos consideran útiles para complementar la formación universitaria?;0
+Reporte de mobiliario deteriorado;Algunas sillas de las salas de estudio están dañadas y podrían ocasionar accidentes. ¿Existe un canal para comunicar estos problemas y solicitar su reparación?;0
+Consulta sobre participación en proyectos sociales;¿Cómo podemos proponer un proyecto tecnológico que ayude a resolver una necesidad de una comunidad y solicitar orientación para desarrollarlo desde la universidad?;0
+Recomendación sobre documentación de APIs;Cuando desarrollen una API para un proyecto, documenten los parámetros, las respuestas esperadas y los posibles errores para facilitar su integración con otros sistemas.;0
+Consulta sobre alimentación para actividades académicas;Si organizamos una actividad universitaria con alimentos, ¿qué información deberíamos comunicar para que los participantes puedan identificar posibles alérgenos?;0
+Crítica a la disponibilidad de laboratorios;La disponibilidad de los laboratorios no siempre coincide con los horarios en los que los estudiantes pueden desarrollar sus proyectos. Sería conveniente ampliar las opciones de reserva.;0
+Consulta sobre publicación de datos abiertos;¿Podemos utilizar conjuntos de datos publicados por municipalidades para desarrollar proyectos universitarios de análisis territorial?;0
+Experiencia organizando un evento académico;Para organizar un evento estudiantil recomiendo definir previamente el presupuesto, los responsables, los recursos necesarios y un cronograma de actividades.;0
+Reporte de fallas en equipos audiovisuales;Durante varias exposiciones, los proyectores de algunas aulas presentaron problemas de conexión. Sería conveniente revisar esos equipos antes de las próximas evaluaciones.;0
+Consulta sobre derechos de los participantes;Si una persona decide retirarse de una investigación después de haber respondido una encuesta, ¿podemos seguir utilizando sus respuestas o debemos considerar su solicitud?;0
+Propuesta de repositorio de recursos accesibles;Sugiero crear un espacio donde podamos compartir materiales educativos con subtítulos, transcripciones y formatos compatibles con tecnologías de asistencia.;0
+Consulta sobre transporte universitario;¿Existen iniciativas para coordinar rutas compartidas entre estudiantes que viven en zonas cercanas y necesitan trasladarse a la misma sede?;0
+Advertencia sobre documentos públicos;Antes de publicar un informe de proyecto, revisen que los archivos no contengan contraseñas, datos personales ni información interna que no deba difundirse.;0
+Opinión sobre formación en habilidades blandas;Considero que las carreras deberían incorporar más actividades para desarrollar comunicación, negociación y resolución de conflictos, porque son habilidades necesarias en el entorno laboral.;0
+Consulta sobre participación en hackatones;¿Qué conocimientos técnicos y herramientas recomiendan aprender antes de participar por primera vez en una competencia universitaria de desarrollo tecnológico?;0
+Reporte de problemas de señalización;Algunas señales de evacuación están parcialmente cubiertas por carteles informativos. Sería importante corregirlo para que las rutas de emergencia puedan identificarse fácilmente.;0
+Consulta sobre revisión de contratos de prácticas;Antes de firmar un convenio de prácticas, ¿qué aspectos relacionados con horarios, funciones y duración deberíamos revisar cuidadosamente?;0
+Propuesta de feria de emprendimiento estudiantil;Podríamos organizar una feria donde los estudiantes presenten emprendimientos y reciban comentarios de otros participantes y profesionales invitados.;0
+Consulta sobre almacenamiento de material audiovisual;Si grabamos entrevistas para un proyecto académico, ¿qué recomendaciones existen para almacenar los archivos y limitar el acceso a las personas autorizadas?;0
+Crítica a la publicación de cambios de horario;Los cambios de horario deberían comunicarse con suficiente anticipación y mostrar claramente qué asignaturas y grupos han sido afectados.;0
+Desprecio por la capacidad de liderazgo;Eres incapaz de dirigir hasta la tarea más sencilla. No tienes ninguna habilidad para coordinar personas y solo perjudicas al equipo.;1
+Burla por la pronunciación de un compañero;Cada vez que hablas haces el ridículo. Deberías aprender a expresarte antes de intentar participar en una exposición.;1
+Ataque personal por un error técnico;Solo una persona completamente torpe podría cometer un error así. No entiendo cómo te permiten trabajar en un proyecto de ingeniería.;1
+Ridiculización de la participación en clase;Tus preguntas demuestran que no tienes la capacidad suficiente para seguir el curso. Deja de hacer perder el tiempo a los demás.;1
+Menosprecio de un integrante por su rendimiento;Eres el peor integrante que hemos tenido. No aportas nada y tu presencia solamente hace que el trabajo sea más difícil.;1
+Falsificación de horas de prácticas;Puedo modificar los registros de asistencia de mis prácticas para acreditar horas que nunca realicé y cumplir con el requisito de la asignatura.;1
+Presentación de traducción ajena como propia;Encontré un artículo académico en otro idioma. Voy a traducirlo completo y presentarlo como una investigación original mía sin reconocer al autor.;1
+Manipulación de consentimiento en una investigación;Podemos marcar las casillas de consentimiento de todos los participantes sin informarles sobre el estudio, para completar rápidamente los requisitos de nuestra investigación.;1
+Fabricación de visitas de campo;Para completar el informe de prácticas, inventaré registros de visitas a empresas y describiré actividades que nunca realicé.;1
+Uso de material de evaluación restringido;Conseguí el banco de preguntas reservado para una evaluación futura. Voy a distribuirlo entre mis compañeros para que preparen las respuestas exactas antes del examen.;1
+Alteración de retroalimentación académica;Podemos modificar los comentarios originales del docente en las evidencias del proyecto para aparentar que recibimos una evaluación favorable desde el principio.;1
+Presentación de horas de voluntariado inexistentes;Necesito acreditar horas de voluntariado para un requisito universitario. Puedo inventar las actividades y las fechas para que parezca que participé durante todo el ciclo.;1
+Campaña de donaciones inventada;Estoy organizando una supuesta campaña de ayuda para estudiantes afectados por una emergencia. La historia es inventada y utilizaré las transferencias para quedarme con el dinero.;1
+Oferta de mantenimiento con identidad falsa;Estoy ofreciendo mantenimiento de equipos en nombre de un proveedor oficial de la universidad, aunque no tengo relación con esa empresa ni autorización para representarla.;1
+Venta de licencias de software falsificadas;Estoy vendiendo claves de activación que no corresponden a licencias legítimas y las promociono como licencias oficiales para estudiantes.;1
+Oferta de cobertura médica inexistente;Puedo emitir documentos que aparentan acreditar que un estudiante cuenta con un seguro médico institucional, aunque ese servicio nunca fue contratado.;1
+Falsificación de patrocinio universitario;Voy a utilizar el nombre de una empresa y afirmar que patrocina nuestro evento para conseguir pagos de participantes, aunque nunca haya autorizado ese patrocinio.;1
+Comercialización de equipos institucionales sin autorización;Tengo equipos audiovisuales pertenecientes a un laboratorio universitario y estoy ofreciéndolos en venta sin autorización de la institución.;1
+Difusión de alerta de emergencia inventada;Voy a publicar una alerta falsa sobre el cierre de la sede y solicitar pagos para supuestamente gestionar el ingreso de los estudiantes afectados.;1
+Amenaza por una oportunidad laboral;Si consigues ese puesto de prácticas en lugar de mí, voy a buscarte y te voy a hacer daño. No voy a permitir que me quites esa oportunidad.;1
+Coacción mediante fotografías privadas;Si no aceptas reunirte conmigo, voy a compartir las fotografías privadas que me enviaste para que todos sepan quién eres.;1
+Hostigamiento durante reuniones académicas;Aunque me hayas pedido que no me acerque, voy a sentarme junto a ti en cada reunión y continuaré insistiendo hasta que aceptes salir conmigo.;1
+Amenaza de daño a pertenencias personales;Si vuelves a presentar una queja sobre nuestro grupo, voy a destruir tu computadora y tus materiales de estudio.;1
+Intimidación para impedir una relación personal;No vuelvas a hablar con esa persona. Si te encuentro con ella otra vez, voy a agredirte delante de todos.;1
+Incitación a agredir durante una actividad;Cuando termine la reunión, deberíamos rodear a ese estudiante y golpearlo para que deje de cuestionar nuestras decisiones.;1
+¿Cómo solicitar una revisión de accesibilidad para un documento institucional?;Estoy preparando material para una actividad académica y quisiera saber qué procedimiento existe para solicitar que un documento institucional sea adaptado para lectores de pantalla.;0
+Propuesta para organizar un intercambio de libros;Tengo varios libros de cursos anteriores que ya no utilizo. ¿Existe algún espacio donde los estudiantes puedan intercambiar libros de manera voluntaria y gratuita?;0
+Problemas al visualizar las calificaciones en el portal;Desde ayer no puedo visualizar el detalle de mis calificaciones en el portal. ¿A alguien más le sucede? ¿Qué canal recomiendan para reportarlo?;0
+Experiencias participando en proyectos de responsabilidad social;Me gustaría conocer las experiencias de quienes han participado en proyectos universitarios de responsabilidad social. ¿Qué actividades realizaron y qué aprendizajes obtuvieron?;0
+Recomendaciones para conservar muestras de laboratorio;Para nuestro proyecto necesitamos conservar muestras durante varios días. ¿Qué criterios generales debemos considerar para evitar que se deterioren antes de realizar los análisis?;0
+Consulta sobre el uso de material audiovisual en exposiciones;Si utilizamos fragmentos de documentales en una exposición académica, ¿cómo debemos reconocer correctamente la fuente y los derechos de autor?;0
+¿Dónde consultar las convocatorias para ayudantías académicas?;Estoy interesado en participar como ayudante en algún curso de mi facultad. ¿Dónde suelen publicarse las convocatorias y cuáles son los requisitos habituales?;0
+Sugerencia para mejorar la señalización de los pabellones;Durante mi primera semana tuve dificultades para encontrar algunos salones porque la señalización no era suficientemente clara. Considero que sería útil incorporar mapas en los accesos principales.;0
+¿Se puede retirar una participación de un estudio universitario?;Estoy colaborando como participante en una investigación y quisiera saber si puedo retirar mi participación posteriormente y cómo se debe comunicar esa decisión.;0
+Compartir consejos para preparar una demostración técnica;Para quienes deben presentar prototipos de software, recomiendo probar previamente todos los escenarios de demostración y preparar una alternativa por si falla la conexión a internet.;0
+Consulta sobre la conservación de trabajos académicos;¿Existe alguna recomendación institucional sobre cuánto tiempo debemos conservar los archivos originales, versiones y evidencias de nuestros trabajos después de finalizar un curso?;0
+Opinión sobre la organización de las actividades de bienvenida;Considero que las actividades de bienvenida serían más útiles si incluyeran recorridos guiados por los servicios universitarios y espacios para resolver dudas de los estudiantes nuevos.;0
+No deberían dejar participar a personas tan inútiles;Algunos compañeros no aportan nada en las actividades. Son unos inútiles y no merecen tener espacio para expresar sus opiniones.;1
+Tu intervención fue una vergüenza;Escuché tu intervención y fue una vergüenza. No tienes la capacidad necesaria para participar en una discusión académica, así que mejor quédate callado.;1
+Los que no entienden deberían abandonar el curso;Si todavía no entienden algo tan sencillo, es porque no tienen capacidad para estudiar esta carrera. Solo hacen perder el tiempo a los demás.;1
+Ofrezco realizar las entrevistas de tu investigación;Si necesitas completar las entrevistas de tu investigación, puedo responderlas utilizando perfiles inventados y entregarte las respuestas para que las presentes como información recopilada de participantes reales.;1
+Servicio para conseguir publicaciones científicas como autor;Puedo incluir tu nombre como autor en un artículo académico que estoy preparando, aunque no hayas participado en la investigación. Te entrego la publicación para que puedas presentarla como mérito propio.;1
+Cómo alterar el historial de modificaciones de un proyecto;Estoy vendiendo un servicio para modificar el historial de versiones de proyectos colaborativos, de modo que parezca que una persona realizó contribuciones que en realidad nunca hizo.;1
+Entrego informes de prácticas con resultados inventados;Tengo informes de prácticas de laboratorio listos para vender. Los resultados y observaciones fueron inventados, pero están redactados para que parezcan experimentos realizados realmente.;1
+Cobro para gestionar supuestas devoluciones de matrícula;Me hago pasar por personal del área financiera y cobro a estudiantes para tramitar devoluciones de matrícula. No tengo autorización institucional ni acceso a esos procedimientos.;1
+Vendo accesos obtenidos de cuentas de otros estudiantes;Tengo accesos a cuentas institucionales de otros estudiantes obtenidos sin su autorización. Los estoy ofreciendo a quienes necesiten utilizar esos perfiles para ingresar a servicios universitarios.;1
+Ofrezco constancias de participación en eventos inexistentes;Puedo emitir constancias que aparentan acreditar la participación en eventos universitarios que nunca se realizaron. Las vendo para que puedan presentarse como documentos oficiales.;1
+Solicito pagos para desbloquear supuestas becas;Estoy contactando estudiantes y haciéndome pasar por intermediario de una oficina universitaria. Les solicito pagos para desbloquear becas que en realidad no estoy autorizado a gestionar.;1
+Amenaza por no aceptar una propuesta de trabajo grupal;Si no aceptas trabajar conmigo, voy a esperarte a la salida y te voy a hacer pagar por haberme rechazado. Ya sé en qué horario terminas tus clases.;1
+Presión para revelar información personal de una compañera;Entre todos deberíamos seguirla y averiguar con quién se reúne. Si no quiere contarnos lo que hace fuera de clases, tendremos que presionarla hasta que lo diga.;1
+Amenazas reiteradas para impedir que alguien participe;Cada vez que intenta intervenir en las reuniones le escribo para advertirle que tendrá problemas si vuelve a participar. No pienso dejar que siga apareciendo en las actividades del grupo.;1
+Ayuda con algoritmos;¿Alguien puede explicarme cómo resolver este ejercicio de árboles binarios?;0
+Crítica a un docente;Considero que el profesor debería explicar los temas con más ejemplos y desarrollar ejercicios paso a paso.;0
+Prevención del plagio;¿Qué herramientas recomiendan para verificar que nuestras citas y referencias estén correctamente elaboradas?;0
+Seguridad de cuentas;No compartan sus contraseñas institucionales ni códigos de verificación con otras personas.;0
+Denuncia de hostigamiento;Quiero reportar que un estudiante está acosando a mis compañeras. ¿Cuál es el procedimiento para comunicarlo?;0
+Información sobre certificados;¿Dónde puedo consultar los requisitos oficiales para solicitar un certificado de estudios?;0
+Debate sobre evaluaciones;Me parece injusto que el examen tenga preguntas que no fueron desarrolladas durante las clases.;0
+Advertencia sobre estafas;Tengan cuidado con las personas que ofrecen vender accesos institucionales. Podrían comprometer sus cuentas.;0
+Compartir respuestas;Tengo las respuestas del examen. Puedo enviarlas para que todos las entreguen como propias.;1
+Venta de trabajos;Vendo trabajos académicos completos para que los presenten como si fueran elaborados por ustedes.;1
+Copiar una investigación;Les comparto mi informe para que cambien algunas palabras y lo presenten como un trabajo original.;1
+Banco de preguntas;Tengo preguntas de exámenes anteriores. ¿Alguien quiere compartir material de estudio para practicar?;1
+Encargo de tesis;Puedo ayudar a revisar la estructura y redacción de sus tesis, pero cada estudiante debe desarrollar su propia investigación.;1
+Suplantación en evaluación;Busco a alguien que pueda ingresar a mi examen virtual y responderlo usando mi cuenta.;1
+Venta de cuentas institucionales;Vendo cuentas institucionales activas para que otros estudiantes puedan ingresar a los servicios de la universidad.;1
+Solicitud de contraseñas;Envíenme sus usuarios y contraseñas institucionales. Yo puedo ingresar y realizar algunos trámites por ustedes.;1
+Documentación falsa;Puedo conseguir certificados de estudios falsificados para quienes necesiten acreditar cursos aprobados.;1
+Venta de materiales;Estoy vendiendo resúmenes y guías de estudio que elaboré personalmente.;1
+Supuesto comunicado oficial;Me llegó un mensaje que dice que la universidad eliminará todos los cursos virtuales el próximo ciclo. ¿Alguien sabe si es cierto?;1
+Oferta de constancias;Conozco a alguien que puede conseguir constancias de matrícula sin cumplir los requisitos. Escríbanme por interno.;1
+Mensajes de contenido sexual no solicitado;Deja de enviarme mensajes con insinuaciones sexuales. Ya te indiqué que no estoy interesado y continúas haciéndolo.;1
+Advertencia sobre una amenaza indirecta;Ese compañero va a lamentar lo que hizo. Ya sé dónde encontrarlo cuando salga de la universidad.;1
+Amenazas para obligar a un estudiante a abandonar una actividad;No quiero que sigas participando en el equipo de debate. Si vuelves a asistir, voy a buscarte después de clases y te voy a golpear. Ya te advertí que no eres bienvenido.;1
+¿Cómo organizar una feria de intercambio de conocimientos?;Con algunos compañeros queremos organizar una actividad donde los estudiantes puedan compartir conocimientos sobre programación, diseño y otras áreas. ¿Qué recomendaciones nos darían para coordinar las exposiciones y facilitar la participación?;0

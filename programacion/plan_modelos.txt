@@ -1,0 +1,158 @@
+Segundo modelo: MLP con Keras
+
+Fases que seguiremos
+1. Fase 1. Preparación del entorno y los datos
+   - Importar las librerías necesarias: TensorFlow/Keras, NumPy, Pandas y Scikit-learn.
+   - Cargar train.csv, validation.csv y test.csv en memoria.
+   - Verificar las etiquetas y dimensiones de los conjuntos.
+   - Comprobar que utilizamos exactamente la misma división de datos que en Logistic Regression.
+   Resultado: datos preparados para alimentar la red neuronal.
+
+2. Fase 2. Representación de texto y entrada de la red
+   - Recuperar el vectorizador TF-IDF previamente ajustado con entrenamiento.
+   - Transformar los textos de entrenamiento, validación y prueba.
+   - Convertir las matrices dispersas a matrices densas para alimentar el MLP.
+   - Identificar la dimensión de entrada de la red neuronal.
+   Resultado: vectores numéricos que representan las publicaciones.
+   
+   Nota técnica: la conversión a matrices densas puede consumir bastante memoria porque nuestro vocabulario tiene alrededor de 160,000 características. Evaluaremos su viabilidad antes de realizarla. Si resulta demasiado costosa, utilizaremos una alternativa compatible con Keras que conserve la representación TF-IDF sin materializar toda la matriz densa.
+
+3. Fase 3. Construcción de la arquitectura MLP
+   
+   Definiremos nuestra red neuronal:
+   - Capa de entrada: recibe las características TF-IDF.
+   - Primera capa oculta: aprende combinaciones de características.
+   - Segunda capa oculta: aprende patrones más complejos.
+   - Capa de salida: una neurona con activación sigmoide.
+   Utilizaremos inicialmente:
+   - Activación ReLU en las capas ocultas.
+   - Activación Sigmoid en la salida.
+   - Regularización Dropout para reducir el sobreajuste.
+   Resultado: arquitectura de red neuronal definida en Keras.
+
+4. Fase 4. Configuración del entrenamiento
+   
+   Definiremos:
+   - Función de pérdida: Binary Crossentropy.
+   - Optimizador: Adam.
+   - Métrica: Recall, Precision y Binary Accuracy.
+   - Número de épocas (epochs).
+   - Tamaño del lote (batch size).
+   - EarlyStopping para detener el entrenamiento cuando la validación deje de mejorar.
+   También consideraremos el desbalance de clases mediante pesos de clase (class_weight).
+   
+   Resultado: proceso de entrenamiento configurado.
+5. Fase 5. Entrenamiento del MLP
+   - Entrenar utilizando exclusivamente el conjunto de entrenamiento.
+   - Evaluar el comportamiento en cada época mediante validación.
+   - Observar la evolución de la pérdida (loss).
+   - Comparar el rendimiento de entrenamiento y validación.
+   - Detectar posibles problemas de sobreajuste (overfitting).
+   Resultado: MLP entrenado y su historial de aprendizaje.
+
+6. Fase 6. Selección del umbral de decisión
+   - Obtener probabilidades de la clase 1 sobre validación.
+   - Evaluar distintos umbrales.
+   - Calcular Precision, Recall, F1, FN, FP y cantidad de revisiones.
+   - Seleccionar un umbral candidato priorizando la detección de contenido indebido.
+   Mantendremos como referencia el umbral 0.30 que seleccionamos para Logistic Regression, pero no obligaremos al MLP a utilizarlo si la validación justifica otro valor.
+   
+   Resultado: umbral candidato para el MLP.
+7. Fase 7. Evaluación final
+   - Evaluar el modelo utilizando el conjunto de prueba.
+   - Calcular las métricas finales.
+   - Construir la matriz de confusión.
+   - Analizar falsos positivos y falsos negativos.
+   Resultado: rendimiento final del MLP.
+8. Fase 8. Comparación de modelos
+   
+   Compararemos Logistic Regression y MLP utilizando:
+   - Accuracy.
+   - Precision.
+   - Recall.
+   - F1-score.
+   - ROC-AUC.
+   - Average Precision.
+   - Falsos negativos.
+   - Cantidad de publicaciones enviadas a revisión.
+   Resultado: determinaremos cuál de los dos modelos resulta más adecuado para UTP Community.
+
+----------------------------------------------------------------
+
+Hoja de ruta del nuevo entrenamiento
+1. Auditoría de calidad de etiquetas
+   
+   Revisar muestras de cada fuente y confirmar que aplican la misma política de moderación.
+2. División del dataset
+   
+   Separar entrenamiento, validación y prueba mediante muestreo estratificado.
+3. Vectorización TF-IDF
+   
+   Ajustar el vectorizador únicamente con los datos de entrenamiento.
+4. Entrenamiento
+   
+   Entrenar Logistic Regression y comparar configuraciones.
+5. Evaluación
+   
+   Analizar precisión, recall, F1, ROC-AUC y matriz de confusión.
+6. Selección del umbral
+   
+   Priorizar la detección de publicaciones que requieren revisión, considerando también la carga de moderación.
+7. Evaluación final
+   
+   Utilizar el conjunto de prueba una sola vez, después de seleccionar el modelo y el umbral.
+
+---------------------------------------------------------------------
+
+Fase 1. Preparación del dataset
+- Cargar CSV con Pandas.
+- Revisar valores nulos y duplicados.
+- Comprobar distribución de etiquetas.
+- Separar entrenamiento, validación y prueba.
+
+Fase 2. Primer modelo: Machine Learning
+-Unificar título y descripción.
+-Convertir los textos en vectores numéricos mediante TF-IDF.
+-Entrenar el modelo de Regresión Logística.
+-Realizar predicciones.
+-Evaluar los resultados.
+
+Fase 3. Segundo modelo: Deep Learning
+- Construir un MLP con Keras.
+- Implementar la entrada de texto.
+- Definir capas ocultas.
+- Utilizar una neurona de salida con activación sigmoide.
+- Entrenar y evaluar.
+
+Fase 4. Comparación
+
+Comparar ambos modelos utilizando las mismas particiones de datos y métricas.
+
+
+Fase 5. Integración
+
+Guardar el modelo seleccionado y preparar su integración con Spring Boot y UTP Community.
+
+
+--------------------------------------------
+
+Siguiente etapa: integración de los cinco datasets
+Vamos a trabajar en este orden:
+1. Integrar los cinco datasets
+   
+   Cargar los archivos preparados y concatenarlos en un único DataFrame.
+2. Identificar el origen de cada registro
+   
+   Agregar una columna origen para saber de qué dataset procede cada publicación.
+3. Auditar duplicados entre datasets
+   
+   Detectar textos idénticos que aparecen en diferentes fuentes.
+4. Detectar etiquetas contradictorias
+   
+   Identificar publicaciones que tienen etiqueta 0 en un dataset y etiqueta 1 en otro.
+5. Construir el dataset consolidado
+   
+   Eliminar duplicados válidos y resolver o excluir temporalmente los conflictos.
+6. Analizar la distribución final
+   
+   Calcular la cantidad de registros y la proporción de cada clase.
