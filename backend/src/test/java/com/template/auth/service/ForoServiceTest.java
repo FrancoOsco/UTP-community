@@ -1,6 +1,12 @@
 package com.template.auth.service;
 
 import com.template.auth.entity.*;
+import com.template.auth.foros.entity.Foro;
+import com.template.auth.foros.repository.ForoRepository;
+import com.template.auth.foros.repository.ComentarioForoRepository;
+import com.template.auth.foros.repository.ForoVotoRepository;
+import com.template.auth.foros.repository.ComentarioVotoRepository;
+import com.template.auth.foros.service.ForoService;
 import com.template.auth.repository.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,19 +23,19 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ForoServiceTest {
     @Mock UsuarioRepository usuarios;
-    @Mock ForoPublicacionRepository publicaciones;
-    @Mock ForoRespuestaRepository respuestas;
+    @Mock ForoRepository publicaciones;
+    @Mock ComentarioForoRepository respuestas;
     @Mock ForoVotoRepository votos;
-    @Mock RespuestaVotoRepository votosRespuesta;
+    @Mock ComentarioVotoRepository votosRespuesta;
     @InjectMocks ForoService service;
 
     @Test void noPermiteVotarLaPropiaPublicacion() {
         Usuario u = new Usuario();
         u.setId(10L);
         u.setEmail("u12345678@utp.edu.pe");
-        ForoPublicacion p = new ForoPublicacion();
-        p.setId(8L);
-        p.setAutor(u);
+        Foro p = new Foro();
+        p.setForoId(8L);
+        p.setUsuario(u);
         when(usuarios.findByEmail(u.getEmail())).thenReturn(Optional.of(u));
         when(publicaciones.findById(8L)).thenReturn(Optional.of(p));
         assertThrows(ResponseStatusException.class, () -> service.votar(u.getEmail(), 8L, 1));

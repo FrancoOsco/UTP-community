@@ -2,7 +2,6 @@ package com.template.auth.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

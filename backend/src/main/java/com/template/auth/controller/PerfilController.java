@@ -2,9 +2,10 @@ package com.template.auth.controller;
 
 import com.template.auth.dto.PerfilActualizarRequest;
 import com.template.auth.entity.Usuario;
+import com.template.auth.foros.repository.ForoRepository;
+import com.template.auth.foros.repository.ComentarioForoRepository;
 import com.template.auth.repository.UsuarioRepository;
-import com.template.auth.repository.ForoPublicacionRepository;
-import com.template.auth.repository.ForoRespuestaRepository;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -21,8 +22,8 @@ import java.util.LinkedHashMap;
 @RequiredArgsConstructor
 public class PerfilController {
     private final UsuarioRepository usuarios;
-    private final ForoPublicacionRepository publicaciones;
-    private final ForoRespuestaRepository respuestas;
+    private final ForoRepository publicaciones;
+    private final ComentarioForoRepository respuestas;
 
     private Usuario actual(Authentication auth) {
         return usuarios.findByEmail(auth.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
@@ -39,8 +40,8 @@ public class PerfilController {
         r.put("biografia", u.getBiografia());
         r.put("carrera", u.getCarrera());
         r.put("ciclo", u.getCiclo());
-        r.put("publicaciones", publicaciones.countByAutorId(u.getId()));
-        r.put("respuestas", respuestas.countByAutorId(u.getId()));
+        r.put("publicaciones", publicaciones.countByUsuario_Id(u.getId()));
+        r.put("respuestas", respuestas.countByUsuario_Id(u.getId()));
         return r;
     }
 

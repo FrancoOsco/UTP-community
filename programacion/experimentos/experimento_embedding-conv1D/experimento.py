@@ -410,7 +410,6 @@ print("Modelo compilado correctamente.")
 
 modelo.summary()
 
-
 # ============================================================
 # FASE 5 — ENTRENAMIENTO DE EMBEDDING + CONV1D
 # ============================================================
