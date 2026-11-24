@@ -1,0 +1,9 @@
+{
+  "umbral_clasificacion": 0.4,
+  "criterio_umbral": "F1 máximo en el conjunto de validación",
+  "clase_positiva": 1,
+  "decision_clase_positiva": "REVISIÓN",
+  "decision_clase_negativa": "PUBLICAR",
+  "max_tokens": 20000,
+  "max_sequence_length": 200
+}

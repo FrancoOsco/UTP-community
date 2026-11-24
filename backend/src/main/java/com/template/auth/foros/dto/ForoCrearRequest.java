@@ -1,6 +1,7 @@
-package com.template.auth.dto;
+package com.template.auth.foros.dto;
 
-import com.template.auth.entity.ForoCategoria;
+import com.template.auth.foros.entity.ForoCategoria;
+
 import jakarta.validation.constraints.*;
 
 public record ForoCrearRequest(@NotNull ForoCategoria categoria,

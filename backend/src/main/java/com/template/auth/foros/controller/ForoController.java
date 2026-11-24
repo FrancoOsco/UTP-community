@@ -1,8 +1,10 @@
-package com.template.auth.controller;
+package com.template.auth.foros.controller;
 
 import com.template.auth.dto.*;
-import com.template.auth.entity.ForoCategoria;
-import com.template.auth.service.ForoService;
+import com.template.auth.foros.dto.ForoCrearRequest;
+import com.template.auth.foros.entity.ForoCategoria;
+import com.template.auth.foros.service.ForoService;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

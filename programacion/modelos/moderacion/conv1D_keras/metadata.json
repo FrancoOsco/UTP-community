@@ -1,0 +1,22 @@
+{
+  "nombre": "modelo_conv1d_moderacion",
+  "version": "1.0.0",
+  "artefactos": {
+    "modelo": "modelo_embedding_conv1d.keras",
+    "vectorizador": "vectorizador_textos.keras",
+    "configuracion": "configuracion.json"
+  },
+  "evaluacion": {
+    "referencia": "../../../experimentos/experimento_embedding-conv1D/resultados_brutos.md",
+    "conjunto": "test",
+    "umbral_clasificacion": 0.4,
+    "metricas": {
+      "accuracy": 0.8347189478,
+      "precision": 0.8039113429,
+      "recall": 0.8416598417,
+      "f1": 0.8223526274,
+      "roc_auc": 0.9199766708,
+      "average_precision": 0.925458273
+    }
+  }
+}

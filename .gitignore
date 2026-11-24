@@ -25,3 +25,7 @@ database/pgadmin/
 
 # entorno virtual de py
 programacion/venv/
+moderation-api/.venv/
+
+# variables de entorno
+.vscode/launch.json

@@ -1,3 +1,3 @@
-package com.template.auth.entity;
+package com.template.auth.foros.entity;
 
 public enum ForoCategoria {PREGUNTAS, PROFESORES, CURSOS}
