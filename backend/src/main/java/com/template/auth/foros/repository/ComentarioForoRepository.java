@@ -9,7 +9,21 @@ import java.util.List;
 public interface ComentarioForoRepository extends JpaRepository<ComentarioForo, Long> {
     long countByUsuario_Id(Long usuarioId);
 
-    long countByForo_ForoId(Long foroId);
+    long countByForo_ForoIdAndEstadoPublicacionAndEstadoModeracion(
+            Long foroId,
+            String estadoPublicacion,
+            String estadoModeracion
+    );
 
-    List<ComentarioForo> findByForo_ForoIdOrderByFechaCreacionAsc(Long foroId);
+    List<ComentarioForo> findByForo_ForoIdAndEstadoPublicacionAndEstadoModeracionOrderByFechaCreacionAsc(
+            Long foroId,
+            String estadoPublicacion,
+            String estadoModeracion
+    );
+
+    java.util.Optional<ComentarioForo> findByComentarioIdAndEstadoPublicacionAndEstadoModeracion(
+            Long comentarioId,
+            String estadoPublicacion,
+            String estadoModeracion
+    );
 }

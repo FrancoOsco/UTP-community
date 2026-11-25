@@ -29,3 +29,7 @@ moderation-api/.venv/
 
 # variables de entorno
 .vscode/launch.json
+
+# Python cache
+__pycache__/
+*.py[cod]

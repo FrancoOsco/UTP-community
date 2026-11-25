@@ -1,6 +1,6 @@
 package com.template.auth.foros.dto;
 
-import com.template.auth.foros.entity.ForoCategoria;
+import com.template.auth.foros.enums.ForoCategoria;
 
 import jakarta.validation.constraints.*;
 

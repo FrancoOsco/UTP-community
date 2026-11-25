@@ -6,6 +6,7 @@ import lombok.*;
 import java.time.OffsetDateTime;
 
 import com.template.auth.entity.Usuario;
+import com.template.auth.foros.enums.ForoCategoria;
 
 @Entity
 @Table(name = "foro")
@@ -54,15 +55,19 @@ public class Foro {
     @PrePersist
     void alCrear() {
         OffsetDateTime ahora = OffsetDateTime.now();
+
         if (fechaCreacion == null) {
             fechaCreacion = ahora;
         }
+
         if (fechaActualizacion == null) {
             fechaActualizacion = ahora;
         }
+
         if (estadoPublicacion == null) {
-            estadoPublicacion = "PUBLICADO";
+            estadoPublicacion = "BORRADOR";
         }
+
         if (estadoModeracion == null) {
             estadoModeracion = "PENDIENTE";
         }

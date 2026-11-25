@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.template.auth.entity.Usuario;
+import com.template.auth.foros.enums.DecisionModeracion;
 
 import lombok.*;
 
