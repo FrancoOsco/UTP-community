@@ -6,14 +6,18 @@ import com.template.auth.foros.dto.ForoCrearRequest;
 import com.template.auth.foros.entity.ComentarioForo;
 import com.template.auth.foros.entity.ComentarioVoto;
 import com.template.auth.foros.entity.Foro;
-import com.template.auth.foros.entity.ForoCategoria;
 import com.template.auth.foros.entity.ForoVoto;
+import com.template.auth.foros.entity.Moderacion;
+import com.template.auth.foros.enums.DecisionModeracion;
+import com.template.auth.foros.enums.ForoCategoria;
 import com.template.auth.foros.repository.ComentarioVotoRepository;
 import com.template.auth.foros.repository.ComentarioForoRepository;
 import com.template.auth.foros.repository.ForoRepository;
 import com.template.auth.foros.repository.ForoVotoRepository;
+import com.template.auth.integration.moderation.exception.ModerationApiException;
 import com.template.auth.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -34,16 +38,32 @@ public class ForoService {
     private final ForoVotoRepository votos;
     private final ComentarioVotoRepository votosRespuesta;
 
+    private final ModeracionService moderacionService;
+    private final ForoModeracionEstadoService foroModeracionEstadoService;
+    private final ComentarioModeracionEstadoService comentarioModeracionEstadoService;
     private Usuario usuario(String email) {
         return usuarios.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
     }
 
     private Foro publicacion(Long id) {
-        return publicaciones.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Publicación no encontrada"));
+        return publicaciones.findById(id)
+                .filter(foro -> "PUBLICADO".equals(foro.getEstadoPublicacion()))
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Publicación no encontrada"
+                ));
     }
 
-    private ComentarioForo respuesta(Long id) {
-        return respuestas.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Respuesta no encontrada"));
+    private ComentarioForo respuestaVisible(Long id) {
+        return respuestas.findByComentarioIdAndEstadoPublicacionAndEstadoModeracion(
+                        id,
+                        "PUBLICADO",
+                        "APROBADO"
+                )
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Respuesta no encontrada"
+                ));
     }
 
     private Map<String, Object> salidaPublicacion(Foro p, Long usuarioId) {
@@ -55,7 +75,8 @@ public class ForoService {
         m.put("autor", p.getUsuario().getNombre() + " " + p.getUsuario().getApellido());
         m.put("autorId", p.getUsuario().getId());
         m.put("creadoEn", p.getFechaCreacion());
-        m.put("respuestas", respuestas.countByForo_ForoId(p.getForoId()));
+        m.put("respuestas", respuestas.countByForo_ForoIdAndEstadoPublicacionAndEstadoModeracion(
+                p.getForoId(), "PUBLICADO", "APROBADO"));
         m.put("puntos", votos.sumarValorPorForoId(p.getForoId()));
         m.put("miVoto", votos.findByForo_ForoIdAndUsuario_Id(p.getForoId(), usuarioId).map(ForoVoto::getValor).orElse(0));
         return m;
@@ -87,22 +108,87 @@ public class ForoService {
         Long userId = usuario(email).getId();
         Foro p = publicacion(id);
         Map<String, Object> resultado = new LinkedHashMap<>(salidaPublicacion(p, userId));
-        resultado.put("listaRespuestas", respuestas.findByForo_ForoIdOrderByFechaCreacionAsc(id).stream().map(r -> salidaRespuesta(r, userId)).toList());
+        resultado.put("listaRespuestas", respuestas
+                .findByForo_ForoIdAndEstadoPublicacionAndEstadoModeracionOrderByFechaCreacionAsc(
+                        id, "PUBLICADO", "APROBADO")
+                .stream()
+                .map(r -> salidaRespuesta(r, userId))
+                .toList());
         return resultado;
     }
 
-    @Transactional
     public Map<String, Object> crear(String email, ForoCrearRequest req) {
-        Foro p = new Foro();
+
         Usuario autor = usuario(email);
-        p.setUsuario(autor);
-        p.setCategoria(req.categoria());
-        p.setTitulo(req.titulo().trim());
-        p.setDescripcion(req.contenido().trim());
-        return salidaPublicacion(publicaciones.saveAndFlush(p), autor.getId());
+
+        // 1. Construir la publicación.
+        Foro foro = new Foro();
+
+        foro.setUsuario(autor);
+        foro.setCategoria(req.categoria());
+        foro.setTitulo(req.titulo().trim());
+        foro.setDescripcion(req.contenido().trim());
+
+        // 2. Establecer los estados iniciales.
+        foro.setEstadoPublicacion("BORRADOR");
+        foro.setEstadoModeracion("PENDIENTE");
+
+        // 3. Guardar antes de llamar a Python.
+        Foro guardado = publicaciones.saveAndFlush(foro);
+
+        // 4. Construir el texto que recibirá el modelo.
+        String texto = guardado.getTitulo()
+                + " [SEP] "
+                + guardado.getDescripcion();
+
+        // 5. Evaluar y registrar la moderación.
+        Moderacion moderacion =
+                moderacionService.evaluarForo(
+                        guardado.getForoId(),
+                        texto
+                );
+        if (moderacion == null || moderacion.getDecision() == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.SERVICE_UNAVAILABLE,
+                    "La moderación no devolvió una decisión válida."
+            );
+        }
+        DecisionModeracion decision = moderacion.getDecision();
+
+        // 6. Actualizar los estados de la publicación.
+        foroModeracionEstadoService.actualizarEstado(
+                guardado.getForoId(),
+                decision
+        );
+
+        // 7. Reflejar los estados definitivos en el objeto.
+        switch (decision) {
+
+            case APROBADO -> {
+                guardado.setEstadoPublicacion("PUBLICADO");
+                guardado.setEstadoModeracion("APROBADO");
+            }
+
+            case RECHAZADO -> {
+                guardado.setEstadoPublicacion("OCULTO");
+                guardado.setEstadoModeracion("RECHAZADO");
+            }
+
+            case REQUIERE_REVISION -> {
+                guardado.setEstadoPublicacion("OCULTO");
+                guardado.setEstadoModeracion("REQUIERE_REVISION");
+            }
+
+            case PENDIENTE -> {
+                guardado.setEstadoPublicacion("BORRADOR");
+                guardado.setEstadoModeracion("PENDIENTE");
+            }
+        }
+
+        // 8. Devolver la publicación.
+        return salidaPublicacion(guardado, autor.getId());
     }
 
-    @Transactional
     public Map<String, Object> responder(String email, Long id, RespuestaCrearRequest req) {
         Foro p = publicacion(id);
         Usuario autor = usuario(email);
@@ -110,7 +196,36 @@ public class ForoService {
         r.setForo(p);
         r.setUsuario(autor);
         r.setContenidoTexto(req.contenido().trim());
-        return salidaRespuesta(respuestas.saveAndFlush(r), autor.getId());
+        r.setEstadoPublicacion("BORRADOR");
+        r.setEstadoModeracion("PENDIENTE");
+
+        ComentarioForo guardado = respuestas.saveAndFlush(r);
+        Moderacion moderacion;
+        try {
+            moderacion = moderacionService.evaluarComentario(
+                    guardado.getComentarioId(),
+                    guardado.getContenidoTexto()
+            );
+        } catch (ModerationApiException ex) {
+            throw new ResponseStatusException(
+                    HttpStatus.SERVICE_UNAVAILABLE,
+                    "No fue posible completar la moderación del comentario. Inténtalo de nuevo más tarde.",
+                    ex
+            );
+        }
+
+        if (moderacion == null || moderacion.getDecision() == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.SERVICE_UNAVAILABLE,
+                    "La moderación no devolvió una decisión válida."
+            );
+        }
+
+        comentarioModeracionEstadoService.actualizarEstado(
+                guardado.getComentarioId(),
+                moderacion.getDecision()
+        );
+        return salidaRespuesta(guardado, autor.getId());
     }
 
     @Transactional
@@ -138,7 +253,8 @@ public class ForoService {
     @Transactional
     public Map<String, Object> votarRespuesta(String email, Long publicacionId, Long respuestaId, int valor) {
         Usuario u = usuario(email);
-        ComentarioForo r = respuesta(respuestaId);
+        publicacion(publicacionId);
+        ComentarioForo r = respuestaVisible(respuestaId);
         if (!r.getForo().getForoId().equals(publicacionId)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         if (r.getUsuario().getId().equals(u.getId()))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No puedes votar tu propia respuesta.");

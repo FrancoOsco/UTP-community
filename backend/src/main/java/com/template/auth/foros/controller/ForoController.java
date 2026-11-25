@@ -2,7 +2,7 @@ package com.template.auth.foros.controller;
 
 import com.template.auth.dto.*;
 import com.template.auth.foros.dto.ForoCrearRequest;
-import com.template.auth.foros.entity.ForoCategoria;
+import com.template.auth.foros.enums.ForoCategoria;
 import com.template.auth.foros.service.ForoService;
 
 import jakarta.validation.Valid;
