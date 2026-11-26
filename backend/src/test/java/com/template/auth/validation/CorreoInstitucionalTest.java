@@ -1,6 +1,9 @@
 package com.template.auth.validation;
 
 import org.junit.jupiter.api.Test;
+
+import com.template.auth.auth.validation.CorreoInstitucional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CorreoInstitucionalTest {

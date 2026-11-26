@@ -1,7 +1,9 @@
 package com.template.auth.service;
 
-import com.template.auth.exception.RefreshTokenInvalidoException;
-import com.template.auth.repository.RefreshTokenRepository;
+import com.template.auth.auth.exception.RefreshTokenInvalidoException;
+import com.template.auth.auth.repository.RefreshTokenRepository;
+import com.template.auth.auth.service.RefreshTokenService;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

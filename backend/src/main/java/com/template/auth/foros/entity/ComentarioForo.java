@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.time.OffsetDateTime;
 
-import com.template.auth.entity.Usuario;
+import com.template.auth.auth.entity.Usuario;
 
 @Entity
 @Table(name = "comentario_foro")

@@ -1,6 +1,6 @@
 package com.template.auth.foros.entity;
 
-import com.template.auth.entity.Usuario;
+import com.template.auth.auth.entity.Usuario;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,10 +1,12 @@
 package com.template.auth.service;
 
-import com.template.auth.entity.Usuario;
-import com.template.auth.repository.EmailVerificationTokenRepository;
-import com.template.auth.repository.PasswordResetTokenRepository;
-import com.template.auth.repository.RefreshTokenRepository;
-import com.template.auth.repository.UsuarioRepository;
+import com.template.auth.auth.entity.Usuario;
+import com.template.auth.auth.repository.EmailVerificationTokenRepository;
+import com.template.auth.auth.repository.PasswordResetTokenRepository;
+import com.template.auth.auth.repository.RefreshTokenRepository;
+import com.template.auth.auth.repository.UsuarioRepository;
+import com.template.auth.auth.service.UsuarioService;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

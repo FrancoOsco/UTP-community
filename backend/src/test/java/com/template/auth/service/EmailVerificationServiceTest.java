@@ -1,8 +1,11 @@
 package com.template.auth.service;
 
-import com.template.auth.exception.VerificationTokenInvalidoException;
-import com.template.auth.repository.EmailVerificationTokenRepository;
-import com.template.auth.repository.UsuarioRepository;
+import com.template.auth.auth.exception.VerificationTokenInvalidoException;
+import com.template.auth.auth.repository.EmailVerificationTokenRepository;
+import com.template.auth.auth.repository.UsuarioRepository;
+import com.template.auth.auth.service.EmailService;
+import com.template.auth.auth.service.EmailVerificationService;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
