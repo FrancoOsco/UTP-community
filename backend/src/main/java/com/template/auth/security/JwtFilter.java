@@ -1,8 +1,9 @@
 package com.template.auth.security;
 
-import com.template.auth.entity.Usuario;
-import com.template.auth.repository.UsuarioRepository;
-import com.template.auth.validation.CorreoInstitucional;
+import com.template.auth.auth.entity.Usuario;
+import com.template.auth.auth.repository.UsuarioRepository;
+import com.template.auth.auth.validation.CorreoInstitucional;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

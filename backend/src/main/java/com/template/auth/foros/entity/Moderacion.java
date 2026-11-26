@@ -11,11 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-import com.template.auth.entity.Usuario;
+import com.template.auth.auth.entity.Usuario;
 import com.template.auth.foros.enums.DecisionModeracion;
 
 import lombok.*;
@@ -69,8 +70,17 @@ public class Moderacion {
     @Column(name = "fecha_evaluacion", nullable = false, updatable = false)
     private OffsetDateTime fechaEvaluacion;
 
+    @Column(name = "atendido_por")
+    private Long atendidoPor;
+
     @Column(name = "fecha_revision")
     private OffsetDateTime fechaRevision;
+
+    @Column(name = "fecha_asignacion")
+    private OffsetDateTime fechaAsignacion;
+
+    @Column(name = "fecha_expiracion_asignacion")
+    private OffsetDateTime fechaExpiracionAsignacion;
 
     // Relaciones opcionales (solo lectura/navegación si ya tienes las entidades Foro, ComentarioForo y Usuario)
     @ManyToOne(fetch = FetchType.LAZY)
@@ -81,9 +91,14 @@ public class Moderacion {
     @JoinColumn(name = "comentario_id", insertable = false, updatable = false)
     private ComentarioForo comentarioForo;
 
+    // Relaciones solo lectura
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "revisado_por", insertable = false, updatable = false)
     private Usuario revisor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "atendido_por", insertable = false, updatable = false)
+    private Usuario moderadorAsignado;
 
     @PrePersist
     protected void onCreate() {
@@ -92,6 +107,18 @@ public class Moderacion {
         }
         if (this.decision == null) {
             this.decision = DecisionModeracion.PENDIENTE;
+        }
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        validarObjetivo();
+    }
+
+    private void validarObjetivo() {
+        if ((foroId == null) == (comentarioId == null)) {
+            throw new IllegalStateException(
+                "Debe informarse exactamente uno: foroId o comentarioId.");
         }
     }
 }

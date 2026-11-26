@@ -1,13 +1,14 @@
 package com.template.auth.service;
 
-import com.template.auth.entity.*;
+import com.template.auth.auth.entity.*;
+import com.template.auth.auth.repository.*;
 import com.template.auth.foros.entity.Foro;
 import com.template.auth.foros.repository.ForoRepository;
 import com.template.auth.foros.repository.ComentarioForoRepository;
 import com.template.auth.foros.repository.ForoVotoRepository;
 import com.template.auth.foros.repository.ComentarioVotoRepository;
 import com.template.auth.foros.service.ForoService;
-import com.template.auth.repository.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

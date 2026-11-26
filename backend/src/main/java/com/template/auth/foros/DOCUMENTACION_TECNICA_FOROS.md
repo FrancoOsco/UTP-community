@@ -1,168 +1,169 @@
-# Módulo de foros: documentación técnica
+# Documentación técnica del módulo de foros
 
-Esta guía describe la implementación Java del módulo `com.template.auth.foros`: publicaciones, comentarios/respuestas, votos y moderación. Está dirigida a quienes mantengan o amplíen el backend.
+Esta guía describe la implementación del paquete `com.template.auth.foros` y sus integraciones. Está orientada a desarrolladores que mantengan o amplíen el backend.
 
-## 1. Alcance y estructura
+## 1. Estructura y responsabilidades
 
 ```text
 com.template.auth.foros/
-├── controller/   # Rutas REST y validación de entrada
-├── dto/          # Contratos propios del módulo
+├── controller/   # Endpoints REST y validación HTTP
+├── dto/          # Contratos de entrada/salida
 ├── entity/       # Entidades JPA
-├── enums/        # Categorías y estados
-├── repository/   # Persistencia y consultas Spring Data JPA
-└── service/      # Reglas de negocio y coordinación
+├── enums/        # Categorías, estados y decisiones
+├── repository/   # Consultas Spring Data y SQL específico
+└── service/      # Reglas y orquestación de casos de uso
 ```
 
-El módulo usa además tipos compartidos de `com.template.auth.dto` (por ejemplo, `RespuestaCrearRequest` y `VotoRequest`), la entidad `Usuario`, y el cliente de moderación ubicado en `com.template.auth.integration.moderation`.
-
-Flujo general:
+El paquete utiliza además `Usuario`, `UsuarioRepository`, DTOs comunes (`RespuestaCrearRequest`, `VotoRequest`) y `com.template.auth.integration.moderation` para llamar a FastAPI.
 
 ```text
-ForoController → ForoService → repositories/JPA
-                         ├── ModeracionService → ModerationApiClient → API Python
-                         ├── ForoModeracionEstadoService
-                         └── ComentarioModeracionEstadoService
+ForoController ──> ForoService ──> repositorios
+                         ├──> ModeracionService ──> ModerationApiClient ──> Python
+                         └──> ModeracionWorkflowService
+                                      ├──> servicios de estado foro/comentario
+                                      └──> NotificacionService
+
+ModeracionController ──> ModeracionService ──> ModeracionRepository
+NotificacionController ──> NotificacionService ──> NotificacionRepository
 ```
 
-El controlador traduce HTTP a llamadas de servicio. `ForoService` concentra las operaciones y las consultas de salida; los repositorios persisten entidades. La llamada al servicio Python y la decisión de moderación se coordinan desde `ModeracionService`.
+Los controladores no deben devolver entidades JPA. Moderación y notificaciones usan DTOs para limitar campos expuestos y evitar problemas de relaciones lazy/ciclos de serialización.
 
-## 2. API REST
+## 2. Modelo de persistencia
 
-La ruta base es `/api/foros`. Las operaciones que reciben `Authentication` usan `auth.getName()` como correo del usuario; `ForoService` lo resuelve con `UsuarioRepository`. La autorización general de estas rutas depende también de la configuración de seguridad de la aplicación.
-
-| Método y ruta | Función | Entrada principal |
+| Entidad | Tabla | Función |
 |---|---|---|
-| `GET /api/foros/categorias` | Devuelve las categorías configuradas (`PREGUNTAS`, `PROFESORES`, `CURSOS`). | Ninguna |
-| `GET /api/foros` | Lista publicaciones visibles, con paginación y filtros. | `categoria` opcional, `buscar` (por defecto vacío), `pagina` (por defecto `0`) |
-| `GET /api/foros/{id}` | Devuelve el detalle de una publicación visible y sus comentarios visibles. | ID de publicación |
-| `POST /api/foros` | Crea una publicación y la envía a moderación. Responde `201`. | `ForoCrearRequest` |
-| `POST /api/foros/{id}/respuestas` | Crea y modera un comentario/respuesta. Responde `201`. | `{"contenido":"..."}` |
-| `POST /api/foros/{id}/votos` | Crea, cambia o elimina el voto del usuario en el foro. | `{"valor":-1}`, `{"valor":0}` o `{"valor":1}` |
-| `POST /api/foros/{id}/respuestas/{respuestaId}/votos` | Crea, cambia o elimina el voto sobre un comentario visible. | `{"valor":-1}`, `{"valor":0}` o `{"valor":1}` |
+| `Foro` | `foro` | Publicación, autor, categoría, título, descripción, estados y fechas. |
+| `ComentarioForo` | `comentario_foro` | Respuesta asociada a foro y autor. Admite una relación `comentarioPadre`, aunque la API actual no implementa respuestas anidadas. |
+| `ForoVoto` | `foro_votos` | Un voto por usuario y foro (restricción única). |
+| `ComentarioVoto` | `comentario_votos` | Un voto por usuario y comentario (restricción única). |
+| `Moderacion` | `moderacion` | Predicción, decisión vigente, asociación a foro o comentario, asignación temporal y auditoría de resolución humana. |
+| `Notificacion` | `notificacion` | Aviso por usuario sobre una moderación que requiere revisión. Restricción única por usuario y moderación. |
 
-`ForoCrearRequest` valida `categoria` como obligatoria, `titulo` no vacío (8–150 caracteres) y `contenido` no vacío (15–5000 caracteres). El contenido del request se guarda en `Foro.descripcion`. `RespuestaCrearRequest` valida `contenido` no vacío (2–3000 caracteres). `VotoRequest` limita `valor` al rango `[-1, 1]`.
+`Moderacion` debe referirse a exactamente un objetivo: `foroId` o `comentarioId`. Guarda `etiquetaPredicha`, `moderationScore`, `predictionConfidence`, nombre/versión del modelo y `decision`. En revisión humana, `decision` se sobrescribe con la decisión final; `etiquetaConfirmada`, `revisadoPor`, `fechaRevision` y `motivoDecision` guardan los datos de la resolución.
 
-Las respuestas de publicaciones y comentarios se construyen actualmente como mapas, no como DTOs dedicados. La publicación expone `id`, `categoria`, `titulo`, `contenido`, `autor`, `autorId`, `creadoEn`, `respuestas`, `puntos` y `miVoto`. El detalle agrega `listaRespuestas`. Cada comentario expone `id`, `publicacionId`, `contenido`, `autor`, `autorId`, `creadoEn`, `puntos` y `miVoto`. El listado devuelve un `Page` de Spring Data.
+Los campos `atendidoPor`, `fechaAsignacion` y `fechaExpiracionAsignacion` representan una reserva activa. Al liberar o resolver se limpian. La persona y fecha de resolución permanecen en `revisadoPor` y `fechaRevision`; la fecha en que se tomó la reserva no se conserva después de resolverla.
 
-Los errores de negocio usan `ResponseStatusException`; `GlobalExceptionHandler` los serializa como JSON con `status` y `message`. Los errores de validación de los DTOs se responden como `400`.
+## 3. Estados, decisiones y visibilidad
 
-## 3. Modelo de datos
+Los estados de publicación/moderación de `Foro` y `ComentarioForo` están mapeados como `String`; evitar valores distintos de los enums existentes.
 
-| Entidad | Tabla | Responsabilidad y relaciones |
-|---|---|---|
-| `Foro` | `foro` | Publicación con usuario autor, categoría, título, descripción, estados y fechas. |
-| `ComentarioForo` | `comentario_foro` | Respuesta ligada a un foro y a un usuario; incluye `comentarioPadre` opcional para jerarquía, contenido, estados y fechas. |
-| `ForoVoto` | `foro_votos` | Voto de un usuario sobre un foro. La entidad declara unicidad por foro y usuario. |
-| `ComentarioVoto` | `comentario_votos` | Voto de un usuario sobre un comentario. La entidad declara unicidad por comentario y usuario. |
-| `Moderacion` | `moderacion` | Auditoría de inferencia: foro o comentario asociado, nombre/versión del modelo, etiqueta, score, confianza, decisión y datos de revisión. |
-
-Las asociaciones a `Usuario`, `Foro` y comentario usan carga `LAZY` donde está declarada. No se deben serializar entidades JPA directamente: el servicio arma las respuestas HTTP para controlar el contrato y evitar ciclos de relaciones.
-
-`Moderacion` relaciona el registro con el contenido mediante IDs escalares (`foroId` o `comentarioId`); su validación de servicio requiere que exactamente uno de ellos esté presente.
-
-## 4. Estados y visibilidad
-
-Los campos de estado de `Foro` y `ComentarioForo` se almacenan como `String`, aunque existen enums equivalentes en `enums/`. Los valores usados por los servicios son:
-
-| Decisión (`DecisionModeracion`) | `estadoModeracion` | `estadoPublicacion` | Visible en consultas públicas |
+| Decisión vigente | Estado de moderación del contenido | Estado de publicación | Público |
 |---|---|---|---|
 | `APROBADO` | `APROBADO` | `PUBLICADO` | Sí |
 | `REQUIERE_REVISION` | `REQUIERE_REVISION` | `OCULTO` | No |
 | `RECHAZADO` | `RECHAZADO` | `OCULTO` | No |
 | `PENDIENTE` | `PENDIENTE` | `BORRADOR` | No |
 
-La lista y el acceso al detalle de foro filtran publicaciones por `estadoPublicacion = PUBLICADO`. Para comentarios, las consultas públicas requieren simultáneamente `estadoPublicacion = PUBLICADO` y `estadoModeracion = APROBADO`. El contador de respuestas también cuenta solo comentarios con ambos estados. El voto de respuesta vuelve a comprobar esos estados; un comentario no visible se trata como no encontrado (`404`).
+`ForoRepository.buscarPorCategoriaYTexto` y la validación de acceso a detalle/voto filtran foros por `estadoPublicacion = PUBLICADO`. Las respuestas y sus conteos públicos requieren `estadoPublicacion = PUBLICADO` **y** `estadoModeracion = APROBADO`. Los votos de respuestas aplican el mismo filtro; los comentarios no visibles se tratan como no encontrados.
 
-Los estados iniciales de `Foro` son `BORRADOR`/`PENDIENTE`. `ComentarioForo.@PrePersist` tiene como valor por defecto `PUBLICADO`/`PENDIENTE`, por lo que el flujo de creación establece explícitamente `BORRADOR`/`PENDIENTE` antes de persistir. Mantener este paso es esencial: evita que un comentario aparezca antes de terminar la moderación.
+Los enums `EstadoPublicacion`, `EstadoModeracion` y `DecisionModeracion` documentan los valores. Las entidades guardan los dos primeros como texto, no como `@Enumerated`.
 
-## 5. Creación y moderación
+## 4. Flujo de creación y moderación automática
 
-### Publicación
+### Foro
 
-1. `ForoService.crear` resuelve el autor, normaliza con `trim()` título y contenido, y guarda el foro como `BORRADOR`/`PENDIENTE`.
-2. Forma el texto de inferencia como `titulo + " [SEP] " + descripcion`.
-3. Llama a `ModeracionService.evaluarForo`, que envía el texto al cliente Python y persiste la predicción en `moderacion`.
-4. `ForoModeracionEstadoService` actualiza los estados. La decisión se aplica también al objeto de respuesta usado por `ForoService`.
+1. `ForoService.crear` valida/recorta la entrada y guarda primero el foro como `BORRADOR`/`PENDIENTE` para obtener su ID.
+2. Prepara el texto como `titulo + " [SEP] " + descripcion` y solicita predicción a `ModeracionService.predecir`.
+3. `ModeracionWorkflowService.procesarForo` registra la predicción, calcula la decisión, actualiza el estado del foro y crea notificaciones si requiere revisión.
+4. `ForoService.crear` devuelve el mapa de publicación existente. Este mapa no incluye el estado de moderación.
 
-### Comentario/respuesta
+**Nota de mantenimiento:** `ForoService.crear` todavía vuelve a invocar la actualización de estado y la notificación después de `procesarForo`. El workflow ya realizó esas operaciones; antes de reorganizar el flujo, conservar el estado transaccional y la notificación única.
 
-1. `ForoService.responder` exige que el foro padre esté publicado y resuelve al usuario.
-2. Recorta el contenido con `trim()`, asigna `BORRADOR`/`PENDIENTE` explícitamente y guarda el comentario para obtener su ID.
-3. Envía solamente `contenidoTexto` a `ModeracionService.evaluarComentario`; no concatena `[SEP]` para el comentario.
-4. `ModeracionService` persiste la inferencia y su decisión. `ComentarioModeracionEstadoService` aplica los estados definitivos.
-5. Si el cliente Python lanza `ModerationApiException`, el endpoint traduce el problema a `503 Service Unavailable`. El registro inicial permanece pendiente y, por tanto, fuera de las consultas públicas.
+### Comentario
 
-La creación de comentario no mantiene una transacción de servicio abierta alrededor de la llamada HTTP. Los cambios de estado se aplican en una transacción local aparte. Si el proceso falla después de persistir el contenido, este puede quedar como borrador pendiente; un mecanismo de reintento o revisión manual no está implementado por este módulo.
+1. `ForoService.responder` exige que el foro esté publicado y guarda el comentario explícitamente como `BORRADOR`/`PENDIENTE`.
+2. Envía únicamente `contenidoTexto` a Python; no agrega `[SEP]`.
+3. `ModeracionWorkflowService.procesarComentario` guarda la predicción, actualiza estado y crea notificaciones cuando corresponde.
+4. Devuelve el mapa de comentario existente, sin campos de estado.
 
-### Política de decisión
+Las llamadas HTTP a Python ocurren antes de la transacción local del workflow. Si falla la inferencia, el contenido ya guardado permanece oculto/pending; no existe una operación automática de reintento en este módulo. Para comentarios, `ModerationApiException` se convierte en `503`; verificar el manejo de errores al modificar el flujo de foro.
 
-`ModeracionService` usa `ModerationResponse.score` para clasificar:
+### Umbrales
 
-| Rango de `score` | Decisión |
+`ModeracionService` usa `ModerationResponse.score`:
+
+| Score | Decisión automática |
 |---|---|
-| Menor que `0.40` | `APROBADO` |
-| Desde `0.40` hasta menor que `0.90` | `REQUIERE_REVISION` |
-| Desde `0.90` hasta `1.0` | `RECHAZADO` |
+| `< 0.40` | `APROBADO` |
+| `>= 0.40` y `< 0.90` | `REQUIERE_REVISION` |
+| `>= 0.90` | `RECHAZADO` |
 
-La respuesta del API de moderación también debe contener `label`, `probability`, `model_version` y `model_name`. El servicio valida presencia, rango de etiqueta/valores y nombres no vacíos antes de guardar. El significado exacto de `score` depende del contrato del servicio Python; antes de cambiar umbrales, contrastarlo con la documentación de `moderation-api` y los artefactos del modelo.
+La respuesta Python requiere `label`, `probability`, `score`, `model_version` y `model_name`; el servicio comprueba presencia y rangos. Mantener el preprocesamiento de acuerdo con los artefactos y documentación de `moderation-api`.
 
-## 6. Persistencia y responsabilidades de clases
+## 5. API de foros
 
-### Controlador
+Base: `/api/foros`. Todas las rutas requieren autenticación según `SecurityConfig`. Las operaciones que reciben `Authentication` usan `auth.getName()` como email del usuario.
 
-`ForoController` declara rutas, extrae el usuario autenticado cuando aplica, activa validación con `@Valid` y delega el comportamiento. No colocar lógica de persistencia o de inferencia aquí.
+| Método y ruta | Entrada | Resultado |
+|---|---|---|
+| `GET /api/foros/categorias` | — | Lista de `{id,nombre}` para `PREGUNTAS`, `PROFESORES`, `CURSOS`. |
+| `GET /api/foros?categoria=&buscar=&pagina=0` | Filtros opcionales | `Page` de foros publicados; tamaño 10, orden descendente por creación. |
+| `GET /api/foros/{id}` | ID | Foro publicado y `listaRespuestas` aprobadas/publicadas. |
+| `POST /api/foros` | `ForoCrearRequest` | `201`; crea y modera un foro. |
+| `POST /api/foros/{id}/respuestas` | `{"contenido":"..."}` | `201`; crea y modera una respuesta. |
+| `POST /api/foros/{id}/votos` | `{"valor":-1|0|1}` | Puntos agregados y voto propio. `0` elimina el voto. |
+| `POST /api/foros/{id}/respuestas/{respuestaId}/votos` | `{"valor":-1|0|1}` | Igual para una respuesta visible que pertenezca al foro indicado. |
 
-### Servicio de aplicación
+Validaciones: foro: categoría obligatoria, título 8–150 caracteres, contenido 15–5000; respuesta: contenido 2–3000; voto: entero de -1 a 1. El servicio recorta título y contenido. El listado devuelve la estructura paginada de Spring Data (`content`, `totalElements`, `totalPages`, `number`, etc.).
 
-`ForoService` orquesta listar, detalle, crear, responder y votar. Centraliza la validación de foro visible y crea los mapas de salida. Las operaciones de voto están dentro de `@Transactional`; las consultas de listado/detalle son de solo lectura. Las creaciones guardan antes de llamar al servicio externo para tener el ID que se registra en moderación.
+Los mapas de foro tienen `id`, `categoria`, `titulo`, `contenido`, `autor`, `autorId`, `creadoEn`, `respuestas`, `puntos` y `miVoto`. El detalle añade `listaRespuestas`. Cada respuesta tiene `id`, `publicacionId`, `contenido`, `autor`, `autorId`, `creadoEn`, `puntos` y `miVoto`. Los contratos de creación no indican si el contenido quedó oculto por moderación: el cliente no debe inferir que se publicó solo por recibir `201`.
 
-`ModeracionService` adapta la respuesta de Python a la entidad de auditoría `Moderacion`, calcula la decisión y verifica la validez de la predicción.
+## 6. API de moderación humana
 
-`ForoModeracionEstadoService` y `ComentarioModeracionEstadoService` actualizan estado de publicación y moderación dentro de transacciones locales. Al añadir nuevas decisiones o estados, mantener ambos mapeos coherentes.
+Base: `/api/moderacion`. `SecurityConfig` limita el prefijo a `MODERADOR` o `ADMIN`; `ModeracionService` resuelve el email autenticado y vuelve a comprobar esos roles.
 
-### Repositorios
+| Método y ruta | Comportamiento |
+|---|---|
+| `GET /api/moderacion/bandeja` | Últimas moderaciones vigentes en `REQUIERE_REVISION`; incluye disponibles, asignadas y vencidas. |
+| `GET /api/moderacion/mis-revisiones` | Reservas activas del usuario autenticado, no vencidas. |
+| `POST /api/moderacion/revisiones/{moderacionId}/tomar` | Reserva atómicamente la revisión durante 30 minutos. |
+| `DELETE /api/moderacion/revisiones/{moderacionId}/reserva` | Libera la reserva propia; `204`. |
+| `PATCH /api/moderacion/revisiones/{moderacionId}/decision` | Resuelve la revisión como `APROBADO` o `RECHAZADO`. |
 
-- `ForoRepository.buscarPorCategoriaYTexto` pagina y filtra por publicación visible, categoría opcional y texto en título/descripción.
-- `ComentarioForoRepository` ofrece consultas y conteos filtrados por ambos estados visibles, además del conteo de comentarios por usuario.
-- `ForoVotoRepository` y `ComentarioVotoRepository` buscan el voto del usuario y calculan suma de valores.
-- `ModeracionRepository` consulta el historial más reciente por ID de foro o comentario.
+El DTO de bandeja incluye ID/tipo/contenido/autor, predicción y datos de reserva. La respuesta de tomar es `{ "mensaje": "...", "revision": { ... } }`. La resolución requiere:
 
-Los nombres de métodos derivados dependen de los nombres de propiedades Java y sus relaciones (por ejemplo, `Foro_ForoId`); cambiar una propiedad requiere revisar también dichos métodos.
+```json
+{
+  "decision": "APROBADO",
+  "motivo": "Contenido revisado y permitido."
+}
+```
 
-## 7. Integración con el servicio Python
+`decision` solo admite `APROBADO` o `RECHAZADO`; `motivo` es opcional y acepta hasta 2000 caracteres. Resolver exige ser dueño de una reserva vigente y que el registro aún sea la moderación más reciente del contenido. La actualización condicional devuelve `409` si la revisión venció, cambió de dueño, ya se resolvió o dejó de ser vigente.
 
-El paquete `com.template.auth.integration.moderation` contiene el cliente HTTP y sus DTOs/excepciones. `ModeracionService` llama `ModerationApiClient.predict(texto)`. La URL base, API Key y configuración del cliente viven fuera de `foros`, en la configuración de integración (`ModerationApiConfig` y `application.properties`). No poner secretos en este módulo ni en el repositorio; usar la configuración segura del entorno.
+Al resolver, `Moderacion.decision` se sobrescribe con la decisión humana. Se persisten `etiquetaConfirmada` (0 para aprobado, 1 para rechazado), `revisadoPor`, `fechaRevision` y `motivoDecision`. Se actualiza el contenido en la misma transacción: aprobado => publicado; rechazado => oculto. La reserva se limpia y la revisión desaparece de las consultas activas.
 
-El formato de texto debe coincidir con el entrenamiento. Para foro se usa el separador literal `[SEP]` entre título y descripción; para comentario se envía únicamente el contenido. Si el preprocesamiento o contrato Python cambia, coordinar el cambio con `moderation-api` y sus pruebas/documentación.
+Errores de servicio previstos: `404` si no existe el ID, `403` si el usuario no tiene rol, `409` si no se puede tomar/liberar/resolver por el estado o dueño de la reserva, `400` si el cuerpo no cumple contrato. Las respuestas de seguridad pueden no compartir el mismo cuerpo JSON que `GlobalExceptionHandler`.
 
-## 8. Guía para extender el módulo
+## 7. API de notificaciones
 
-Antes de añadir una función:
+Base: `/api/notificaciones`. El acceso está limitado a roles `MODERADOR` y `ADMIN`; las consultas se filtran por el usuario autenticado.
 
-1. Definir su contrato HTTP en `ForoController` y validar las entradas con DTOs y Jakarta Validation.
-2. Implementar reglas y autorización contextual en `ForoService` o en un servicio específico; no confiar solo en que el frontend oculte acciones.
-3. Para cualquier lectura pública, filtrar por los estados visibles. Revisar también búsquedas, conteos, votos, respuestas y relaciones anidadas para evitar filtraciones indirectas.
-4. Si se cambia el ciclo de moderación, conservar el estado no visible durante la inferencia y actualizar el historial de `Moderacion` correctamente.
-5. Crear métodos de repositorio acordes a los nombres reales de propiedades y respetar límites transaccionales, especialmente alrededor de llamadas HTTP.
-6. Mantener estables las claves JSON que consume el frontend o versionar/documentar cualquier cambio de contrato.
-7. Añadir pruebas unitarias e integración para decisiones aprobadas, revisión/rechazo, API Python no disponible, visibilidad, conteos, permisos y votos.
+| Método y ruta | Resultado |
+|---|---|
+| `GET /api/notificaciones` | Notificaciones propias, más recientes primero. |
+| `GET /api/notificaciones/no-leidas` | Solo notificaciones propias no leídas. |
+| `GET /api/notificaciones/no-leidas/count` | Número JSON, por ejemplo `3` (no un objeto envolvente). |
+| `PATCH /api/notificaciones/{id}/leer` | Marca una notificación propia como leída; `204`. Repetirla es idempotente. |
 
-## 9. Consideraciones conocidas
+La respuesta de cada notificación incluye `notificacionId`, `moderacionId`, `tipoContenido`, `contenidoId`, `mensaje`, `leida`, `fechaCreacion` y `fechaLectura`. Se genera una notificación por cada usuario con rol `MODERADOR` o `ADMIN` cuando una decisión automática requiere revisión. La restricción única evita duplicar avisos por usuario y moderación. Intentar marcar una notificación ajena se responde como `404`.
 
-- La entidad permite `comentarioPadre`, pero las rutas actuales no reciben un ID de comentario padre ni exponen un flujo de respuesta anidada.
-- La respuesta de creación de comentario conserva el mapa de comentario existente y no incluye los estados de moderación. Si el cliente debe distinguir entre publicado y pendiente, acordar primero un DTO/contrato explícito.
-- El conteo por autor (`countByUsuario_Id`) no filtra estados; el perfil puede contar comentarios no visibles. Si el producto requiere estadísticas solo públicas, crear una consulta específica con ambos estados.
-- Los estados se persisten como cadenas. Los enums existentes documentan los valores, pero no están conectados por `@Enumerated` a los campos de las entidades. Evitar introducir valores escritos de forma inconsistente; una futura migración a enums debe coordinarse con el esquema y datos existentes.
-- Las consultas públicas de foro filtran por `estadoPublicacion`; el módulo no verifica adicionalmente `estadoModeracion` en `ForoRepository`. La creación aplica los dos campos juntos, pero cualquier herramienta administrativa que modifique estados debe conservar esa correspondencia.
+## 8. Persistencia, transacciones y extensibilidad
 
-## 10. Archivos de referencia
+- `ModeracionWorkflowService` agrupa el registro de una predicción, el cambio de estado del contenido y la generación de notificación en una transacción local. La llamada Python debe permanecer fuera de esa transacción.
+- Las reservas usan SQL condicional y actualización atómica en `ModeracionRepository`; no sustituirlas por un ciclo leer-modificar-guardar sin bloqueo/condición equivalente.
+- Resolver combina actualización condicional de moderación y cambio de estado de foro/comentario en una transacción, para no dejar una decisión final desacoplada de la visibilidad.
+- Las notificaciones tienen métodos de lectura/escritura separados y una actualización condicionada por destinatario. Mantener el filtro por usuario para evitar IDOR.
+- Al añadir rutas, validar entrada en DTOs, revisar `SecurityConfig`, no devolver entidades y cubrir permisos, estados ocultos, expiración y concurrencia.
+- Antes de cambiar enums, nombres de propiedades o columnas, revisar JPQL, métodos derivados y SQL nativo del repositorio.
 
-- Controlador: `controller/ForoController.java`
-- Orquestación: `service/ForoService.java`
-- Inferencia y auditoría: `service/ModeracionService.java`, `entity/Moderacion.java`
+## 9. Referencias de código
+
+- API: `controller/ForoController.java`, `controller/ModeracionController.java`, `controller/NotificacionController.java`
+- Orquestación: `service/ForoService.java`, `service/ModeracionService.java`, `service/ModeracionWorkflowService.java`, `service/NotificacionService.java`
 - Estados: `service/ForoModeracionEstadoService.java`, `service/ComentarioModeracionEstadoService.java`
+- Entidades y DTOs: `entity/`, `dto/`
 - Persistencia: `repository/`
-- Entidades: `entity/`
-- Categorías y estados: `enums/`
-- Configuración del servicio Python: `com.template.auth.integration.moderation` y `backend/src/main/resources/application.properties`
+- Autorización: `backend/src/main/java/com/template/auth/config/SecurityConfig.java`
+- Integración Python: `com.template.auth.integration.moderation` y `backend/src/main/resources/application.properties`

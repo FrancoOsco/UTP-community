@@ -1,7 +1,8 @@
 package com.template.auth.foros.service;
 
-import com.template.auth.dto.RespuestaCrearRequest;
-import com.template.auth.entity.Usuario;
+import com.template.auth.auth.dto.RespuestaCrearRequest;
+import com.template.auth.auth.entity.Usuario;
+import com.template.auth.auth.repository.UsuarioRepository;
 import com.template.auth.foros.dto.ForoCrearRequest;
 import com.template.auth.foros.entity.ComentarioForo;
 import com.template.auth.foros.entity.ComentarioVoto;
@@ -14,8 +15,9 @@ import com.template.auth.foros.repository.ComentarioVotoRepository;
 import com.template.auth.foros.repository.ComentarioForoRepository;
 import com.template.auth.foros.repository.ForoRepository;
 import com.template.auth.foros.repository.ForoVotoRepository;
+import com.template.auth.integration.moderation.dto.ModerationResponse;
 import com.template.auth.integration.moderation.exception.ModerationApiException;
-import com.template.auth.repository.UsuarioRepository;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Page;
@@ -40,7 +42,11 @@ public class ForoService {
 
     private final ModeracionService moderacionService;
     private final ForoModeracionEstadoService foroModeracionEstadoService;
-    private final ComentarioModeracionEstadoService comentarioModeracionEstadoService;
+
+    private final NotificacionService notificacionService;
+
+    private final ModeracionWorkflowService moderacionWorkflowService;
+
     private Usuario usuario(String email) {
         return usuarios.findByEmail(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
     }
@@ -141,18 +147,17 @@ public class ForoService {
                 + " [SEP] "
                 + guardado.getDescripcion();
 
-        // 5. Evaluar y registrar la moderación.
+        // 5. Solicitar predicción a Python.
+        ModerationResponse prediccion =
+                moderacionService.predecir(texto);
+
+        // 6. Persistir moderación, actualizar estados y notificar.
         Moderacion moderacion =
-                moderacionService.evaluarForo(
+                moderacionWorkflowService.procesarForo(
                         guardado.getForoId(),
-                        texto
+                        prediccion
                 );
-        if (moderacion == null || moderacion.getDecision() == null) {
-            throw new ResponseStatusException(
-                    HttpStatus.SERVICE_UNAVAILABLE,
-                    "La moderación no devolvió una decisión válida."
-            );
-        }
+
         DecisionModeracion decision = moderacion.getDecision();
 
         // 6. Actualizar los estados de la publicación.
@@ -160,6 +165,9 @@ public class ForoService {
                 guardado.getForoId(),
                 decision
         );
+
+        // 6.1. Notificar a los moderadores si requiere revisión humana.
+        notificacionService.notificarRevision(moderacion);
 
         // 7. Reflejar los estados definitivos en el objeto.
         switch (decision) {
@@ -200,12 +208,14 @@ public class ForoService {
         r.setEstadoModeracion("PENDIENTE");
 
         ComentarioForo guardado = respuestas.saveAndFlush(r);
-        Moderacion moderacion;
+
+        ModerationResponse prediccion;
+
         try {
-            moderacion = moderacionService.evaluarComentario(
-                    guardado.getComentarioId(),
+            prediccion = moderacionService.predecir(
                     guardado.getContenidoTexto()
             );
+
         } catch (ModerationApiException ex) {
             throw new ResponseStatusException(
                     HttpStatus.SERVICE_UNAVAILABLE,
@@ -214,6 +224,12 @@ public class ForoService {
             );
         }
 
+        Moderacion moderacion =
+                moderacionWorkflowService.procesarComentario(
+                        guardado.getComentarioId(),
+                        prediccion
+                );
+
         if (moderacion == null || moderacion.getDecision() == null) {
             throw new ResponseStatusException(
                     HttpStatus.SERVICE_UNAVAILABLE,
@@ -221,10 +237,6 @@ public class ForoService {
             );
         }
 
-        comentarioModeracionEstadoService.actualizarEstado(
-                guardado.getComentarioId(),
-                moderacion.getDecision()
-        );
         return salidaRespuesta(guardado, autor.getId());
     }
 

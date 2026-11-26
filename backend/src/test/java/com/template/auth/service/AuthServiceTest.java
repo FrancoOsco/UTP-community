@@ -1,13 +1,16 @@
 package com.template.auth.service;
 
-import com.template.auth.dto.AuthTokens;
-import com.template.auth.dto.LoginRequest;
-import com.template.auth.dto.UsuarioRequest;
-import com.template.auth.entity.Usuario;
-import com.template.auth.exception.CredencialesInvalidasException;
-import com.template.auth.exception.EmailNoVerificadoException;
-import com.template.auth.exception.EmailYaRegistradoException;
-import com.template.auth.repository.UsuarioRepository;
+import com.template.auth.auth.dto.AuthTokens;
+import com.template.auth.auth.dto.LoginRequest;
+import com.template.auth.auth.dto.UsuarioRequest;
+import com.template.auth.auth.entity.Usuario;
+import com.template.auth.auth.exception.CredencialesInvalidasException;
+import com.template.auth.auth.exception.EmailNoVerificadoException;
+import com.template.auth.auth.exception.EmailYaRegistradoException;
+import com.template.auth.auth.repository.UsuarioRepository;
+import com.template.auth.auth.service.AuthService;
+import com.template.auth.auth.service.EmailVerificationService;
+import com.template.auth.auth.service.RefreshTokenService;
 import com.template.auth.security.JwtService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
