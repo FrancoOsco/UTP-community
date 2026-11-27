@@ -1,0 +1,16 @@
+---
+import AppShell from '../components/AppShell.astro';
+---
+<AppShell active="proyectos" heading="Repositorio académico" subheading="Comparte conocimiento. Inspira nuevos proyectos." wide>
+  <div class="academic-toolbar"><a href="/proyecto?new=1" class="btn btn-primary">+ Publicar proyecto</a><a href="/perfil" class="btn btn-outline">Mi perfil</a><button class="btn btn-outline" id="mine">Mis proyectos</button></div>
+  <div class="academic-toolbar"><input id="q" placeholder="Buscar proyectos, cursos, autores o temas…" type="search"/><select id="career" aria-label="Carrera"><option value="">Todas las carreras</option></select><select id="course" aria-label="Curso"><option value="">Todos los cursos</option></select></div>
+  <p class="academic-muted" id="results" aria-live="polite">Cargando proyectos…</p><div class="academic-grid" id="projects"></div><div class="academic-actions"><button class="btn btn-outline" id="prev" disabled>Anterior</button><button class="btn btn-outline" id="next" disabled>Siguiente</button></div>
+</AppShell>
+<script>
+import {$,data,val,esc,error} from '../lib/academic';import {renderCards} from '../lib/projects';
+let mine=new URLSearchParams(location.search).has('mine'),author=new URLSearchParams(location.search).get('autor'),page=0,filters:any[]=[],generation=0,timer:number;
+function courses(){const old=val('course');$('course').innerHTML='<option value="">Todos los cursos</option>'+[...new Set(filters.filter(f=>!val('career')||f.career===val('career')).map(f=>f.course))].map(c=>`<option>${esc(c)}</option>`).join('');if([...($('course') as HTMLSelectElement).options].some(o=>o.value===old))($('course') as HTMLSelectElement).value=old;}
+async function load(){const g=++generation;try{$('mine').textContent=mine?'Ver todos los proyectos':'Mis proyectos';const r=await data('/api/proyectos?'+new URLSearchParams({q:val('q'),carrera:val('career'),curso:val('course'),mine:String(mine),page:String(page),...(author&&!mine?{autor:author}:{})}));if(g!==generation)return;renderCards($('projects'),r.items);$('results').textContent=`${r.items.length} proyectos · Página ${page+1}`;($('prev') as HTMLButtonElement).disabled=page===0;($('next') as HTMLButtonElement).disabled=!r.hasNext;}catch(e){error(e);$('results').textContent='No fue posible cargar los proyectos.';}}
+$('q').addEventListener('input',()=>{clearTimeout(timer);timer=window.setTimeout(()=>{page=0;void load();},250);});$('career').addEventListener('change',()=>{courses();page=0;void load();});$('course').addEventListener('change',()=>{page=0;void load();});$('mine').addEventListener('click',()=>{mine=!mine;author=null;page=0;void load();});$('prev').addEventListener('click',()=>{page--;void load();});$('next').addEventListener('click',()=>{page++;void load();});
+(async()=>{try{filters=await data('/api/proyectos/filtros');$('career').innerHTML+=[...new Set(filters.map(f=>f.career))].map(c=>`<option>${esc(c)}</option>`).join('');courses();await load();}catch(e){error(e);}})();
+</script>

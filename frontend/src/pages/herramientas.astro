@@ -1,0 +1,7 @@
+---
+import AppShell from '../components/AppShell.astro';
+---
+<AppShell active="herramientas" heading="Herramientas académicas" subheading="Programas y dependencias para todas las carreras." wide><div class="academic-card"><div class="academic-toolbar"><input id="tool-q" type="search" placeholder="Buscar Excel, Bizagi, Java…"/><select id="tool-cat"><option value="">Todas las categorías</option></select></div><p class="academic-muted">Selecciona las herramientas que necesitas. El asistente Windows consulta WinGet cuando es posible y ofrece enlaces oficiales para el resto. No instala sin confirmación.</p><div id="tools"></div><button id="setup" class="btn btn-primary">↓ Preparar mi computadora (BAT)</button></div></AppShell>
+<script>
+import {$,val,esc,error} from '../lib/academic';import {getTools,renderTools,setup,type Tool} from '../lib/tools';let tools:Tool[]=[];function paint(){renderTools($('tools'),tools.filter(t=>(!val('tool-cat')||val('tool-cat')===t.category)&&[t.name,t.category].join(' ').toLowerCase().includes(val('tool-q').toLowerCase())),true);$('tools').querySelectorAll<HTMLInputElement>('input').forEach(i=>i.checked=false);} $('tool-q').addEventListener('input',paint);$('tool-cat').addEventListener('change',paint);$('setup').addEventListener('click',()=>setup($('tools')).catch(error));getTools().then(t=>{tools=t;$('tool-cat').innerHTML+=[...new Set(t.map(x=>x.category))].map(c=>`<option>${esc(c)}</option>`).join('');paint();}).catch(error);
+</script>

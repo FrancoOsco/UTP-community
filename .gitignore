@@ -33,3 +33,18 @@ moderation-api/.venv/
 # Python cache
 __pycache__/
 *.py[cod]
+# Archivos académicos locales
+**/storage/
+
+# Respaldos locales
+*.backup
+*.dump
+
+# Credenciales y documentación privada
+*PRIVADA.txt
+
+# Archivos académicos locales
+**/storage/
+
+# Configuraciones locales de ejecución
+.run/

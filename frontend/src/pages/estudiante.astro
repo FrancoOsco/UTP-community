@@ -1,0 +1,8 @@
+---
+import AppShell from '../components/AppShell.astro';
+---
+<AppShell active="proyectos" heading="Perfil académico" subheading="Conoce a los estudiantes y sus proyectos." wide><a href="/proyectos" class="academic-link">← Repositorio</a><section class="academic-card" id="student">Cargando perfil…</section><div class="section-header"><h2>Proyectos publicados</h2></div><div id="portfolio" class="academic-grid"></div><a id="all-projects" class="academic-link">Ver todos los proyectos →</a></AppShell>
+<script>
+import {$,data,esc,error} from '../lib/academic';import {renderPortfolio} from '../lib/projects';
+(async()=>{try{const id=Number(new URLSearchParams(location.search).get('id'));if(!id)throw new Error('Perfil no encontrado');const u=await data('/api/proyectos/autor/'+id);$('student').innerHTML=`<h2>${esc(u.nombre)} ${esc(u.apellido)}</h2><p class="academic-muted">${esc(u.carrera||'Estudiante UTP')} ${u.ciclo?' · Ciclo '+u.ciclo:''}</p><p>${esc(u.biografia||'Comunidad universitaria UTP')}</p>`;($('all-projects') as HTMLAnchorElement).href='/proyectos?autor='+id;await renderPortfolio($('portfolio'),false,id);}catch(e){error(e);$('student').textContent='Perfil no disponible.';}})();
+</script>

@@ -112,3 +112,6 @@ Un estudiante no puede votar sus propias publicaciones ni respuestas; voto `0` r
 ## Advertencias y decisiones
 
 No se activó un modo de login falso ni se almacenaron contraseñas en texto plano. El prototipo depende de PostgreSQL y SMTP. Las publicaciones de ejemplo de la landing no aparecen como datos reales al entrar: los foros se alimentan de la base de datos. Cualquier despliegue real requiere auditoría de seguridad, migraciones versionadas, mayor moderación y controles contra abuso, HTTPS, pruebas integrales y aprobación institucional si se pretende usar identidad/marca UTP de forma oficial.
+
+## Actualización académica
+Consulta [ACTUALIZACION_ACADEMICA.md](ACTUALIZACION_ACADEMICA.md) para el nuevo repositorio, reuniones, calendario y herramientas, configuración de almacenamiento y pruebas pendientes.

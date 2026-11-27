@@ -92,6 +92,7 @@ import Icon from '../components/Icon.astro';
       </div><Icon name="chevron" size={17} /></a
     >
   </div>
+  <div class="section-header"><div><h2>Mis proyectos académicos</h2><p>Tu portafolio dentro de UTP Community.</p></div><a href="/proyecto?new=1" class="btn btn-primary">+ Publicar</a></div><div id="my-projects" class="academic-grid"></div><a class="academic-link" href="/proyectos?mine=1">Ver todos mis proyectos →</a>
   <Fragment slot="aside"
     ><section class="aside-card">
       <div class="aside-title"><Icon name="shield" size={18} /> Cuenta institucional</div><p
@@ -106,6 +107,8 @@ import Icon from '../components/Icon.astro';
 <script>
   import { authFetch } from '../lib/auth';
   import { responseError, showToast } from '../lib/ui';
+  import { renderPortfolio } from '../lib/projects';
+  renderPortfolio(document.getElementById('my-projects')!,true).catch(e=>showToast(e.message,true));
   const el = (id: string) => document.getElementById(id)!;
   let user: any = null;
   function paint(u: any) {
