@@ -22,6 +22,8 @@ public class UsuarioService {
     private final EmailVerificationTokenRepository emailVerificationTokenRepository;
     private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final com.template.auth.academic.StorageService academicStorage;
+    private final org.springframework.jdbc.core.JdbcTemplate academicJdbc;
 
     public List<UsuarioResponse> listarUsuarios() {
         return usuarioRepository.findAll()
@@ -39,6 +41,7 @@ public class UsuarioService {
         emailVerificationTokenRepository.deleteByUsuarioId(id);
         passwordResetTokenRepository.deleteByUsuarioId(id);
         refreshTokenRepository.deleteByUsuarioId(id);
+        academicStorage.deleteUserFilesAfterCommit(academicJdbc,id);
         usuarioRepository.delete(usuario);
     }
 
